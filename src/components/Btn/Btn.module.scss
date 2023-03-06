@@ -1,0 +1,32 @@
+@import '../../styles/utils/mixins';
+
+.btn {
+  background-color: var(--accent-color);
+  color: var(--btn-text-color);
+  border-color: transparent;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  font-weight: 700;
+  font-size: var(--text-size);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.start {
+  composes: btn;
+  border-radius: 30px;
+  height: 43px;
+  width: 210px;
+}
+
+.login {
+  composes: btn;
+  border-radius: 30px;
+  width: 182px;
+  height: 44px;
+}
+.plus {
+  composes: btn;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+}
