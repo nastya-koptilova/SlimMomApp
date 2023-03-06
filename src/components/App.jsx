@@ -1,10 +1,7 @@
 
-
 export const App = () => {
-
   return (
     <>
-      
     </>
   );
 };
