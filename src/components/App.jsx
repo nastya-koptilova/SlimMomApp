@@ -1,10 +1,8 @@
 
-
-
 export const App = () => {
-
   return (
-    <>     
+    <>
+      
     </>
   );
 };
