@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 export const DiaryAddProductForm = () => {
+  const [date, setDate] = useState();
   const [products, setProducts] = useState();
   const [weight, setWeight] = useState();
-  // const [query, setQuery] = useState('');
 
   const userMap = {
-    product: setProducts,
+    products: setProducts,
     weight: setWeight,
   };
   const handleAddProducts = event => {
