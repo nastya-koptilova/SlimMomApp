@@ -36,27 +36,48 @@ export const DailyApi = {
 
 export const ProductApi = {
   async productSearch(search) {
-    const { data } = await axios.get('/product/', {params: {search}});
+    const { data } = await axios.get('/product/', { params: { search } });
     return data;
   },
 };
 
-export const DayApi = {
-  async productSearch(productInfo) {
-    const { data } = await axios.get('/day', productInfo);
-    return data;
-  },
-  
-  async deleteProduct(productInfo) {
-    const { data } = await axios.delete('/day', productInfo);
-    return data;
-  },
+// export const DayApi = {
+//   async productSearch(productInfo) {
+//     const { data } = await axios.get('/day', productInfo);
+//     return data;
+//   },
 
-  async getDayInfo(dateInfo) {
-    const { data } = await axios.post('/day/info', dateInfo);
-    return data;
-  },
-};
+//   async deleteProduct(productInfo) {
+//     const { data } = await axios.delete('/day', productInfo);
+//     return data;
+//   },
+
+//   async getDayInfo(dateInfo) {
+//     const { data } = await axios.post('/day/info', dateInfo);
+//     return data;
+//   },
+// };
+
+// Search and get a list of products by query
+export async function productSearch(search) {
+  const { data } = await axios.get('/product/', { params: { search } });
+  return data;
+}
+// Post an eaten product
+export async function addProduct(productInfo) {
+  const { data } = await axios.post('/day', productInfo);
+  return data;
+}
+// Delete eaten product
+export async function deleteProduct(productId) {
+  const { data } = await axios.delete(`/day/${productId}`);
+  return data;
+}
+// Get info for day
+export async function getDayInfo(dateInfo) {
+  const { data } = await axios.post('/day/info', dateInfo);
+  return data;
+}
 
 export const UserApi = {
   async getUserInfo() {
