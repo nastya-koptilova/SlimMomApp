@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import scss from './AuthorizationForm.module.scss';
 
 const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
@@ -73,7 +74,12 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
         <button className={scss.authorization__button} type="submit">
           {isRegisterForm ? 'Зареєструватися' : 'Увійти'}
         </button>
-        <a className={scss.authorization__link} href="#">{isRegisterForm ? 'Увійти' : 'Зареєструватися'}</a>
+        <Link
+          className={scss.authorization__link}
+          to={isRegisterForm ? 'login' : 'register'}
+        >
+          {isRegisterForm ? 'Увійти' : 'Зареєструватися'}
+        </Link>
       </div>
     </form>
   );
