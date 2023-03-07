@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div className={styles.homePage}>
       <DailyCaloriesForm />
-      <Modal />
+      {/* <Modal /> */}
     </div>
   );
 }
