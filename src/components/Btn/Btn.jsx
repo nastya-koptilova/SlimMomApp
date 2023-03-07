@@ -1,8 +1,8 @@
 import scss from './Btn.module.scss';
 
-export const Btn = ({ children, onBtnClick, type = 'submit' }) => {
+export const Btn = ({ children, onBtnClick, type = 'submit', nameOfClass}) => {
   return (
-    <button className={scss.plus} type={type} onClick={onBtnClick}>
+    <button className={nameOfClass} type={type} onClick={onBtnClick}>
       {children}
     </button>
   );

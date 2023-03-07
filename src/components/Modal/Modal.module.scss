@@ -1,0 +1,60 @@
+@import '../../styles/base/container';
+@import '../../styles/utils/variables'; 
+@import '../Btn/Btn.module.scss';
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:  #EFF1F3;
+//   background-color:  rgba(33, 33, 33, 0.12);
+  z-index: 1200;
+}
+
+
+.modal{
+    padding: 40px 20px 0 20px;
+    position:absolute;
+    top:40px;
+    left:0;
+    width:320px;
+    height:100%;
+    background-color: var(--btn-text-color);
+
+}
+
+.icon{
+    position:absolute;
+     top:17px;
+     left:20px;
+}
+.title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: calc(25 / 18);
+    text-align: center;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--btn-text-color);
+    border-color: transparent;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    font-weight: 700;
+    font-size: var(--text-size);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+.start {
+    composes: btn;
+    border-radius: 30px;
+    height: 43px;
+    width: 210px;
+  }
+  
