@@ -7,23 +7,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import persistReducer from 'redux-persist/es/persistReducer';
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './authorization/authSlice';
-
-const persistConfig = {
-  key: 'token',
-  storage,
-  blacklist: ['isLoading', 'error', 'isLoggedIn', 'userName', 'userEmail'],
-};
-
-const persistedReducer = persistReducer(persistConfig, authReducer);
+import { rootReducer } from './rootReduser';
 
 export const store = configureStore({
-  reducer: {
-    userData: persistedReducer,
-  },
+    reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
