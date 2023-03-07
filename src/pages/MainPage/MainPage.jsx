@@ -11,13 +11,15 @@ function HomePage() {
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
-  };
+}
+const onClose = () => {
+    setIsModalOpen(false);
+}
 
   return (
     <div className={styles.homePage}>
-      <DailyCaloriesForm handleModalOpen={handleModalOpen} />
-      {isModalOpen && <Modal />}
-      <DiaryAddProductForm />
+      <DailyCaloriesForm handleModalOpen={handleModalOpen}/>
+      {isModalOpen &&  <Modal onClose={onClose} />}  
     </div>
   );
 }
