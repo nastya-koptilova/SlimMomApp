@@ -9,16 +9,16 @@ export const App = () => {
   return (
     <> 
      <Suspense fallback={<div>Loading</div>}>
-    <Routes>
-      {/* <Route path="/" element={<Layout />}> */}
+     <Routes>
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/register" element={<RegistrationPage />}/>
         <Route path="/login" element={<LoginPage />} />
         {/* <Route path="register" element={<RegistrationPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="contacts" element={<DairyPage />} />
-        <Route path="contacts" element={<CalculatorPage />} /> */}
-      {/* </Route> */}
+        <Route path="dairy" element={<DairyPage />} />
+        <Route path="calculator" element={<CalculatorPage />} /> */}
+      </Route>
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

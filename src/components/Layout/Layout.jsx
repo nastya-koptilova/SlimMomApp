@@ -1,32 +1,38 @@
 import { Logo } from 'components/Logo/Logo';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import s from '../Layout/Layout.module.scss';
 
 export function Layout() {
   return (
-    <div className={s.header}>
-      <div>
-        <Logo />
-      </div>
-      <div className={s.decoration}> </div>
-      <div className={s.navigation__list}>
-        <div className={s.navigation__item}>
-          <NavLink
-            to="/login"
-            className={({ isActive }) => (isActive ? s.active : s.default)}
-          >
-            Вхід
-          </NavLink>
+    <>
+      <header className={s.header}>
+        <div>
+          <Logo />
         </div>
-        <div className={s.navigation__item}>
-          <NavLink
-            to="/register"
-            className={({ isActive }) => (isActive ? s.active : s.default)}
-          >
-            Реєстрація
-          </NavLink>
-        </div>
-      </div>
-    </div>
+        <nav className={s.decoration}>
+          <ul className={s.navigation__list}>
+            <li className={s.navigation__item}>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? s.active : s.default)}
+              >
+                Вхід
+              </NavLink>
+            </li>
+            <li className={s.navigation__item}>
+              <NavLink
+                to="/register"
+                className={({ isActive }) => (isActive ? s.active : s.default)}
+              >
+                Реєстрація
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main className={s.main}>
+        <Outlet />
+      </main>
+    </>
   );
 }
