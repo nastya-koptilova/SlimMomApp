@@ -1,8 +1,13 @@
 import { Logo } from 'components/Logo/Logo';
 import { NavLink, Outlet } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 import s from '../Layout/Layout.module.scss';
 
 export function Layout() {
+  //   const dispatch = useDispatch();
+  //   const isLoggedIn = useSelector(state => state.isLoggedIn);
+  //   const user = useSelector(state => state.auth.user);
+
   return (
     <>
       <header className={s.header}>
@@ -19,6 +24,7 @@ export function Layout() {
                 Вхід
               </NavLink>
             </li>
+
             <li className={s.navigation__item}>
               <NavLink
                 to="/register"
