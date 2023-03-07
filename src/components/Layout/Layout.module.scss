@@ -1,0 +1,57 @@
+// /* сюди імпортуємо компоненти лого, навігацію та/або юзер інфо*/
+.header {
+  align-items: center;
+  margin: 20px;
+  display: flex;
+  border-bottom: 2px solid #e0e0e0;
+}
+.navigations__list {
+  padding-left: 0px;
+  display: flex;
+  margin-right: 15px;
+  margin-left: auto;
+  margin-top: 2px;
+}
+.navigations__item {
+  margin-right: 15px;
+  padding-left: 0px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.default {
+  color: #9b9faa;
+}
+.active {
+  color: black;
+}
+.decoration {
+  display: none;
+}
+
+@media screen and (min-width: 767px) {
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    border-bottom: none;
+    // align-items: flex-end;
+  }
+  .decoration {
+    margin-right: 20px;
+    margin-left: 20px;
+    display: block;
+    height: 32px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 7.5px;
+  }
+  .navigations__list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+    margin-right: auto;
+    margin-left: 0;
+  }
+}
