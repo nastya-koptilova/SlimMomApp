@@ -1,5 +1,5 @@
 
-import { DairyPage } from 'pages/DairyPage/DairyPage';
+
 import LoginPage from 'pages/LoginPage/LoginPage';
 import HomePage from 'pages/MainPage/MainPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
@@ -21,7 +21,6 @@ export const App = () => {
         <Route path="dairy" element={<DairyPage />} />
         <Route path="calculator" element={<CalculatorPage />} /> */}
       </Route>
-
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   </Suspense>
