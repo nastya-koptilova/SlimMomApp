@@ -29,6 +29,18 @@
   height: 100%;
   background-color: var(--btn-text-color);
 }
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: calc(25 / 18);
+  text-align: center;
+  padding-bottom: 42px;
+}
+.modalContainer {
+    padding: 40px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
 
 @media screen and (min-width: 767px) {
   .overlay {
@@ -39,9 +51,6 @@
     height: 100%;
   }
   .modal {
-    // width: 100%;
-    // margin-left: 48px;
-    // margin-right: 48px;
     max-width: 672px;
     top: 50%;
     left: 50%;
@@ -53,38 +62,28 @@
   .btnContainer {
     display: none;
   }
+
+  .title {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: calc(36 / 26);
+  }
+  .modalContainer{
+    padding: 0;
+  }
 }
 
-.modalContainer {
-  padding: 40px 20px 0 20px;
-  display: flex;
-  flex-direction: column;
-//   @include tablet {
-//     padding: 0px;
-//   }
-}
 .icon {
   position: absolute;
   top: 15px;
   left: 20px;
 }
 .closeIcon {
-    position: absolute;
-    top:20px;
-    right: 20px;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: calc(25 / 18);
-  text-align: center;
-  padding-bottom: 42px;
-//   @include tablet {
-//     font-weight: 700;
-//     font-size: 26px;
-//     line-height: calc(36 / 26);
-//   }
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .caloriesContainer {
@@ -116,6 +115,7 @@
   margin-bottom: 20px;
   text-align: center;
 }
+
 .btn {
   margin: 0 auto;
   text-align: center;
