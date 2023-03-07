@@ -1,94 +1,257 @@
 import React from 'react';
+import { Formik, Field, Form } from 'formik';
+import * as yup from 'yup';
+// import { useDispatch, useSelector } from 'react-redux';
+
+import { PersistFormikValues } from 'formik-persist-values';
+import { Btn } from 'components/Btn/Btn';
+
 import styles from './DailyCaloriesForm.module.scss';
 
 export function DailyCaloriesForm() {
+  // const dispatch = useDispatch();
+
+  const handleSubmit = (values, userId) => {
+    //   if (userId) {
+    //     dispatch(dailyCaloriesAuth(values, userId));
+    //   } else {
+    //     dispatch(dailyCalories(values));
+    //   }
+  };
+  const isChecked = () => {
+    const store = localStorage.getItem('bloodType');
+    if (store) {
+      return store;
+    }
+    return '';
+  };
+  const validationsSchema = yup.object().shape({
+    height: yup
+      .number()
+      .typeError('Повинно бути число')
+      .min(100, 'Мінімальне значення 100 см')
+      .max(220, 'Максимальне значення 220 см')
+      .required("Обов'язкове поле"),
+    age: yup
+      .number()
+      .typeError('Повинно бути число')
+      .min(18, 'Мінімальне значення 18 років')
+      .max(90, 'Максимальне значення 90 років')
+      .required("Обов'язкове поле"),
+    currentWeight: yup
+      .number()
+      .typeError('Повинно бути число')
+      .min(45, 'Мінімальне значення 45 кг')
+      .max(200, 'Максимальне значення 200 кг')
+      .required("Обов'язкове поле"),
+    desiredWeight: yup
+      .number()
+      .typeError('Повинно бути число')
+      .min(40, 'Мінімальне значення 40 кг')
+      .max(
+        yup.ref('currentWeight'),
+        'Максимальное значение не может быть больше текущего'
+      )
+      .required("Обов'язкове поле"),
+    bloodType: yup.number().required('Обязательное поле'),
+  });
+
   return (
-    <div className={styles.container}>
-      <div className={styles.formWrapper}>
-        <h1 className={styles.title}>
-          Розрахуйте добову норму калорій <br />
-          прямо зараз
-        </h1>
-        <form className={styles.form}>
-          <label>
-            <input
-              name="height"
-              placeholder="Зріст *"
-              type="text"
-              className={styles.input}
-            />
-          </label>
+    <>
+      <div>
+        <Formik
+          initialValues={{
+            height: '',
+            age: '',
+            currentWeight: '',
+            desiredWeight: '',
+            bloodType: `${isChecked()}`,
+          }}
+          validateOnBlur
+          onSubmit={(values, actions) => {
+            handleSubmit(values);
+            // handleSubmit(values, userId);
+            // if (IsAuthenticated) {
+            //   localStorage.removeItem('bloodType');
+            //   localStorage.removeItem('calc-form');
+            //   actions.resetForm();
+            // }
+          }}
+          validationSchema={validationsSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            isValid,
+            handleSubmit,
+            dirty,
+          }) => (
+            <Form className={styles.caloriesForm} onSubmit={handleSubmit}>
+              <h1>Розрахуйте свою денну норму калорій прямо зараз</h1>
+              <div className={styles.formContainerMain}>
+                <div className={styles.formContainerLeft}>
+                  <div className={styles.labelContainer}>
+                    <InputField
+                      label="Зріст *"
+                      type="number"
+                      name={'height'}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.height}
+                    />
+                    <div className={styles.caloriesFormErrorContainer}>
+                      {touched.height && errors.height && (
+                        <p className={styles.caloriesFormError}>
+                          {errors.height}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className={styles.labelContainer}>
+                    <InputField
+                      label="Вік *"
+                      type="number"
+                      name={'age'}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.age}
+                    />
+                    <div className={styles.caloriesFormErrorContainer}>
+                      {touched.age && errors.age && (
+                        <p className={styles.caloriesFormError}>{errors.age}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className={styles.labelContainer}>
+                    <InputField
+                      label="Поточна вага *"
+                      type="number"
+                      name={'currentWeight'}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.currentWeight}
+                    />
+                    <div className={styles.caloriesFormErrorContainer}>
+                      {touched.currentWeight && errors.currentWeight && (
+                        <p className={styles.caloriesFormError}>
+                          {errors.currentWeight}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.formContainerRight}>
+                  <div className={styles.labelContainer}>
+                    <InputField
+                      label="Бажана вага *"
+                      type="number"
+                      name={'desiredWeight'}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.desiredWeight}
+                    />
+                    <div className={styles.caloriesFormErrorContainer}>
+                      {touched.desiredWeight && errors.desiredWeight && (
+                        <p className={styles.caloriesFormError}>
+                          {errors.desiredWeight}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className={styles.radioButtonContainer}>
+                    <h3>Группа крови *</h3>
 
-          <label>
-            <input name="age" placeholder="Вік *" className={styles.input} />
-          </label>
+                    <ul className={styles.radioButtonList}>
+                      <RadioButton
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        name="bloodType"
+                        value="1"
+                        id="1-radio-button"
+                      />
+                      <RadioButton
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        name="bloodType"
+                        value="2"
+                        id="2-radio-button"
+                      />
+                      <RadioButton
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        name="bloodType"
+                        value="3"
+                        id="3-radio-button"
+                      />
+                      <RadioButton
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        name="bloodType"
+                        value="4"
+                        id="4-radio-button"
+                      />
+                    </ul>
+                    <div className={styles.caloriesFormErrorContainer}>
+                      {touched.bloodType && errors.bloodType && (
+                        <p className={styles.caloriesFormError}>
+                          {errors.bloodType}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <label>
-            <input
-              name="weight"
-              placeholder="Поточна вага *"
-              className={styles.input}
-            />
-          </label>
+              <div className={styles.form_button}>
+                {/* <Button
+                  disabled={!isValid || !dirty}
+                  onClick={handleSubmit}
+                  type="submit"
+                  customType="primary"
+                /> */}
+                <Btn onClick={handleSubmit} type="submit">
+                  Почати худнути
+                </Btn>
+              </div>
 
-          <label>
-            <input
-              id="desiredWeight"
-              name="desiredWeight"
-              type="text"
-              placeholder="Бажана вага *"
-              className={styles.input}
-            />
-          </label>
-
-          <div id="bloodGroup" className={styles.label}>
-            Група крові *
-            <div
-              role="group"
-              aria-labelledby="bloodGroup"
-              className={styles.radiogroup}
-            >
-              <label className={styles.label}>
-                <input
-                  type="radio"
-                  name="bloodGroup"
-                  value="1"
-                  className={styles.radio}
-                />
-                1
-              </label>
-              <label className={styles.label}>
-                <input
-                  type="radio"
-                  name="bloodGroup"
-                  value="2"
-                  className={styles.radio}
-                />
-                2
-              </label>
-              <label className={styles.label}>
-                <input
-                  type="radio"
-                  name="bloodGroup"
-                  value="3"
-                  className={styles.radio}
-                />
-                3
-              </label>
-              <label className={styles.label}>
-                <input
-                  type="radio"
-                  name="bloodGroup"
-                  value="4"
-                  className={styles.radio}
-                />
-                4
-              </label>
-            </div>
-          </div>
-          <button type="submit">Почніть худнути</button>
-        </form>
+              <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
+            </Form>
+          )}
+        </Formik>
       </div>
-    </div>
+    </>
   );
 }
+const InputField = ({ label, type, value, name, onChange, onBlur }) => (
+  <label>
+    <Field
+      required
+      type={type}
+      value={value}
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+    />
+    <div className={styles.labelText}>{label}</div>
+  </label>
+);
+
+const RadioButton = ({ name, value, id, onChange, onBlur }) => (
+  <li>
+    <Field
+      type="radio"
+      value={value}
+      name={name}
+      id={id}
+      onChange={onChange}
+      onBlur={onBlur}
+    />
+    <label htmlFor={id}>{value}</label>
+    <div className={styles.check}>
+      <div className={styles.inside}></div>
+    </div>
+  </li>
+);
