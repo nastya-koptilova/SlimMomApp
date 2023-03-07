@@ -9,7 +9,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div className={styles.homePage}>
       <DailyCaloriesForm />
-      <Modal />
+      {/* <Modal /> */}
     </div>
   );
 }
