@@ -9,7 +9,7 @@ import { Btn } from 'components/Btn/Btn';
 import styles from './DailyCaloriesForm.module.scss';
 import { dailyCaloriesRequest } from 'redux/dailyCalories/caloriesSlice';
 
-export function DailyCaloriesForm() {
+export function DailyCaloriesForm({handleModalOpen}) {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, userId) => {
@@ -17,6 +17,7 @@ export function DailyCaloriesForm() {
     //   dispatch(dailyCaloriesAuth(values, userId));
     // } else {
     dispatch(dailyCaloriesRequest(values));
+    handleModalOpen();
     // }
   };
   const isChecked = () => {

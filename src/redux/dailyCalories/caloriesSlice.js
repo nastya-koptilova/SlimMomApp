@@ -42,15 +42,14 @@ const userCaloriesSlice = createSlice({
         builder
     .addCase(dailyCaloriesRequest.pending, (state, action) => {
         state.status = 'pending';
-        state.user = action.payload;
       })
       .addCase(dailyCaloriesRequest.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.user = action.payload;
+        state.error = null;
       })
       .addCase(dailyCaloriesRequest.rejected, (state, action) => {
         state.status = 'rejected';
-        state.user = action.payload;
       })
 })
 
