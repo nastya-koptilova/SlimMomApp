@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import scss from './AuthorizationForm.module.scss';
 
 const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
-  const [name, setName] = useState('');
+  const [name, setname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const userMap = {
-    name: setName,
+    name: setname,
     email: setEmail,
     password: setPassword,
   };
@@ -21,7 +21,7 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isRegisterForm) {
-      onSubmit({ name, email, password });
+      onSubmit({ email, password, username: name });
       return;
     }
     onSubmit({ email, password });
@@ -65,7 +65,7 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
           id="password"
           name="password"
           placeholder="Пароль"
-          minLength={7}
+          minLength={8}
           required
           onChange={handleInputChange}
         />
@@ -76,7 +76,7 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
         </button>
         <Link
           className={scss.authorization__link}
-          to={isRegisterForm ? 'login' : 'register'}
+          to={isRegisterForm ? '/login' : '/register'}
         >
           {isRegisterForm ? 'Увійти' : 'Зареєструватися'}
         </Link>

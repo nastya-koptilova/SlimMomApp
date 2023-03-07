@@ -1,6 +1,6 @@
 .authorization_form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .authorization__title {
@@ -57,8 +57,7 @@
 .authorization__button,
 .authorization__link {
   width: 182px;
-  padding-top: 13px;
-  padding-bottom: 13px;
+  height: 44px;
   border: none;
   border-radius: 30px;
   font-weight: 700;
@@ -74,8 +73,9 @@
 }
 
 .authorization__link {
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   border: 2px solid #fc842d;
   color: #fc842d;
