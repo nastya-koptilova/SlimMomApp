@@ -3,13 +3,19 @@ import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesFor
 import styles from './MainPage.module.css';
 import {useState} from 'react';
 
-function HomePage() {
-const [isModalOpen, setIsModalOpen] = useState(false)
+// import { selectUser } from 'redux/dailyCalories/caloriesSelectors';
+
+function HomePage() {  
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const handleModalOpen = () => {
+    setIsModalOpen(true);
+}
 
   return (
     <div className={styles.homePage}>
-      <DailyCaloriesForm />
-      {/* <Modal /> */}
+      <DailyCaloriesForm handleModalOpen={handleModalOpen}/>
+      {isModalOpen &&  <Modal />}  
     </div>
   );
 }
