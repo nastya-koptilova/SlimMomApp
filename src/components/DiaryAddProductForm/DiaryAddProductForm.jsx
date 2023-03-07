@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { productSearchOper } from 'redux/diary/diaryOperation';
+import { filterProduct } from 'redux/diary/diarySlice';
 // import { useDispatch } from 'react-redux';
 
 export const DiaryAddProductForm = () => {
@@ -6,13 +9,19 @@ export const DiaryAddProductForm = () => {
   const [products, setProducts] = useState();
   const [weight, setWeight] = useState();
 
-  const userMap = {
-    products: setProducts,
-    weight: setWeight,
-  };
+  const filter = useSelector(state => state.searchData.filter);
+
+  const dispatch = useDispatch();
+
+  // const userMap = {
+  //   products: setProducts,
+  //   weight: setWeight,
+  // };
   const handleAddProducts = event => {
-    const { name, value } = event.target;
-    userMap[name](value);
+    const value = event.target.value;
+    dispatch(filterProduct(value));
+    dispatch(productSearchOper(value));
+    // userMap[name](value);
   };
 
   const handleFormSubmit = event => {
@@ -31,19 +40,19 @@ export const DiaryAddProductForm = () => {
             name="title"
             autoComplete="off"
             onChange={handleAddProducts}
-            // value={query}
+            value={filter}
           />
         </label>
-        <label>
+        {/* <label>
           <input
             placeholder="Грам"
             type="text"
             name="weight"
             autoComplete="off"
             onChange={handleAddProducts}
-            // value={query}
+            // value={filter}
           ></input>
-        </label>
+        </label> */}
         <button type="submit">Додати</button>
       </form>
     </div>

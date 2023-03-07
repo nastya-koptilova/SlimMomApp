@@ -10,10 +10,11 @@ import {
 export const productSearchOper = createAsyncThunk(
   'products/productSearch',
   async (search, thunkAPI) => {
-    if (!search) return [];
+    // if (!search) return [];
 
     try {
       const result = await productSearch(search);
+      console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

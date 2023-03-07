@@ -9,12 +9,14 @@ import {
 export const productSearchSlice = createSlice({
   name: 'productSearch',
   initialState: {
-    products: [],
-    status: 'idle',
-    error: null,
+    products: {
+      productsData: [],
+      status: 'idle',
+      error: null,
+    },
+    filter: '',
   },
-  reducers: {},
-  extraReducers: builder => {
+  extraReducers: builder =>
     builder
       .addCase(productSearchOper.pending, state => {
         state.status = 'loading';
@@ -26,6 +28,13 @@ export const productSearchSlice = createSlice({
       .addCase(productSearchOper.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
-      });
+      }),
+  reducers: {
+    filterProduct(state, action) {
+      state.filter = action.payload;
+    },
   },
 });
+
+export const productSearchReducer = productSearchSlice.reducer;
+export const { filterProduct } = productSearchSlice.actions;
