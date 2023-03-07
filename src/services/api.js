@@ -65,3 +65,13 @@ export const UserApi = {
   },
 };
 // 640637c11fbd81052541e3d9
+
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    return token;
+  },
+  unSet() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};

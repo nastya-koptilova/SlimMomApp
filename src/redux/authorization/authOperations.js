@@ -1,15 +1,44 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AuthApi } from "services/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AuthApi, token } from 'services/api';
 
 export const registerNewUser = createAsyncThunk(
-    '/auth/register',
-    async (credential, thunkAPI) => {
-      try {
-        const result = await AuthApi.registerNewUser(credential);
-        console.log(result)
-        return result;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+  'auth/register',
+  async (credential, thunkAPI) => {
+    try {
+      const result = await AuthApi.registerNewUser(credential);
+      thunkAPI.dispatch(
+        loginUser({ email: credential.email, password: credential.password })
+      );
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);
+
+export const loginUser = createAsyncThunk(
+  'auth/login',
+  async (credential, thunkAPI) => {
+    try {
+      const result = await AuthApi.loginUser(credential);
+      token.set(result.accessToken);
+      console.log(result);
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      const result = await AuthApi.logOutUser();
+      token.unSet();
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
