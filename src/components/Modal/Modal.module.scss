@@ -1,8 +1,7 @@
 @import '../../styles/base/container';
-@import '../../styles/utils/variables'; 
+@import '../../styles/utils/variables';
 
-
-.overlay{
+.overlay {
   position: fixed;
   top: 80px;
   left: 0;
@@ -11,40 +10,60 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:  #EFF1F3;
-//   background-color:  rgba(33, 33, 33, 0.12);
+  background-color: #eff1f3;
+  //   background-color:  rgba(33, 33, 33, 0.12);
   z-index: 1200;
 }
 
-
-.modal{
-    // width: 100%;
-    // padding-left: 20px;
-    // padding-right: 20px;
-    margin: 0 auto;
-    padding: 40px 20px 0 20px;
-    position:absolute;
-    top:40px;
-    left:0;
-    width:320px;
-    height:100%;
-    background-color: var(--btn-text-color);
-
+.modal {
+  // width: 100%;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  margin: 0 auto;
+  padding: 40px 20px 0 20px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  background-color: var(--btn-text-color);
 }
 
-.icon{
-    position:absolute;
-     top:17px;
-     left:20px;
+.icon {
+  position: absolute;
+  top: 17px;
+  left: 20px;
 }
-.title{
-    font-size: 18px;
-    font-weight: 700;
-    line-height: calc(25 / 18);
-    text-align: center;
-    padding-bottom: 42px;
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: calc(25 / 18);
+  text-align: center;
+  padding-bottom: 42px;
 }
 
-.caloriesContainer{
+.caloriesContainer {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
 
+.calories {
+  font-weight: 700;
+  font-size: 48px;
+  color: #264061;
+  display: block;
+  padding-bottom: 38px;
+  text-align: center;
+  line-height: calc(57 / 48);
+}
+
+.caloriesText {
+  padding-bottom: 38px;
+  text-align: center;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+}
+
+.btn{
+    
 }

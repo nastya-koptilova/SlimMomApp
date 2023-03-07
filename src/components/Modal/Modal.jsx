@@ -1,5 +1,4 @@
 import scss from './Modal.module.scss';
-// import {ReactComponent as GoBackArrow} from '../../images/goBackIcon/GoBackArrow.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { Btn } from 'components/Btn/Btn';
 import { createPortal } from 'react-dom';
@@ -23,9 +22,14 @@ const Modal = () => {
         <div className={scss.modal}>
           <h2 className={scss.title}>Ваші рекомендованні денні калорії</h2>
           <div className={scss.caloriesContainer}>
-            
+            <span className={scss.calories}>2800 <span className={scss.caloriesText}>ккал</span></span>
           </div>
-          <Btn onBtnClick={handleBtnClick} type="button" variant="start">
+          <ul>
+            <h2>Список продуктів, які вам заборонені</h2>
+            <li ></li>
+          </ul>
+
+          <Btn className={scss.btn}onBtnClick={handleBtnClick} type="button" variant="start">
             Почніть худнути
           </Btn>
         </div>
