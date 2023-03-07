@@ -23,7 +23,7 @@ export const productSearchSlice = createSlice({
       })
       .addCase(productSearchOper.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.products = action.payload;
+        state.products.productsData = action.payload;
       })
       .addCase(productSearchOper.rejected, (state, action) => {
         state.status = 'failed';
