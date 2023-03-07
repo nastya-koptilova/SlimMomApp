@@ -16,10 +16,8 @@
 }
 
 .modal {
-  // width: 100%;
-  // padding-left: 20px;
-  // padding-right: 20px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   padding: 40px 20px 0 20px;
   position: absolute;
   top: 40px;
@@ -63,7 +61,29 @@
   font-size: 16px;
   line-height: calc(19 / 16);
 }
+.secondaryTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.btn {
+  margin: 0 auto;
+  text-align: center;
+}
 
-.btn{
-    
+.list {
+  padding-left: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listItem {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  color: #9b9faa;
 }

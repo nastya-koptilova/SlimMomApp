@@ -11,11 +11,14 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 const handleModalOpen = () => {
     setIsModalOpen(true);
 }
+const onClose = () => {
+    setIsModalOpen(false);
+}
 
   return (
     <div className={styles.homePage}>
       <DailyCaloriesForm handleModalOpen={handleModalOpen}/>
-      {isModalOpen &&  <Modal />}  
+      {isModalOpen &&  <Modal onClose={onClose} />}  
     </div>
   );
 }
