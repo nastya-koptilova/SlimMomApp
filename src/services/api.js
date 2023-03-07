@@ -36,7 +36,7 @@ export const DailyApi = {
 
 export const ProductApi = {
   async productSearch(search) {
-    const { data } = await axios.get(`/product/${search}`);
+    const { data } = await axios.get('/product/', {params: {search}});
     return data;
   },
 };
@@ -46,6 +46,7 @@ export const DayApi = {
     const { data } = await axios.get('/day', productInfo);
     return data;
   },
+  
   async deleteProduct(productInfo) {
     const { data } = await axios.delete('/day', productInfo);
     return data;
