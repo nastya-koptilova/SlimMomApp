@@ -1,15 +1,22 @@
-// import Modal from 'components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
 import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import styles from './MainPage.module.css';
+import {useState} from 'react';
 
-function HomePage() {
+// import { selectUser } from 'redux/dailyCalories/caloriesSelectors';
+
+function HomePage() {  
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const handleModalOpen = () => {
+    setIsModalOpen(true);
+}
+
   return (
     <div className={styles.homePage}>
-      <DailyCaloriesForm />
-      <DiaryAddProductForm />
-
-      {/* <Modal/> */}
+      <DailyCaloriesForm handleModalOpen={handleModalOpen}/>
+      {isModalOpen &&  <Modal />}  
     </div>
   );
 }
