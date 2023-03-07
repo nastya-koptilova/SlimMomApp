@@ -2,7 +2,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const AuthApi = {
-    // реєструємо юзера
+  // реєструємо юзера
   async registerNewUser(userData) {
     const { data } = await axios.post('/auth/register', userData);
     return data;
@@ -22,7 +22,7 @@ export const AuthApi = {
 };
 
 export const DailyApi = {
-    // інфа про незареєстрованого юзера
+  // інфа про незареєстрованого юзера
   async getDailyRateInfo(userInfo) {
     const { data } = await axios.post('/daily-rate', userInfo);
     return data;

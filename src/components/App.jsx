@@ -1,3 +1,5 @@
+
+import { DairyPage } from 'pages/DairyPage/DairyPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import HomePage from 'pages/MainPage/MainPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
