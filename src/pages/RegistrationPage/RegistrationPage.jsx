@@ -1,14 +1,22 @@
 import AuthorizationForm from 'components/AuthorizationForm/AuthorizationForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
 import { registerNewUser } from 'redux/authorization/authOperations';
+import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleRegister = userData => {
     dispatch(registerNewUser(userData));
   };
-  return <AuthorizationForm onSubmit={handleRegister} />;
+  return ( <>
+    {!isLoggedIn && (
+      <AuthorizationForm onSubmit={handleRegister} />
+    )}
+    {isLoggedIn && <Navigate to="/dairy" />}
+  </>);
 };
 
 export default RegistrationPage;
