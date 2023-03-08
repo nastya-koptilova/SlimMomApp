@@ -1,11 +1,14 @@
 import { Logo } from 'components/Logo/Logo';
-import { NavLink, Outlet } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import { useSelector } from 'react-redux';
 import s from '../Layout/Layout.module.scss';
+import { Navigation } from 'components/Navigation/Navigation';
+import { LoggedInNavigation } from 'components/LoggedInNavigation/LoggedInNavigation';
 
 export function Layout() {
   //   const dispatch = useDispatch();
-  //   const isLoggedIn = useSelector(state => state.isLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   //   const user = useSelector(state => state.auth.user);
 
   return (
@@ -16,23 +19,15 @@ export function Layout() {
         </div>
         <nav className={s.decoration}>
           <ul className={s.navigation__list}>
-            <li className={s.navigation__item}>
-              <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? s.active : s.default)}
-              >
-                Вхід
-              </NavLink>
-            </li>
-
-            <li className={s.navigation__item}>
-              <NavLink
-                to="/register"
-                className={({ isActive }) => (isActive ? s.active : s.default)}
-              >
-                Реєстрація
-              </NavLink>
-            </li>
+            {!isLoggedIn ? (
+              <>
+                <Navigation />
+              </>
+            ) : (
+              <>
+                <LoggedInNavigation />
+              </>
+            )}
           </ul>
         </nav>
       </header>
