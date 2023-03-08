@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthApi, token, UserApi } from 'services/api';
+import { AuthApi, token } from 'services/api';
 
 export const registerNewUser = createAsyncThunk(
   'auth/register',
@@ -9,6 +9,22 @@ export const registerNewUser = createAsyncThunk(
       thunkAPI.dispatch(
         loginUser({ email: credential.email, password: credential.password })
       );
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      console.log(thunkAPI.getState())
+      const { sid, refreshToken } = thunkAPI.getState().userData;
+      if (!sid) return thunkAPI.rejectWithValue('No sid');
+      const result = await AuthApi.refreshUser(sid, refreshToken);
+      token.set(result.newAccessToken);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -37,24 +53,6 @@ export const logoutUser = createAsyncThunk(
       const result = await AuthApi.logOutUser();
       token.unSet();
       return result;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const refreshUser = createAsyncThunk(
-  'user/',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.userData.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    try {
-      token.set(persistedToken);
-      const { id } = await UserApi.getUserInfo();
-      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

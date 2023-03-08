@@ -9,6 +9,8 @@ const initialState = {
   userEmail: '',
   token: null,
   userId: null,
+  refreshToken: null,
+  sid: null,
 };
 
 const authSlice = createSlice({
@@ -35,21 +37,21 @@ const authSlice = createSlice({
         state.userName = action.payload.user.username;
         state.userEmail = action.payload.user.email;
         state.token = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.sid = action.payload.sid;
         state.userId = action.payload.user.id;
       })
       .addCase(loginUser.rejected, rejectHandler)
-
-      .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
-      })
+      // ----- Refresh -----
+      .addCase(refreshUser.pending, pendingHandler)
       .addCase(refreshUser.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
+        state.token = action.payload.newAccessToken;
+        state.refreshToken = action.payload.newRefreshToken;
+        state.sid = action.payload.sid;
       })
-      .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
-      })
-
+      .addCase(refreshUser.rejected, rejectHandler)
       // ----- Logout -----
       .addCase(logoutUser.pending, pendingHandler)
       .addCase(logoutUser.fulfilled, (state, action) => {
@@ -58,9 +60,11 @@ const authSlice = createSlice({
         state.userName = '';
         state.userEmail = '';
         state.token = null;
+        state.refreshToken = null;
+        state.sid = null;
       })
       .addCase(logoutUser.rejected, rejectHandler);
-  }
+  },
 });
 
 function pendingHandler(state) {
