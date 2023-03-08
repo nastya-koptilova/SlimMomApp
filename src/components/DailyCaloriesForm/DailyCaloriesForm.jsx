@@ -11,28 +11,16 @@ import {
   dailyCaloriesAuth,
   dailyCaloriesRequest,
 } from 'redux/dailyCalories/caloriesSlice';
-import {
-  selectIsLoggedIn,
-  selectUserId,
-} from 'redux/authorization/authSelectors';
+
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export function DailyCaloriesForm({ handleModalOpen }) {
   const navigate = useNavigate();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    if (isLoggedIn) {
-      console.log(isLoggedIn);
-      dispatch(dailyCaloriesAuth({ ...values, userId }));
-      // <Navigate to="/dairy" />;
-      navigate('/dairy');
-    } else {
-      dispatch(dailyCaloriesRequest(values));
-      handleModalOpen();
-    }
+    dispatch(dailyCaloriesAuth({ ...values, userId }));
   };
 
   const validationsSchema = yup.object().shape({
@@ -201,7 +189,7 @@ export function DailyCaloriesForm({ handleModalOpen }) {
                   </div>
                 </div>
               </div>
-{/* 
+              {/* 
              {isLoggedIn ?  <div className={styles.form_button}><Link to='/dairy'>
              <Btn type="submit">Почати худнути</Btn>
               </Link></div> 
