@@ -1,8 +1,9 @@
 import scss from './Btn.module.scss';
+import {clsx} from 'clsx';
 
-export const Btn = ({ children, onBtnClick, type = 'submit', nameOfClass}) => {
+export const Btn = ({ children, onBtnClick, type = 'submit', variant}) => {
   return (
-    <button className={nameOfClass} type={type} onClick={onBtnClick}>
+    <button className={clsx(scss[variant])} type={type} onClick={onBtnClick}>
       {children}
     </button>
   );

@@ -1,22 +1,24 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PersistFormikValues } from 'formik-persist-values';
 import { Btn } from 'components/Btn/Btn';
 
 import styles from './DailyCaloriesForm.module.scss';
+import { dailyCaloriesRequest } from 'redux/dailyCalories/caloriesSlice';
 
-export function DailyCaloriesForm() {
-  // const dispatch = useDispatch();
+export function DailyCaloriesForm({handleModalOpen}) {
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, userId) => {
-    //   if (userId) {
-    //     dispatch(dailyCaloriesAuth(values, userId));
-    //   } else {
-    //     dispatch(dailyCalories(values));
-    //   }
+    // if (userId) {
+    //   dispatch(dailyCaloriesAuth(values, userId));
+    // } else {
+    dispatch(dailyCaloriesRequest(values));
+    handleModalOpen();
+    // }
   };
   const isChecked = () => {
     const store = localStorage.getItem('bloodType');
@@ -38,7 +40,7 @@ export function DailyCaloriesForm() {
       .min(18, 'Мінімальне значення 18 років')
       .max(90, 'Максимальне значення 90 років')
       .required("Обов'язкове поле"),
-    currentWeight: yup
+    weight: yup
       .number()
       .typeError('Повинно бути число')
       .min(45, 'Мінімальне значення 45 кг')
@@ -48,12 +50,9 @@ export function DailyCaloriesForm() {
       .number()
       .typeError('Повинно бути число')
       .min(40, 'Мінімальне значення 40 кг')
-      .max(
-        yup.ref('currentWeight'),
-        'Максимальное значение не может быть больше текущего'
-      )
+      .max(200, 'Максимальне значення 200 кг')
       .required("Обов'язкове поле"),
-    bloodType: yup.number().required('Обязательное поле'),
+    bloodType: yup.number().required('Обовязкове поле'),
   });
 
   return (
@@ -63,19 +62,15 @@ export function DailyCaloriesForm() {
           initialValues={{
             height: '',
             age: '',
-            currentWeight: '',
+            weight: '',
             desiredWeight: '',
             bloodType: `${isChecked()}`,
           }}
           validateOnBlur
           onSubmit={(values, actions) => {
+            console.log(values);
             handleSubmit(values);
             // handleSubmit(values, userId);
-            // if (IsAuthenticated) {
-            //   localStorage.removeItem('bloodType');
-            //   localStorage.removeItem('calc-form');
-            //   actions.resetForm();
-            // }
           }}
           validationSchema={validationsSchema}
         >
@@ -129,15 +124,15 @@ export function DailyCaloriesForm() {
                     <InputField
                       label="Поточна вага *"
                       type="number"
-                      name={'currentWeight'}
+                      name={'weight'}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.currentWeight}
+                      value={values.weight}
                     />
                     <div className={styles.caloriesFormErrorContainer}>
-                      {touched.currentWeight && errors.currentWeight && (
+                      {touched.weight && errors.weight && (
                         <p className={styles.caloriesFormError}>
-                          {errors.currentWeight}
+                          {errors.weight}
                         </p>
                       )}
                     </div>
