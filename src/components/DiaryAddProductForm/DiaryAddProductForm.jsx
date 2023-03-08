@@ -1,16 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { productSearchOper } from 'redux/diary/diaryOperation';
+import { filterProduct } from 'redux/diary/diarySlice';
+// import { useDispatch } from 'react-redux';
+import moment from 'moment';
+import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import { addEatedProduct, getProductsByTitle } from 'redux/products/operations';
 import s from './DiaryAddProductForm.module.scss';
-import { selectDate, selectSelectedProducts } from 'redux/products/selectors';
+import { selectSelectedProducts } from 'redux/products/selectors';
 import { setSelectedProduct } from 'redux/products/slice';
 import { useLocation, useNavigate } from 'react-router';
+
+
 
 export const DiaryAddProductForm = () => {
   const [title, setTitle] = useState('');
   const [product, setProduct] = useState('');
-  const [weight, setWeight] = useState('');
-  const date = useSelector(selectDate);
+  const [date, setDate] = useState('');
+  const [products, setProducts] = useState();
+  const [weight, setWeight] = useState(''); 
+
+  const handleChangeDate = (value) => {
+    setDate(moment(value.$d).format("YYYY-MM-DD"));
+    // console.log(date)  
+  }
+
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +55,9 @@ export const DiaryAddProductForm = () => {
   };
 
   return (
-
+ 
+   <>   
+   <DiaryDateCalendar onChange={handleChangeDate}/>
     <form className={s.Form} onSubmit={handleAddProduct}>
       <div className="field-product">
         <input className={s.Input}
@@ -99,5 +115,6 @@ export const DiaryAddProductForm = () => {
         <span>Додати</span>
       </button>
     </form>
+    </>
   );
 };

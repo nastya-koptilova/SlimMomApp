@@ -4,7 +4,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { BrowserInput } from './BrowserInput';
 import dayjs from 'dayjs';
 
-const DiaryDateCalendar = () => {
+const DiaryDateCalendar = ({onChange}) => {
+
   const getCurrentDate = () => {
     const dateObj = new Date();
     const year = dateObj.getFullYear();
@@ -16,11 +17,13 @@ const DiaryDateCalendar = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
+      format='MM.DD.YYYY'
         defaultValue={dayjs(getCurrentDate())}
         label="Custom input"
         slots={{
           textField: BrowserInput,
         }}
+        onChange={onChange}
       />
     </LocalizationProvider>
   );

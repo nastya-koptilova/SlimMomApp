@@ -15,9 +15,10 @@ import {
   selectIsLoggedIn,
   selectUserId,
 } from 'redux/authorization/authSelectors';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export function DailyCaloriesForm({ handleModalOpen }) {
+  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export function DailyCaloriesForm({ handleModalOpen }) {
       console.log(isLoggedIn);
       dispatch(dailyCaloriesAuth({ ...values, userId }));
       // <Navigate to="/dairy" />;
+      navigate('/dairy');
     } else {
       dispatch(dailyCaloriesRequest(values));
       handleModalOpen();
@@ -199,7 +201,14 @@ export function DailyCaloriesForm({ handleModalOpen }) {
                   </div>
                 </div>
               </div>
-
+{/* 
+             {isLoggedIn ?  <div className={styles.form_button}><Link to='/dairy'>
+             <Btn type="submit">Почати худнути</Btn>
+              </Link></div> 
+              :  
+             <div className={styles.form_button}>
+                <Btn type="submit">Почати худнути</Btn>
+              </div>} */}
               <div className={styles.form_button}>
                 <Btn type="submit">Почати худнути</Btn>
               </div>
