@@ -12,7 +12,7 @@ function HomePage() {
   const handleModalOpen = () => {
     setIsModalOpen(true);
 }
-const onClose = () => {
+  const onClose = () => {
     setIsModalOpen(false);
 }
 

@@ -3,3 +3,4 @@ export const selectToken = state => state.userData.token;
 export const selectUserName = state => state.userData.userName;
 export const selectUserEmail = state => state.userData.userEmail;
 export const selectUserId = state => state.userData.userId;
+export const selectPendingUserData = state => state.userData.pendingUserData;
