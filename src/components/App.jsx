@@ -34,27 +34,26 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-
             <Route
-              path="/login" element={<PublicRoute redirectTo="/diary"
+              path="/login" element={<PublicRoute redirectTo="/calculator"
                 component={<Suspense fallback={<div>Loading</div>}><LoginPage />
                 </Suspense>} />}
             />
             <Route path="/register" element={<PublicRoute
-              redirectTo="/diary"
+              redirectTo="/calculator"
               component={<Suspense fallback={<div>Loading</div>}>
                 <RegistrationPage /></Suspense>} />}
             />
-          <Route path="/diary" element={
-            <Suspense fallback={<div>Loading</div>}>
-              <DairyPage></DairyPage>
-            </Suspense>} />
+            <Route path="/diary" element={
+              <Suspense fallback={<div>Loading</div>}>
+                <DairyPage></DairyPage>
+              </Suspense>} />
+
             <Route path="/calculator" element={
-            <Suspense fallback={<div>Loading</div>}>
-              <CalculatorPage></CalculatorPage>
-            </Suspense>} />
+              <Suspense fallback={<div>Loading</div>}>
+                <CalculatorPage></CalculatorPage>
+              </Suspense>} />
           </Route>
-       
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
