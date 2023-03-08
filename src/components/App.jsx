@@ -1,3 +1,4 @@
+import CalculatorPage from 'pages/CalculatorPage/CalculatorPage';
 import { DairyPage } from 'pages/DairyPage/DairyPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import HomePage from 'pages/MainPage/MainPage';
@@ -15,9 +16,8 @@ export const App = () => {
             <Route index element={<HomePage />} />
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/dairy" element={<DairyPage />} />
-            {/*
-        <Route path="calculator" element={<CalculatorPage />} /> */}
+            <Route path="/dairy" element={<DairyPage />} />  
+          <Route path="/calculator" element={<CalculatorPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
