@@ -36,6 +36,7 @@ const authSlice = createSlice({
         state.token = action.payload.accessToken;
         state.userId = action.payload.user.id;
       })
+      .addCase(loginUser.rejected, rejectHandler)
 
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -48,7 +49,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
 
-      .addCase(loginUser.rejected, rejectHandler)
       // ----- Logout -----
       .addCase(logoutUser.pending, pendingHandler)
       .addCase(logoutUser.fulfilled, (state, action) => {
