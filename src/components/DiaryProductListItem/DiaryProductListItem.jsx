@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const DiaryProductListItem = ({ title, kcal, weight, id }) => {
+ const DiaryProductListItem = ({ title, kcal, weight, id }) => {
   const deleteItem = () => {};
 
   return (
@@ -15,3 +15,4 @@ export const DiaryProductListItem = ({ title, kcal, weight, id }) => {
     </div>
   );
 };
+export default DiaryProductListItem;

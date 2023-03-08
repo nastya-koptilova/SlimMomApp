@@ -10,11 +10,9 @@ import {
 export const productSearchOper = createAsyncThunk(
   'products/productSearch',
   async (search, thunkAPI) => {
-    // if (!search) return [];
-
     try {
       const result = await productSearch(search);
-      console.log(result);
+ 
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,6 +25,7 @@ export const addProductOper = createAsyncThunk(
   async (productInfo, thunkAPI) => {
     try {
       const result = await addProduct(productInfo);
+      console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
