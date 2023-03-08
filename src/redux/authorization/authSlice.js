@@ -3,7 +3,7 @@ import { loginUser, logoutUser, registerNewUser, refreshUser } from './authOpera
 
 const initialState = {
   isLoggedIn: false,
-  isLoading: false,
+  status: 'idle', // 'idle' | 'pending' | 'resolved' | 'rejected'
   error: null,
   userName: '',
   userEmail: '',
@@ -22,7 +22,7 @@ const authSlice = createSlice({
       .addCase(registerNewUser.pending, pendingHandler)
       .addCase(registerNewUser.fulfilled, (state, action) => {
         console.log(action.payload);
-        state.isLoading = false;
+        state.status = 'resolved';
         state.isLoggedIn = true;
         state.userName = action.payload.username;
         state.userEmail = action.payload.email;
@@ -32,7 +32,7 @@ const authSlice = createSlice({
       // ----- LogIn -----
       .addCase(loginUser.pending, pendingHandler)
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'resolved';
         state.isLoggedIn = true;
         state.userName = action.payload.user.username;
         state.userEmail = action.payload.user.email;
@@ -45,7 +45,7 @@ const authSlice = createSlice({
       // ----- Refresh -----
       .addCase(refreshUser.pending, pendingHandler)
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'resolved';
         state.isLoggedIn = true;
         state.token = action.payload.newAccessToken;
         state.refreshToken = action.payload.newRefreshToken;
@@ -55,7 +55,7 @@ const authSlice = createSlice({
       // ----- Logout -----
       .addCase(logoutUser.pending, pendingHandler)
       .addCase(logoutUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'resolved';
         state.isLoggedIn = false;
         state.userName = '';
         state.userEmail = '';
@@ -69,10 +69,10 @@ const authSlice = createSlice({
 
 function pendingHandler(state) {
   state.error = null;
-  state.isLoading = true;
+  state.status = 'pending';
 }
 function rejectHandler(state, action) {
-  state.isLoading = false;
+  state.status = 'rejected';
   state.error = action.payload;
 }
 
