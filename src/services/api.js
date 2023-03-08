@@ -24,6 +24,17 @@ export const AuthApi = {
     const { data } = await axios.post('/auth/logout');
     return data;
   },
+
+  async refreshUser(sid, refreshToken) {
+    // рефреш юзер
+    const { data } = await axios({
+      data: { sid },
+      headers: { Authorization: refreshToken },
+      method: 'post',
+      url: `/auth/refresh`,
+    });
+    return data;
+  },
 };
 
 export const DailyApi = {
@@ -33,8 +44,11 @@ export const DailyApi = {
     return data;
   },
 
-  async getDailyRateInfoBasedOnId( userInfo) {
-    const { data } = await axios.post(`/daily-rate/${userInfo.userId}`, omit(userInfo, ["userId"]));
+  async getDailyRateInfoBasedOnId(userInfo) {
+    const { data } = await axios.post(
+      `/daily-rate/${userInfo.userId}`,
+      omit(userInfo, ['userId'])
+    );
     return data;
   },
 };

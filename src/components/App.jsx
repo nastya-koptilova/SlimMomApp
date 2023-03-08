@@ -21,14 +21,10 @@ import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useAuth();
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch, isLoggedIn]);
-
-  return !!isRefreshing ? (
-    <b>Оновлення користувача...</b>
-  ) : (
+  }, [dispatch]);
+  return (
     <>
       <Suspense fallback={<div>Loading</div>}>
         <Routes>
