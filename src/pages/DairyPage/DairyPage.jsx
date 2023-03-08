@@ -8,13 +8,13 @@ import { selectDate } from 'redux/products/selectors';
 import { getProductsByDate } from 'redux/products/operations';
 
 export function DairyPage() {
-  const dispatch = useDispatch();
-  const date = useSelector(selectDate);
+  // const dispatch = useDispatch();
+  // const date = useSelector(selectDate);
 
 
-  useEffect(() => {
-    if (date !== null) dispatch(getProductsByDate(date));
-  }, [date, dispatch]);
+  // useEffect(() => {
+  //   if (date !== null) dispatch(getProductsByDate(date));
+  // }, [date, dispatch]);
 
   return (
     <div className={s.diary__wrap}>

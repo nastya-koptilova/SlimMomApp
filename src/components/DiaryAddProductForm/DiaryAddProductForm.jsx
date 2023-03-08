@@ -5,46 +5,58 @@ import { filterProduct } from 'redux/diary/diarySlice';
 // import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
-import { addEatedProduct, getProductsByTitle } from 'redux/products/operations';
+// import { addEatedProduct, getProductsByTitle } from 'redux/products/operations';
 import s from './DiaryAddProductForm.module.scss';
-import { selectSelectedProducts } from 'redux/products/selectors';
+// import { selectSelectedProducts } from 'redux/products/selectors';
 import { setSelectedProduct } from 'redux/products/slice';
 import { useLocation, useNavigate } from 'react-router';
-
+import { selectSelectedProducts } from 'redux/products/selectors';
+// productSearchOper
 
 
 export const DiaryAddProductForm = () => {
+  const productsList = useSelector(state=>state.searchData.productsData);
+  const productsId = useSelector(state=>state.searchData.productsData._id);
   const [title, setTitle] = useState('');
-  const [product, setProduct] = useState('');
+  const [productId, setProductId] = useState('');
   const [date, setDate] = useState('');
-  const [products, setProducts] = useState();
+  // const [products, setProducts] = useState();
   const [weight, setWeight] = useState(''); 
 
   const handleChangeDate = (value) => {
     setDate(moment(value.$d).format("YYYY-MM-DD"));
-    // console.log(date)  
+    console.log(date);
+   
   }
+
+ 
 
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   let sp = useSelector(selectSelectedProducts);
 
-  const handleAddProduct = e => {
-    e.preventDefault();
-    console.log('sjsfjsdb');
-    dispatch(addEatedProduct({ product, weight, date }));
-    dispatch(setSelectedProduct());
-    setProduct('');
-    resetForm();
-    location.state?.from && navigate(location.state?.from);
+  const handleAddProduct = event => {
+    event.preventDefault();
+    console.log(weight, productId, date);
+    // console.log(productsId);
+    
+    const productsOB = [...productsList];
+    console.log(productsOB);
+    // e.preventDefault();
+    // console.log('sjsfjsdb');
+    // dispatch(addEatedProduct({ product, productId, date }));
+    // dispatch(setSelectedProduct());
+    // setProduct('');
+    // resetForm();
+    // location.state?.from && navigate(location.state?.from);
   };
 
   useEffect(() => {
     if (title.length >= 3) {
-      dispatch(getProductsByTitle(title));
+      dispatch(productSearchOper(title));
     } else {
-      setProduct('');
+      // setProduct('');
       dispatch(setSelectedProduct());
     }
   }, [dispatch, title]);
@@ -54,14 +66,13 @@ export const DiaryAddProductForm = () => {
     setWeight('');
   };
 
-  return (
- 
+  return ( 
    <>   
-   <DiaryDateCalendar onChange={handleChangeDate}/>
+   
     <form className={s.Form} onSubmit={handleAddProduct}>
+    <DiaryDateCalendar onChange={handleChangeDate}/>
       <div className="field-product">
-        <input className={s.Input}
-          id="title"
+        <input list="productsList" className={s.Input}
           type="text"
           value={title}
           onChange={e => {
@@ -69,10 +80,14 @@ export const DiaryAddProductForm = () => {
           }}
           name="title"
           required
-        />
+        />             
+       <datalist id='productsList'>
+       { productsList?.length > 0 && 
+       productsList.map(item => (<option key={item._id}value={item.title.ua} />))}
+       </datalist> 
         <label className={s.LabelTitle} htmlFor="title">Введіть назву продукту
         </label>
-        <ul className={s.filteredList}>
+        {/* <ul className={s.filteredList}>
           {title.length >= 3 &&
             !product &&
             sp.map(({ _id, title }) => (
@@ -88,7 +103,7 @@ export const DiaryAddProductForm = () => {
                 </button>
               </li>
             ))}
-        </ul>
+        </ul> */}
       </div>
 
       <div className={s.FieldWeight}>
@@ -105,13 +120,14 @@ export const DiaryAddProductForm = () => {
           htmlFor="weight">Грами</label>
       </div>
 
-      <button className={s.buttonIcon} type="submit" disabled={!product || !title || !weight}>
+      {/* <button className={s.buttonIcon} type="submit" disabled={!product || !title || !weight}>
         <svg width="14" height="14">
           <path d="M13.72 7.96H7.96v5.76H6.04V7.96H.28V6.04h5.76V.28h1.92v5.76h5.76v1.92Z" />
         </svg>
-      </button>
+      </button> */}
 
-      <button className={s.buttonAdd} type="submit" disabled={!product || !title || !weight}>
+      <button className={s.buttonAdd} type="submit" >
+      {/* disabled={!product || !title || !weight} */}
         <span>Додати</span>
       </button>
     </form>
