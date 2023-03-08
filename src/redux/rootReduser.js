@@ -9,7 +9,7 @@ import { productsReducer } from './products/slice';
 const persistConfig = {
   key: 'token',
   storage,
-  blacklist: ['isLoading', 'error', 'isLoggedIn', 'userName', 'userEmail'],
+  whitelist: ['token', 'refreshToken', 'sid'],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
