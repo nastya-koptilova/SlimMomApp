@@ -1,4 +1,4 @@
-import CalculatorPage from 'pages/CalculatorPage/CalculatorPage';
+import {CalculatorPage} from 'pages/CalculatorPage/CalculatorPage';
 import { DairyPage } from 'pages/DairyPage/DairyPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import HomePage from 'pages/MainPage/MainPage';

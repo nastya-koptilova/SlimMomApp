@@ -13,8 +13,8 @@ import { useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
 import { useWindowSize } from 'react-use';
 import { Loader } from 'components/Loader/Loader';
-import UserInfo from 'components/UserInfo/UserInfo';
-import DailyDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
+// import UserInfo from 'components/UserInfo/UserInfo';
+// import DailyDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 
 const modalRoot = document.querySelector('#modal-root');
 //модалка АНі???????????????
@@ -60,8 +60,8 @@ const Modal = ({ onClose }) => {
           <Loader />
         ) : (
           <div className={scss.modal}>
-            <DailyDateCalendar/>
-             <UserInfo/>
+            {/* <DailyDateCalendar/> */}
+             {/* <UserInfo/> */}
             {width < 768 ? (
               <div className={scss.btnContainer}>
                 <BsArrowReturnLeft

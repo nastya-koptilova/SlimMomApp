@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { productSearchOper } from 'redux/diary/diaryOperation';
 import { filterProduct } from 'redux/diary/diarySlice';
 // import { useDispatch } from 'react-redux';
+import moment from 'moment';
+import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 
 export const DiaryAddProductForm = () => {
-  const [date, setDate] = useState();
+  const [date, setDate] = useState('');
   const [products, setProducts] = useState();
   const [weight, setWeight] = useState();
+
+  const handleChangeDate = (value) => {
+    setDate(moment(value.$d).format("YYYY-MM-DD"));
+    // console.log(date)
+  }
 
   const filter = useSelector(state => state.searchData.filter);
 
@@ -32,6 +39,8 @@ export const DiaryAddProductForm = () => {
 
   return (
     <div>
+    <DiaryDateCalendar onChange={handleChangeDate}/>
+
       <form onSubmit={handleFormSubmit}>
         <label>
           <input

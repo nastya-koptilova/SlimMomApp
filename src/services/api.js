@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { omit } from 'lodash';
+// import { useSelector } from 'react-redux';
+// import { selectUserId } from 'redux/authorization/authSelectors';
+
+//  const userId = useSelector(selectUserId);
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const AuthApi = {
@@ -28,8 +33,8 @@ export const DailyApi = {
     return data;
   },
 
-  async getDailyRateInfoBasedOnId(userId, userInfo) {
-    const { data } = await axios.post(`​/daily-rate​/${userId}`, userInfo);
+  async getDailyRateInfoBasedOnId( userInfo) {
+    const { data } = await axios.post(`/daily-rate/${userInfo.userId}`, omit(userInfo, ["userId"]));
     return data;
   },
 };

@@ -1,4 +1,9 @@
-const CalculatorPage = () => {
-    return (<><div>CalculatorPage</div></>)
+import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
+
+export function CalculatorPage() {
+  return (
+    <div>
+      <DailyCaloriesForm />
+    </div>
+  );
 }
-export default CalculatorPage;
