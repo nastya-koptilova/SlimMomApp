@@ -28,7 +28,7 @@ export function DailyCaloriesForm({ handleModalOpen }) {
       console.log(isLoggedIn);
       dispatch(dailyCaloriesAuth({ ...values, userId }));
       // <Navigate to="/dairy" />;
-      navigate('/dairy') ;
+      navigate('/dairy');
     } else {
       dispatch(dailyCaloriesRequest(values));
       handleModalOpen();
@@ -201,17 +201,17 @@ export function DailyCaloriesForm({ handleModalOpen }) {
                   </div>
                 </div>
               </div>
-
+{/* 
              {isLoggedIn ?  <div className={styles.form_button}><Link to='/dairy'>
              <Btn type="submit">Почати худнути</Btn>
               </Link></div> 
               :  
              <div className={styles.form_button}>
                 <Btn type="submit">Почати худнути</Btn>
-              </div>}
-              {/* <div className={styles.form_button}>
+              </div>} */}
+              <div className={styles.form_button}>
                 <Btn type="submit">Почати худнути</Btn>
-              </div> */}
+              </div>
 
               <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
             </Form>
