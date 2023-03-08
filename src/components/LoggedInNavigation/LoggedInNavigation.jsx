@@ -1,24 +1,24 @@
 import { NavLink } from 'react-router-dom';
-import s from '../Navigation/Navigation.module.scss';
+import s from '../LoggedInNavigation/LoggedInNavigation.module.scss';
 
-export function Navigation() {
+export function LoggedInNavigation() {
   return (
     <>
       <li className={s.navigation__item}>
         <NavLink
-          to="/login"
+          to="/dairy"
           className={({ isActive }) => (isActive ? s.active : s.default)}
         >
-          Вхід
+          Щоденник
         </NavLink>
       </li>
 
       <li className={s.navigation__item}>
         <NavLink
-          to="/register"
+          to="/calculator"
           className={({ isActive }) => (isActive ? s.active : s.default)}
         >
-          Реєстрація
+          Калькулятор
         </NavLink>
       </li>
     </>
