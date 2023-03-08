@@ -20,7 +20,7 @@ export const dailyCaloriesRequest =createAsyncThunk(
     async (userInfo, { rejectWithValue }) => {
         try {
             userInfo.bloodType = Number(userInfo.bloodType);
-            const response = await DailyApi.getDailyRateInfo(userInfo);
+            const response = await DailyApi.getDailyRateInfoBasedOnId(userInfo);
             console.log(response);
             return response
         } catch (error) {
@@ -31,7 +31,8 @@ export const dailyCaloriesRequest =createAsyncThunk(
     const initialState = {
   user: null,
   status: 'idle', // 'idle' | 'pending' | 'resolved' | 'rejected'
-  error: null,
+  userId: null,
+    error: null,
 };
 
 const userCaloriesSlice = createSlice({
@@ -49,7 +50,22 @@ const userCaloriesSlice = createSlice({
         state.error = null;
       })
       .addCase(dailyCaloriesRequest.rejected, (state, action) => {
-        state.status = 'rejected';
+          state.status = 'rejected';
+           state.error = action.payload;
+      })
+    .addCase(dailyCaloriesAuth.pending, (state, action) => {
+        state.status = 'pending';
+      })
+      .addCase(dailyCaloriesAuth.fulfilled, (state, action) => {
+        state.status = 'resolved';
+          state.user = action.payload;
+          state.userId = action.payload.id;
+          console.log(action.payload.id);
+        state.error = null;
+      })
+      .addCase(dailyCaloriesAuth.rejected, (state, action) => {
+          state.status = 'rejected';
+           state.error = action.payload;
       })
 })
 
