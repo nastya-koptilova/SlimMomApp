@@ -1,33 +1,21 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { ReactComponent as BurgerIcon } from 'images/burger/burger.svg';
 import s from '../Burger/Burger.module.scss';
+import { LoggedInNavigation } from 'components/LoggedInNavigation/LoggedInNavigation';
 
-export default function Burger({ show, onToggle }) {
-  if (!show) {
-    return null;
-  }
+export default function Burger() {
+  const [show, setShow] = useState(false);
+  const onToggle = () => {
+    setShow(prevState => !prevState);
+  };
 
   return (
-    <ul className={s.burger__list}>
-      <li className={s.burger__item}>
-        <NavLink
-          onClick={onToggle}
-          className={({ isActive }) => (isActive ? s.active : s.default)}
-          to="/daily"
-        >
-          Щоденник
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          onClick={onToggle}
-          className={({ isActive }) => (isActive ? s.active : s.default)}
-          to="/calculator"
-        >
-          КАЛЬКУЛЯТОР
-        </NavLink>
-      </li>
-    </ul>
+    <>
+      <button onClick={onToggle} className={s.burger}>
+        <BurgerIcon />
+      </button>
+      {show && <LoggedInNavigation />}
+    </>
   );
 }
 //дописати логіку по toggle

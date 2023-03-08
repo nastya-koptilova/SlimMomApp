@@ -5,11 +5,13 @@ import { useSelector } from 'react-redux';
 import s from '../Layout/Layout.module.scss';
 import { Navigation } from 'components/Navigation/Navigation';
 import { LoggedInNavigation } from 'components/LoggedInNavigation/LoggedInNavigation';
+import Burger from './Burger/Burger';
+import { useWindowSize } from 'react-use';
+import UserInfo from 'components/UserInfo/UserInfo';
 
 export function Layout() {
-  //   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  //   const user = useSelector(state => state.auth.user);
+  const { width } = useWindowSize();
 
   return (
     <>
@@ -17,6 +19,7 @@ export function Layout() {
         <div>
           <Logo />
         </div>
+
         <nav className={s.decoration}>
           <ul className={s.navigation__list}>
             {!isLoggedIn ? (
@@ -25,11 +28,13 @@ export function Layout() {
               </>
             ) : (
               <>
-                <LoggedInNavigation />
+                <UserInfo />{' '}
+                {width < 1280 ? <Burger /> : <LoggedInNavigation />}
               </>
             )}
           </ul>
         </nav>
+        {/* {isLoggedIn && width < 1280 && <Burger />} */}
       </header>
       <main className={s.main}>
         <Outlet />
