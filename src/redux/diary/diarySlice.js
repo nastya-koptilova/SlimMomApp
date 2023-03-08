@@ -12,21 +12,35 @@ export const productSearchSlice = createSlice({
       productsData: [],
       status: 'idle',
       error: null,
+      dayData: null,
+      // productId: null,
     },
 
   extraReducers: builder =>
     builder
       .addCase(productSearchOper.pending, state => {
-        state.status = 'loading';
+        state.status = 'pending';
       })
       .addCase(productSearchOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.productsData = action.payload;
+        // state.productId = action.payload._id;
       })
       .addCase(productSearchOper.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = 'rejected';
         state.error = action.payload;
-      }),
+      })
+      .addCase(addProductOper.pending, state => {
+        state.status = 'pending';
+      })
+      .addCase(addProductOper.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.dayData = action.payload;
+      })
+      .addCase(addProductOper.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
   // reducers: {
   //   filterProduct(state, action) {
   //     state.filter = action.payload;

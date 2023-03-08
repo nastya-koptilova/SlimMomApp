@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDate } from 'redux/products/selectors';
 import { getProductsByDate } from 'redux/products/operations';
+import { DiaryProductsList } from 'components/DiaryProductList/DiaryProductList';
 
 export function DairyPage() {
   // const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export function DairyPage() {
   return (
     <div className={s.diary__wrap}>
       <DiaryAddProductForm />
+      <DiaryProductsList/>
       <SideBar />
     </div>
   );
