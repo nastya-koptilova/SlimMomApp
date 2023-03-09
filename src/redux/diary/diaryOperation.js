@@ -25,7 +25,7 @@ export const addProductOper = createAsyncThunk(
   async (productInfo, thunkAPI) => {
     try {
       const result = await addProduct(productInfo);
-      console.log(result);
+      
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -37,6 +37,7 @@ export const deleteProductOper = createAsyncThunk(
   async (productId, thunkAPI) => {
     try {
       const result = await deleteProduct(productId);
+      console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

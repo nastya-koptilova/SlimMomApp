@@ -4,9 +4,9 @@ import {
 } from '../redux/authorization/authSelectors';
 
 
-export const useAuth = () => {
-    const isLoggedIn = useSelector(selectStatus);
-    return {
-        isLoggedIn,
-    };
-};
+// export const useAuth = () => {
+//     const isLoggedIn = useSelector(selectStatus);
+//     return {
+//         isLoggedIn,
+//     };
+// };
