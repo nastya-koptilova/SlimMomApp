@@ -45,6 +45,7 @@ export const productSearchSlice = createSlice({
         console.log('action.payload', action.payload)
         state.status = 'resolved';
         state.eatenProducts = [...state.eatenProducts, action.payload.eatenProduct];
+        // state.eatenProducts.push(action.payload.eatenProduct || '');
         state.dayId = action.payload.day.id;
         state.itemId = action.payload.eatenProduct.id;
       
@@ -65,9 +66,6 @@ export const productSearchSlice = createSlice({
         state.status = 'resolved';
         state.eatenProducts = state.eatenProducts.filter(item => item.id !== action.payload.id);
         // state.dayData = action.payload;
-        // state.eatenProducts = state.eatenProducts.filter(
-        //   product => product.id !== action.payload
-        // )
       }).addCase(deleteProductOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;

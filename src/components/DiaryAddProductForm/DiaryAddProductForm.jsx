@@ -32,13 +32,8 @@ export const DiaryAddProductForm = () => {
 
   const handleAddProduct = event => {
     event.preventDefault();
- 
-    //    if(!productsList.map(item => item.title.ua.includes(title))) {
-    //  alert('nb kj[')
-    //    }
 
     const productId = productsList[0]._id;
-    // console.log(productId);
 
     const data = {
       date,
@@ -46,8 +41,6 @@ export const DiaryAddProductForm = () => {
       weight,
     };
     dispatch(addProductOper(data));
-
-    //  console.log(data);
     resetForm();
     // dispatch(getUserInfo());
   };
@@ -55,6 +48,7 @@ export const DiaryAddProductForm = () => {
   useEffect(() => {
     if (title.length >= 3) {
       dispatch(productSearchOper(title));
+      // dispatch(getInfoOper(date));
       
     } else {
       // dispatch(setSelectedProduct());
@@ -62,7 +56,7 @@ export const DiaryAddProductForm = () => {
   }, [dispatch, title]);
 
   const resetForm = () => {
-    // setDate(moment(new Date()).format("YYYY-MM-DD"));
+    setDate(moment(new Date()).format("YYYY-MM-DD"));
     setTitle('');
     setWeight('');
   };

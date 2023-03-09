@@ -17,7 +17,7 @@ const DiaryDateCalendar = ({onChange}) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-      format='MM.DD.YYYY'
+      format='DD.MM.YYYY'
         defaultValue={dayjs(getCurrentDate())}
         label="Custom input"
         slots={{
