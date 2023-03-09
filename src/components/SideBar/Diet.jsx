@@ -6,23 +6,18 @@ import { selectUserInfo } from '../../redux/dailyCalories/caloriesSelectors';
 
 export const Diet = () => {
     const user = useSelector(selectUserInfo);
-    const diet = user.notAllowedProducts;
-
+    const diet = user !== null && user !== undefined ? user.notAllowedProducts : [];
     function isGetDiet() {
-        if (diet === undefined || diet.length === 0) return false;
+        if (user === undefined || user === null) return false;
         return true;
     };
-
-    function ucFirst(str) {
-        if (!str) return str;
-        return str[0].toUpperCase() + str.slice(1);
-    };
+    console.log(isGetDiet());
     return (
         <section>
             <p className={s.SidebarTitle}>Їжа не рекомендована</p>
             {!isGetDiet() && (<p className={s.SidebarText}>Ваша дієта буде відображатися тут</p>)}
             {isGetDiet() &&
-                (<ul className={s.SidebarList}>
+                (<ul className={s.SidebarList}>dgdf
                     {diet.map((product, index) => {
                         if (index < 4) {
                             return (

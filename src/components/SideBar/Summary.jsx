@@ -7,11 +7,16 @@ import { selectUserInfo } from '../../redux/dailyCalories/caloriesSelectors';
 export const Summary = () => {
     const user = useSelector(selectUserInfo);
     const currentDate = format(Date.now(), 'dd-MM-yyyy');
-    const dailyRate = user.dailyRate;
+    const dailyRate = user !== null && user !== undefined ? user.dailyRate : [];
+
     const left = 0;
     const consumed = 0;
     const partOfNormal = 0;
 
+    function isdailyRate() {
+        if (user === undefined || user === null) return false;
+        return true;
+    };
     console.log(user);
 
     return (
