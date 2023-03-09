@@ -30,7 +30,7 @@ export const DiaryAddProductForm = () => {
 //  alert('nb kj[')
 //    }
 
-    const productId = productsList.map(item => item._id).join('');
+    const productId = productsList[0]._id;
     console.log(productId);
 
     const data = {

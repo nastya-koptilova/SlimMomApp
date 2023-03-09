@@ -39,6 +39,7 @@ export const productSearchSlice = createSlice({
       .addCase(addProductOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.dayData = action.payload;
+        console.log(action.payload)
         // state.eatenProducts = action.payload.day.eatenProducts;
       })
       .addCase(addProductOper.rejected, (state, action) => {

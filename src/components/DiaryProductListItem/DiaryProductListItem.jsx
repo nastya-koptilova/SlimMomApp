@@ -16,11 +16,11 @@ import { deleteProductOper } from 'redux/diary/diaryOperation';
         <span>{title}</span>
         <span>{weight} </span>
         <span>{Math.floor(kcal)}</span>
-        <button type='button' onClick={()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}>UJCGJLB</button>
+        <button type='button' onClick={()=>{dispatch(deleteProductOper({dayId:dayId, eatenProductId:eatenProductId}))}}>UJCGJLB</button>
       </li>
     </div>
   );
 };
 export default DiaryProductListItem;
 
-// {()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}
+// {()=>{dispatch(deleteProductOper({dayId:dayId, eatenProductId:eatenProductId}))}}

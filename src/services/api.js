@@ -89,7 +89,7 @@ export async function addProduct(productInfo) {
 }
 // Delete eaten product
 export async function deleteProduct(productData) {
-  const { data } = await axios.delete('/day', productData);
+  const { data } = await axios.delete('/day', {data:productData});
   return data;
 }
 // Get info for day

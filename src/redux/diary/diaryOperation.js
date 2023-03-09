@@ -24,9 +24,11 @@ export const addProductOper = createAsyncThunk(
   'product/addProduct',
   async (productInfo, thunkAPI) => {
     try {
-      const result = await addProduct(productInfo);
+      const {day, daySummary, newDay, newSummary, eatenProduct} = await addProduct(productInfo);
       
-      return result;
+      return {day:day || newDay,
+         daySummary:daySummary || newSummary,
+          eatenProduct: eatenProduct};
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
