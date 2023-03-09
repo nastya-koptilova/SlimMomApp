@@ -13,18 +13,22 @@ import {
 } from 'redux/dailyCalories/caloriesSlice';
 
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { selectUserId } from 'redux/authorization/authSelectors';
+import {
+  selectIsLoggedIn,
+  selectUserId,
+} from 'redux/authorization/authSelectors';
 
 export function DailyCaloriesForm({ handleModalOpen }) {
   const navigate = useNavigate();
   const userId = useSelector(selectUserId);
+  const isLogin = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    if (userId) {
+    if (isLogin) {
       dispatch(dailyCaloriesAuth({ ...values, userId }));
-      <Navigate to="/dairy" />;
-      // navigate('/dairy');
+      // <Navigate to="/diary" />;
+      navigate('/diary');
     } else {
       dispatch(dailyCaloriesRequest(values));
       handleModalOpen();
