@@ -1,13 +1,15 @@
 import React from 'react';
 import DiaryProductsListItem from '../DiaryProductListItem/DiaryProductListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { SelectDayData, SelectUserData } from 'redux/diary/diarySelectors';
-import { deleteProductOper } from 'redux/diary/diaryOperation';
+import { SelectDate, SelectDayData, SelectUserData } from 'redux/diary/diarySelectors';
+import { deleteProductOper, getInfoOper } from 'redux/diary/diaryOperation';
 import { selectUserName } from 'redux/authorization/authSelectors';
 
 export function DiaryProductsList() {
   const eatenProducts = useSelector(state=> state.searchData.eatenProducts)
   const dayId = useSelector(state=> state.searchData.dayId)
+  const date = useSelector(SelectDate);
+  const dispatch = useDispatch();
   // const data = useSelector(SelectDayData);
   // const dispatch = useDispatch();
   // console.log(data);
@@ -17,6 +19,18 @@ export function DiaryProductsList() {
   // const dayId = data?.id;
   console.log(dayId);
   // const dayId = data?.day?.daySummary;
+  const deleteProduct = e => {
+    console.log(e.target)
+    const dayIdObj = {
+      dayId: dayId,
+      eatenProductId: e.target.id,
+    };
+    dispatch(deleteProductOper(dayIdObj))
+      .unwrap()
+      .then(() => {
+        dispatch(getInfoOper(date));
+      });
+  };
   return (
     <div>
 
@@ -25,11 +39,13 @@ export function DiaryProductsList() {
           array.map(item => (
             <DiaryProductsListItem
               key={item.id}
+              id={item.id}
               weight={item.weight}
               kcal={item.kcal}
               title={item.title}
               eatenProductId={item.id}
               dayId={dayId}
+              deleteProduct={deleteProduct}
             />
             // <li key={item.id}>
             //   <span>{item.title}</span>

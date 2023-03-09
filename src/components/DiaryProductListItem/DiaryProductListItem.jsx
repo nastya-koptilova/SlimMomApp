@@ -10,21 +10,23 @@ const DiaryProductListItem = ({
   kcal,
   weight,
   eatenProductId,
+  deleteProduct,
+  id
 }) => {
   const dispatch = useDispatch();
   const date = useSelector(SelectDate);
   // const deleteItem = () => {
   // console.log(dayId,eatenProductId);
   // };
-  const handleDelete = () => {
+  // const handleDelete = () => {
     
-    dispatch(
-      deleteProductOper({ dayId: dayId, eatenProductId: eatenProductId })
-    )
-      .unwrap()
-      .then(() => {dispatch(getInfoOper(date))});
+  //   dispatch(
+  //     deleteProductOper({ dayId: dayId, eatenProductId: eatenProductId })
+  //   )
+  //     .unwrap()
+  //     .then(() => {dispatch(getInfoOper(date))});
     
-  };
+  // };
 
   return (
     <div>
@@ -32,7 +34,7 @@ const DiaryProductListItem = ({
         <span>{title}</span>
         <span>{weight} </span>
         <span>{Math.floor(kcal)}</span>
-        <button type="button" onClick={handleDelete}>
+        <button id={id} type="button" onClick={deleteProduct}>
           UJCGJLB
         </button>
       </li>

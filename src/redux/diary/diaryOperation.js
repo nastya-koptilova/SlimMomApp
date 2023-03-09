@@ -28,16 +28,18 @@ export const addProductOper = createAsyncThunk(
       // const result = await addProduct(productInfo);
       // console.log(result);
       // return result;
-      const {day, daySummary, newDay, newSummary, eatenProduct} = await addProduct(productInfo);
+      // const {day, daySummary, newDay, newSummary, eatenProduct} = await addProduct(productInfo);
+      const response = await addProduct(productInfo)
       // getInfoOper();
       //  console.log(day, daySummary, newDay, newSummary, eatenProduct)
       //  console.log(daySummary, newDay, newSummary, eatenProduct)
       //  console.log(newDay, newSummary, eatenProduct)
       //  console.log(newSummary, eatenProduct)
       //  console.log(eatenProduct)
-      return {day:day || newDay,
-         daySummary:daySummary || newSummary,
-          eatenProduct: eatenProduct};
+      // return {day:day || newDay,
+      //    daySummary:daySummary || newSummary,
+      //     eatenProduct: eatenProduct};
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

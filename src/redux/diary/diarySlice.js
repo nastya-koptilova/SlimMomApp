@@ -17,8 +17,9 @@ export const productSearchSlice = createSlice({
       dayData: null,
       date: moment(new Date()).format("YYYY-MM-DD"),
       userInfo: null,
-     eatenProducts : null,
+     eatenProducts : [],
      dayId: null,
+     itemId: '',
 
       // productId: null,
     },
@@ -43,7 +44,9 @@ export const productSearchSlice = createSlice({
       .addCase(addProductOper.fulfilled, (state, action) => {
         console.log('action.payload', action.payload)
         state.status = 'resolved';
-        // state.eatenProducts = action.payload.day.eatenProducts;
+        state.eatenProducts = [...state.eatenProducts, action.payload.eatenProduct];
+        state.dayId = action.payload.day.id;
+        state.itemId = action.payload.eatenProduct.id;
       
         // state.dayData = {...state.dayData, eatenProducts:
         //    [action.payload.eatenProduct,...state.dayData.eatenProducts]};
@@ -60,6 +63,7 @@ export const productSearchSlice = createSlice({
       })
       .addCase(deleteProductOper.fulfilled, (state, action) => {
         state.status = 'resolved';
+        state.eatenProducts = state.eatenProducts.filter(item => item.id !== action.payload.id);
         // state.dayData = action.payload;
         // state.eatenProducts = state.eatenProducts.filter(
         //   product => product.id !== action.payload
@@ -74,9 +78,9 @@ export const productSearchSlice = createSlice({
       })
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.dayData = action.payload;
-        state.eatenProducts = action.payload.day.eatenProducts;
-        state.dayId = action.payload.day.id;
+        // state.dayData = action.payload;
+        state.eatenProducts = action.payload.eatenProducts;
+        state.dayId = action.payload.id;
         // state.eatenProducts = state.eatenProducts.filter(
         //   product => product.id !== action.payload
         // )
