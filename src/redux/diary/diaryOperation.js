@@ -12,8 +12,7 @@ export const productSearchOper = createAsyncThunk(
   'products/productSearch',
   async (search, thunkAPI) => {
     try {
-      const result = await productSearch(search);
- 
+      const result = await productSearch(search); 
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,7 +47,6 @@ export const deleteProductOper = createAsyncThunk(
   'product/deleteProduct',
   async (productId, thunkAPI) => {
     try {
-
       const result = await deleteProduct(productId);
       return result;
     } catch (error) {
@@ -61,7 +59,6 @@ export const getInfoOper = createAsyncThunk(
   async (dateInfo, thunkAPI) => {
     try {
       const result = await getDayInfo(dateInfo);
-      console.log(result.eatenProducts);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -74,6 +71,7 @@ export const getUserInfo = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await UserApi.getUserInfo();
+    console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

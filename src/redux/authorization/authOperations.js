@@ -38,7 +38,6 @@ export const loginUser = createAsyncThunk(
     try {
       const result = await AuthApi.loginUser(credential);
       token.set(result.accessToken);
-      console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

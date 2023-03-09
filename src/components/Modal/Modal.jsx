@@ -13,14 +13,10 @@ import { useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
 import { useWindowSize } from 'react-use';
 import { Loader } from 'components/Loader/Loader';
-// import UserInfo from 'components/UserInfo/UserInfo';
-// import DailyDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
+
 
 const modalRoot = document.querySelector('#modal-root');
-//модалка АНі???????????????
-// logout
-//Слузачі на іконках????????????????????????????????????????????????????
-// що не так з import Box from '@mui/material/Box'; в DailyDateCalendar ?????????????????????????????
+
 const Modal = ({ onClose }) => {
   const { width } = useWindowSize();
   const user = useSelector(selectUserInfo);
@@ -51,17 +47,11 @@ const Modal = ({ onClose }) => {
   return createPortal(
     <>
       <div className={scss.overlay} onClick={handleBackdropClick}>
-       
-        {/* {isLoading === 'resolved' && <button type='button' onClick={()=> onClose()}>
-          <BsArrowReturnLeft className={scss.icon} />
-        </button>}  */}
         {error && <p> Oops, some error occured... Message: {error}</p>}
         {isLoading === 'pending' ? (
           <Loader />
         ) : (
           <div className={scss.modal}>
-            {/* <DailyDateCalendar/> */}
-             {/* <UserInfo/> */}
             {width < 768 ? (
               <div className={scss.btnContainer}>
                 <BsArrowReturnLeft

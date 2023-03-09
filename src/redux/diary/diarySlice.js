@@ -20,8 +20,6 @@ export const productSearchSlice = createSlice({
      eatenProducts : [],
      dayId: null,
      itemId: '',
-
-      // productId: null,
     },
 
   extraReducers: builder =>
@@ -32,7 +30,6 @@ export const productSearchSlice = createSlice({
       .addCase(productSearchOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.productsData = action.payload;
-        // state.productId = action.payload._id;
       })
       .addCase(productSearchOper.rejected, (state, action) => {
         state.status = 'rejected';
@@ -45,7 +42,6 @@ export const productSearchSlice = createSlice({
         console.log('action.payload', action.payload)
         state.status = 'resolved';
         state.eatenProducts = [...state.eatenProducts, action.payload.eatenProduct];
-        // state.eatenProducts.push(action.payload.eatenProduct || '');
         state.dayId = action.payload.day.id;
         state.itemId = action.payload.eatenProduct.id;
       
@@ -65,7 +61,7 @@ export const productSearchSlice = createSlice({
       .addCase(deleteProductOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.eatenProducts = state.eatenProducts.filter(item => item.id !== action.payload.id);
-        // state.dayData = action.payload;
+
       }).addCase(deleteProductOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
@@ -76,21 +72,17 @@ export const productSearchSlice = createSlice({
       })
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
-        // state.dayData = action.payload;
         state.eatenProducts = action.payload.eatenProducts;
         state.dayId = action.payload.id;
-        // state.eatenProducts = state.eatenProducts.filter(
-        //   product => product.id !== action.payload
-        // )
       }).addCase(getInfoOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
       }).addCase(getUserInfo.pending, (state, action) => {
         state.status = 'pending';
       })
-      .addCase(getUserInfo.fulfilled, (state, action) => {
+       .addCase(getUserInfo.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.userInfo = action.payload;
+        state.dayData = action.payload;
       }).addCase(getUserInfo.rejected, (state, action) => {
         state.status = 'pending';
       }),
@@ -103,3 +95,8 @@ export const productSearchSlice = createSlice({
 
 export const productSearchReducer = productSearchSlice.reducer;
 export const { setDate } = productSearchSlice.actions;
+
+
+const isObj = (array) => {
+  
+}
