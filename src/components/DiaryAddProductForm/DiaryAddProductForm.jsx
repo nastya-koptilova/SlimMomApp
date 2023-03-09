@@ -16,19 +16,22 @@ import { setDate } from 'redux/diary/diarySlice';
 
 export const DiaryAddProductForm = () => {
   const productsList = useSelector(SelectProductsData);
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const date = useSelector(SelectDate);
   // const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
 
   const [weight, setWeight] = useState('');
 
+  useEffect(() => {
+    dispatch(getInfoOper(date));;
+  }, [dispatch, date]);
+
   const handleChangeDate = value => {
     dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
-    dispatch(getInfoOper(date));
+    // dispatch(getInfoOper(date));
     // console.log(date);
   };
-
-  const dispatch = useDispatch();
 
   const handleAddProduct = event => {
     event.preventDefault();
