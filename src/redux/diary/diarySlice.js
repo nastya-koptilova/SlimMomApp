@@ -3,6 +3,7 @@ import {
   addProductOper,
   deleteProductOper,
   getInfoOper,
+  getUserInfo,
   productSearchOper,
 } from './diaryOperation';
 import moment from 'moment';
@@ -15,7 +16,9 @@ export const productSearchSlice = createSlice({
       error: null,
       dayData: null,
       date: moment(new Date()).format("YYYY-MM-DD"),
-      // eatenProducts : null,
+      userInfo: null,
+     eatenProducts : null,
+     dayId: null,
 
       // productId: null,
     },
@@ -40,7 +43,10 @@ export const productSearchSlice = createSlice({
       .addCase(addProductOper.fulfilled, (state, action) => {
         console.log('action.payload', action.payload)
         state.status = 'resolved';
-        state.dayData = {...state.dayData, eatenProducts: [action.payload.eatenProduct,...state.dayData.eatenProducts]};
+        // state.eatenProducts = action.payload.day.eatenProducts;
+      
+        // state.dayData = {...state.dayData, eatenProducts:
+        //    [action.payload.eatenProduct,...state.dayData.eatenProducts]};
         // console.log(action.payload)
         // state.eatenProducts = action.payload.day.eatenProducts;
       })
@@ -69,12 +75,22 @@ export const productSearchSlice = createSlice({
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.dayData = action.payload;
+        state.eatenProducts = action.payload.day.eatenProducts;
+        state.dayId = action.payload.day.id;
         // state.eatenProducts = state.eatenProducts.filter(
         //   product => product.id !== action.payload
         // )
       }).addCase(getInfoOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
+      }).addCase(getUserInfo.pending, (state, action) => {
+        state.status = 'pending';
+      })
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.userInfo = action.payload;
+      }).addCase(getUserInfo.rejected, (state, action) => {
+        state.status = 'pending';
       }),
   reducers: {
     setDate(state, action) {

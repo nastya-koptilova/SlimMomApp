@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductOper,
   getInfoOper,
+  getUserInfo,
   productSearchOper,
 } from 'redux/diary/diaryOperation';
 import moment from 'moment';
@@ -31,12 +32,13 @@ export const DiaryAddProductForm = () => {
 
   const handleAddProduct = event => {
     event.preventDefault();
+ 
     //    if(!productsList.map(item => item.title.ua.includes(title))) {
     //  alert('nb kj[')
     //    }
 
     const productId = productsList[0]._id;
-    console.log(productId);
+    // console.log(productId);
 
     const data = {
       date,
@@ -47,11 +49,13 @@ export const DiaryAddProductForm = () => {
 
     //  console.log(data);
     resetForm();
+    // dispatch(getUserInfo());
   };
 
   useEffect(() => {
     if (title.length >= 3) {
       dispatch(productSearchOper(title));
+      
     } else {
       // dispatch(setSelectedProduct());
     }

@@ -1,17 +1,21 @@
 import React from 'react';
 import DiaryProductsListItem from '../DiaryProductListItem/DiaryProductListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { SelectDayData } from 'redux/diary/diarySelectors';
+import { SelectDayData, SelectUserData } from 'redux/diary/diarySelectors';
 import { deleteProductOper } from 'redux/diary/diaryOperation';
 import { selectUserName } from 'redux/authorization/authSelectors';
 
 export function DiaryProductsList() {
-  const data = useSelector(SelectDayData);
+  const eatenProducts = useSelector(state=> state.searchData.eatenProducts)
+  const dayId = useSelector(state=> state.searchData.dayId)
+  // const data = useSelector(SelectDayData);
   // const dispatch = useDispatch();
   // console.log(data);
-  const array = data?.eatenProducts;
-  console.log(array);
-  const dayId = data?.id;
+  const array = eatenProducts;
+  // нотіфкатіон коли арей 0 ! !!!!!!!!!!!!!!!!!!!!!!!
+  console.log(eatenProducts);
+  // const dayId = data?.id;
+  console.log(dayId);
   // const dayId = data?.day?.daySummary;
   return (
     <div>
