@@ -16,8 +16,8 @@ import { DiaryAddProductForm } from './DiaryAddProductForm/DiaryAddProductForm';
 import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
 import { SidePage } from 'pages/SidePage/SidePage';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
-import { PrivateRoute } from './routes/PrivateRoute';
-import { PublicRoute } from './routes/PublicRoute';
+import { PrivateRoute } from './Routes/PrivateRoute';
+import { PublicRoute } from './Routes/PublicRoute';
 
 // const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
 
