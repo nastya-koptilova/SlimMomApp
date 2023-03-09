@@ -5,7 +5,7 @@ import {
   getInfoOper,
   productSearchOper,
 } from './diaryOperation';
-import moment from 'moment';
+// import moment from 'moment';
 // Slice для пошуку продуктів
 export const productSearchSlice = createSlice({
   name: 'productSearch',
@@ -14,7 +14,7 @@ export const productSearchSlice = createSlice({
       status: 'idle',
       error: null,
       dayData: null,
-      date: moment(new Date()).format("YYYY-MM-DD"),
+      // date: moment(new Date()).format("YYYY-MM-DD"),
       // eatenProducts : null,
 
       // productId: null,

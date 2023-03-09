@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductOper, productSearchOper } from 'redux/diary/diaryOperation';
+import { addProductOper, getInfoOper, productSearchOper } from 'redux/diary/diaryOperation';
 import moment from 'moment';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import s from './DiaryAddProductForm.module.scss';
@@ -19,6 +19,7 @@ export const DiaryAddProductForm = () => {
 
   const handleChangeDate = (value) => {
     setDate(moment(value.$d).format("YYYY-MM-DD"));
+    dispatch(getInfoOper(date));
     // console.log(date);   
   } 
 
@@ -39,6 +40,7 @@ export const DiaryAddProductForm = () => {
       weight
     }
     dispatch(addProductOper(data));
+   
   //  console.log(data);
        resetForm();
   };
