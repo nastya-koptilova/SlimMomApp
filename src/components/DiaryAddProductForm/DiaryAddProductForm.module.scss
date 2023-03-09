@@ -230,6 +230,7 @@
     margin-left: auto;
     margin-top: 80px;
     width: 176px;
+    max-width: 176px;
     height: 44px;
     border-radius: 22px;
 }
@@ -237,6 +238,9 @@
 .buttonIcon {
     @media screen and (max-width: 767px) {
         display: none;
+        margin-top: 60px;
+                margin-left: auto;
+             margin-right: auto;
     }
 }
 
@@ -254,3 +258,15 @@
         width: 100%;
     }
 }
+// .buttonAdd {
+//     @media screen and (max-width: 768px) {
+//         margin-top: 60px;
+//         margin-left: auto;
+//         margin-right: auto;
+
+//         button {
+//             width: 176px;
+//             max-width: 176px;
+//         }
+//     }
+// }

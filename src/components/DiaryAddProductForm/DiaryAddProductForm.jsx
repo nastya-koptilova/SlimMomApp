@@ -101,7 +101,6 @@ export const DiaryAddProductForm = props => {
               Грами
             </label>
           </div>
-
           <Btn type="submit" variant="plus">
             <BsPlusLg className={s.icon} />
           </Btn>
