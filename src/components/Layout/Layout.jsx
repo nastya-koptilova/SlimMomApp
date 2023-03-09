@@ -28,13 +28,13 @@ export function Layout() {
               </>
             ) : (
               <>
-                <UserInfo />{' '}
-                {width < 1280 ? <Burger /> : <LoggedInNavigation />}
+                <UserInfo />
+                {/* {isLoggedIn && width < 1280 && <Burger />} */}
+                {width < 1279 ? <Burger /> : <LoggedInNavigation /> }
               </>
             )}
           </ul>
         </nav>
-        {/* {isLoggedIn && width < 1280 && <Burger />} */}
       </header>
       <main className={s.main}>
         <Outlet />
