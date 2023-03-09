@@ -8,7 +8,7 @@ export const Diet = ({ diet }) => {
         return true;
     };
     return (
-        <>
+        <section>
             <p className={s.SidebarTitle}>Їжа не рекомендована</p>
             {!isGetDiet() && (<p className={s.SidebarText}>Ваша дієта буде відображатися тут</p>)}
             {isGetDiet() &&
@@ -19,5 +19,5 @@ export const Diet = ({ diet }) => {
                         </li>
                     ))}
                 </ul>)}
-        </>)
+        </section>)
 }
