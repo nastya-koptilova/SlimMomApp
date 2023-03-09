@@ -15,18 +15,6 @@ const DiaryProductListItem = ({
 }) => {
   const dispatch = useDispatch();
   const date = useSelector(SelectDate);
-  // const deleteItem = () => {
-  // console.log(dayId,eatenProductId);
-  // };
-  // const handleDelete = () => {
-    
-  //   dispatch(
-  //     deleteProductOper({ dayId: dayId, eatenProductId: eatenProductId })
-  //   )
-  //     .unwrap()
-  //     .then(() => {dispatch(getInfoOper(date))});
-    
-  // };
 
   return (
     <div>
@@ -43,4 +31,3 @@ const DiaryProductListItem = ({
 };
 export default DiaryProductListItem;
 
-// {()=>{dispatch(deleteProductOper({dayId:dayId, eatenProductId:eatenProductId}))}}

@@ -13,7 +13,7 @@ export function DairyPage() {
 
 
   useEffect(() => {
-    if (date) dispatch(getUserInfo());
+    dispatch(getInfoOper(date));
   }, [date, dispatch]);
 
   return (
