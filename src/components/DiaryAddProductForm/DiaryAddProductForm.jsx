@@ -8,7 +8,6 @@ import {
 import moment from 'moment';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import s from './DiaryAddProductForm.module.scss';
-import { setSelectedProduct } from 'redux/products/slice';
 import { BsPlusLg } from 'react-icons/bs';
 import { Btn } from 'components/Btn/Btn';
 import { SelectDate, SelectProductsData } from 'redux/diary/diarySelectors';
