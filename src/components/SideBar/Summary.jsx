@@ -18,7 +18,6 @@ export const Summary = () => {
         return true;
     };
     console.log(user);
-
     return (
         <div>
             <h3 className={s.SidebarTitle}>Резюме для {currentDate}</h3>

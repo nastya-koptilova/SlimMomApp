@@ -21,7 +21,6 @@ export const dailyCaloriesRequest =createAsyncThunk(
         try {
             userInfo.bloodType = Number(userInfo.bloodType);
             const response = await DailyApi.getDailyRateInfoBasedOnId(userInfo);
-            console.log(response);
             return response
         } catch (error) {
             return rejectWithValue(error.message)
@@ -60,7 +59,6 @@ const userCaloriesSlice = createSlice({
         state.status = 'resolved';
           state.user = action.payload;
           state.userId = action.payload.id;
-          console.log(action.payload.id);
         state.error = null;
       })
       .addCase(dailyCaloriesAuth.rejected, (state, action) => {
