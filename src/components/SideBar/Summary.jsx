@@ -8,7 +8,6 @@ import { SelectDate } from '../../redux/diary/diarySelectors';
 export const Summary = () => {
     const user = useSelector(selectUserInfo);
     const selectedDate = useSelector(SelectDate);
-    console.log(selectedDate);
 
     const dailyRate = user !== null && user !== undefined ? user.dailyRate : '000';
     const consumed = user !== null && user !== undefined ? user.summaries[0].kcalConsumed : '000';

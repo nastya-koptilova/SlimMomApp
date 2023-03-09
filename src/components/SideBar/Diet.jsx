@@ -11,7 +11,6 @@ export const Diet = () => {
         if (user === undefined || user === null) return false;
         return true;
     };
-    console.log(isGetDiet());
     return (
         <section>
             <p className={s.SidebarTitle}>Їжа не рекомендована</p>

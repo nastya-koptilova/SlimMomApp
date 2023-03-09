@@ -10,8 +10,8 @@ export const SideBar = () => {
         <div className={s.Back}>
             <div className={s.SidebarSection}>
                 <div className={s.SidebarWrap}>
-                    <Summary dailyCalorie={0} />
-                    <Diet diet={[]} />
+                    <Summary />
+                    <Diet />
                 </div>
             </div>
         </div>
