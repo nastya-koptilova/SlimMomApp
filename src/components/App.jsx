@@ -4,7 +4,6 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { PrivateRoute } from 'redux/routes/PrivateRoute';
 import { PublicRoute } from 'redux/routes/RestrictedRoute';
-import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/authorization/authOperations';
 
 import LoginPage from 'pages/LoginPage/LoginPage';
