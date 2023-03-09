@@ -97,6 +97,6 @@ export const productSearchReducer = productSearchSlice.reducer;
 export const { setDate } = productSearchSlice.actions;
 
 
-const isObj = (array) => {
+const isObj = (smth) => {
   
 }
