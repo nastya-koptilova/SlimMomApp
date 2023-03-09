@@ -15,7 +15,7 @@ const RegistrationPage = () => {
     {!isLoggedIn && (
       <AuthorizationForm onSubmit={handleRegister} />
     )}
-    {isLoggedIn && <Navigate to="/dairy" />}
+    {isLoggedIn && <Navigate to="/" />}
   </>);
 };
 

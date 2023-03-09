@@ -4,11 +4,12 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import { combineReducers } from '@reduxjs/toolkit';
 import { productSearchReducer } from './diary/diarySlice';
 import { caloriesReducer } from './dailyCalories/caloriesSlice';
+import { productsReducer } from './products/slice';
 
 const persistConfig = {
   key: 'token',
   storage,
-  blacklist: ['isLoading', 'error', 'isLoggedIn', 'userName', 'userEmail'],
+  whitelist: ['token', 'refreshToken', 'sid'],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
@@ -17,4 +18,6 @@ export const rootReducer = combineReducers({
   userData: persistedReducer,
   searchData: productSearchReducer,
   dailyCalories: caloriesReducer,
+  products: productsReducer,
+
 });

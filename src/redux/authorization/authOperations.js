@@ -16,6 +16,22 @@ export const registerNewUser = createAsyncThunk(
   }
 );
 
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      console.log(thunkAPI.getState())
+      const { sid, refreshToken } = thunkAPI.getState().userData;
+      if (!sid) return thunkAPI.rejectWithValue('No sid');
+      const result = await AuthApi.refreshUser(sid, refreshToken);
+      token.set(result.newAccessToken);
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (credential, thunkAPI) => {

@@ -1,17 +1,26 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProductOper } from 'redux/diary/diaryOperation';
 
-export const DiaryProductListItem = ({ title, kcal, weight, id }) => {
-  const deleteItem = () => {};
+ const DiaryProductListItem = ({ dayId, title, kcal, weight, eatenProductId }) => {
+ const dispatch = useDispatch();
+ 
+  // const deleteItem = () => {
+    // console.log(dayId,eatenProductId);
+  // };
 
   return (
+  
     <div>
-      DiaryProductsListItem
       <li>
         <span>{title}</span>
         <span>{weight} </span>
-        <span>{kcal}</span>
-        <button onClick={deleteItem}>{/* хрестик іконка видалення */}</button>
+        <span>{Math.floor(kcal)}</span>
+        <button type='button' onClick={()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}>UJCGJLB</button>
       </li>
     </div>
   );
 };
+export default DiaryProductListItem;
+
+// {()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}

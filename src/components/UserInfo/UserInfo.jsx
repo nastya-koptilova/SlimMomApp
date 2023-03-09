@@ -1,10 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logoutUser } from 'redux/authorization/authOperations';
-import { selectUserName } from 'redux/authorization/authSelectors';
 import s from '../UserInfo/UserInfo.module.scss';
+import {
+  selectIsLoggedIn,
+  selectUserName,
+} from 'redux/authorization/authSelectors';
 
 const UserInfo = () => {
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const user = useSelector(selectUserName);
   const handleChange = () => {

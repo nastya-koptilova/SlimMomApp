@@ -1,6 +1,6 @@
 import Modal from 'components/Modal/Modal';
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
-import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
+// import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import styles from './MainPage.module.css';
 import { useState } from 'react';
 
@@ -12,7 +12,7 @@ function HomePage() {
   const handleModalOpen = () => {
     setIsModalOpen(true);
 }
-const onClose = () => {
+  const onClose = () => {
     setIsModalOpen(false);
 }
 

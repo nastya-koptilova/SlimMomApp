@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { omit } from 'lodash';
+// import { useSelector } from 'react-redux';
+// import { selectUserId } from 'redux/authorization/authSelectors';
+
+//  const userId = useSelector(selectUserId);
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const AuthApi = {
@@ -19,6 +24,17 @@ export const AuthApi = {
     const { data } = await axios.post('/auth/logout');
     return data;
   },
+
+  async refreshUser(sid, refreshToken) {
+    // рефреш юзер
+    const { data } = await axios({
+      data: { sid },
+      headers: { Authorization: refreshToken },
+      method: 'post',
+      url: `/auth/refresh`,
+    });
+    return data;
+  },
 };
 
 export const DailyApi = {
@@ -28,8 +44,11 @@ export const DailyApi = {
     return data;
   },
 
-  async getDailyRateInfoBasedOnId(userId, userInfo) {
-    const { data } = await axios.post(`​/daily-rate​/${userId}`, userInfo);
+  async getDailyRateInfoBasedOnId(userInfo) {
+    const { data } = await axios.post(
+      `/daily-rate/${userInfo.userId}`,
+      omit(userInfo, ['userId'])
+    );
     return data;
   },
 };
@@ -69,8 +88,8 @@ export async function addProduct(productInfo) {
   return data;
 }
 // Delete eaten product
-export async function deleteProduct(productId) {
-  const { data } = await axios.delete(`/day/${productId}`);
+export async function deleteProduct(productData) {
+  const { data } = await axios.delete('/day', productData);
   return data;
 }
 // Get info for day

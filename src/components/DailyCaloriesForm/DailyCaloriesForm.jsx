@@ -7,26 +7,23 @@ import { PersistFormikValues } from 'formik-persist-values';
 import { Btn } from 'components/Btn/Btn';
 
 import styles from './DailyCaloriesForm.module.scss';
-import { dailyCaloriesRequest } from 'redux/dailyCalories/caloriesSlice';
+import {
+  dailyCaloriesAuth,
+  dailyCaloriesRequest,
+} from 'redux/dailyCalories/caloriesSlice';
 
-export function DailyCaloriesForm({handleModalOpen}) {
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { selectUserId } from 'redux/authorization/authSelectors';
+
+export function DailyCaloriesForm({ handleModalOpen }) {
+  const navigate = useNavigate();
+  const userId = useSelector(selectUserId);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, userId) => {
-    // if (userId) {
-    //   dispatch(dailyCaloriesAuth(values, userId));
-    // } else {
-    dispatch(dailyCaloriesRequest(values));
-    handleModalOpen();
-    // }
+  const handleSubmit = values => {
+    dispatch(dailyCaloriesAuth({ ...values, userId }));
   };
-  const isChecked = () => {
-    const store = localStorage.getItem('bloodType');
-    if (store) {
-      return store;
-    }
-    return '';
-  };
+
   const validationsSchema = yup.object().shape({
     height: yup
       .number()
@@ -64,14 +61,10 @@ export function DailyCaloriesForm({handleModalOpen}) {
             age: '',
             weight: '',
             desiredWeight: '',
-            bloodType: `${isChecked()}`,
+            bloodType: '',
           }}
           validateOnBlur
-          onSubmit={(values, actions) => {
-            console.log(values);
-            handleSubmit(values);
-            // handleSubmit(values, userId);
-          }}
+          onSubmit={handleSubmit}
           validationSchema={validationsSchema}
         >
           {({
@@ -80,9 +73,7 @@ export function DailyCaloriesForm({handleModalOpen}) {
             touched,
             handleChange,
             handleBlur,
-            isValid,
             handleSubmit,
-            dirty,
           }) => (
             <Form className={styles.caloriesForm} onSubmit={handleSubmit}>
               <h1>Розрахуйте свою денну норму калорій прямо зараз</h1>
@@ -157,7 +148,7 @@ export function DailyCaloriesForm({handleModalOpen}) {
                     </div>
                   </div>
                   <div className={styles.radioButtonContainer}>
-                    <h3>Группа крови *</h3>
+                    <h3>Група крові *</h3>
 
                     <ul className={styles.radioButtonList}>
                       <RadioButton
@@ -199,17 +190,16 @@ export function DailyCaloriesForm({handleModalOpen}) {
                   </div>
                 </div>
               </div>
-
+              {/* 
+             {isLoggedIn ?  <div className={styles.form_button}><Link to='/dairy'>
+             <Btn type="submit">Почати худнути</Btn>
+              </Link></div> 
+              :  
+             <div className={styles.form_button}>
+                <Btn type="submit">Почати худнути</Btn>
+              </div>} */}
               <div className={styles.form_button}>
-                {/* <Button
-                  disabled={!isValid || !dirty}
-                  onClick={handleSubmit}
-                  type="submit"
-                  customType="primary"
-                /> */}
-                <Btn onClick={handleSubmit} type="submit">
-                  Почати худнути
-                </Btn>
+                <Btn type="submit">Почати худнути</Btn>
               </div>
 
               <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
