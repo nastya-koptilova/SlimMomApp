@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductOper, getInfoOper } from 'redux/diary/diaryOperation';
+import { deleteProductOper, getInfoOper, getUserInfo } from 'redux/diary/diaryOperation';
 import { SelectDate } from 'redux/diary/diarySelectors';
 // import { getDayInfo } from 'services/api';
 
@@ -17,11 +17,13 @@ const DiaryProductListItem = ({
   // console.log(dayId,eatenProductId);
   // };
   const handleDelete = () => {
+    
     dispatch(
       deleteProductOper({ dayId: dayId, eatenProductId: eatenProductId })
     )
       .unwrap()
       .then(() => {dispatch(getInfoOper(date))});
+    
   };
 
   return (
