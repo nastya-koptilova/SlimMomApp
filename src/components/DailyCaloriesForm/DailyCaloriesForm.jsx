@@ -21,7 +21,14 @@ export function DailyCaloriesForm({ handleModalOpen }) {
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    dispatch(dailyCaloriesAuth({ ...values, userId }));
+    if (userId) {
+      dispatch(dailyCaloriesAuth({ ...values, userId }));
+      <Navigate to="/dairy" />;
+      // navigate('/dairy');
+    } else {
+      dispatch(dailyCaloriesRequest(values));
+      handleModalOpen();
+    }
   };
 
   const validationsSchema = yup.object().shape({
