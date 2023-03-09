@@ -13,6 +13,7 @@ import {
 } from 'redux/dailyCalories/caloriesSlice';
 
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { selectUserId } from 'redux/authorization/authSelectors';
 
 export function DailyCaloriesForm({ handleModalOpen }) {
   const navigate = useNavigate();

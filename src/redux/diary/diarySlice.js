@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addProductOper,
   deleteProductOper,
+  getInfoOper,
   productSearchOper,
 } from './diaryOperation';
 
@@ -55,6 +56,19 @@ export const productSearchSlice = createSlice({
         //   product => product.id !== action.payload
         // )
       }).addCase(deleteProductOper.rejected, (state, action) => {
+        state.status = 'pending';
+        state.error = action.payload;
+      })
+      .addCase(getInfoOper.pending, state => {
+        state.status = 'pending';
+      })
+      .addCase(getInfoOper.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.dayData = action.payload;
+        // state.eatenProducts = state.eatenProducts.filter(
+        //   product => product.id !== action.payload
+        // )
+      }).addCase(getInfoOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
       })

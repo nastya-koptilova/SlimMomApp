@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { PrivateRoute } from 'redux/routes/PrivateRoute';
-import { PublicRoute } from 'redux/routes/RestrictedRoute';
+import { PrivateRoute } from 'components/Routes/PrivateRoute';
+import { PublicRoute } from 'components/Routes/PublicRoute';
 import { refreshUser } from 'redux/authorization/authOperations';
 
 import LoginPage from 'pages/LoginPage/LoginPage';
@@ -28,8 +27,17 @@ export const App = () => {
       <Suspense fallback={<div>Loading</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/calculator" element={<CalculatorPage />} />
+              <Route path="/diary" element={<DairyPage />} />
+            </Route>
+            <Route path="/" element={<PublicRoute />}>
+              <Route index element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegistrationPage />} />
+            </Route>
+
+            {/* <Route
               path="/login" element={<PublicRoute redirectTo="/calculator"
                 component={<Suspense fallback={<div>Loading</div>}><LoginPage />
                 </Suspense>} />}
@@ -48,6 +56,7 @@ export const App = () => {
               <Suspense fallback={<div>Loading</div>}>
                 <CalculatorPage></CalculatorPage>
               </Suspense>} />
+          </Route> */}
           </Route>
 
           <Route path="*" element={<Navigate to="/" />} />
@@ -56,4 +65,3 @@ export const App = () => {
     </>
   );
 };
-
