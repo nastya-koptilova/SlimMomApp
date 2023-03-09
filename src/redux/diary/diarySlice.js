@@ -59,6 +59,7 @@ export const productSearchSlice = createSlice({
       }).addCase(deleteProductOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
+        console.log(action.payload);
       })
       .addCase(getInfoOper.pending, state => {
         state.status = 'pending';

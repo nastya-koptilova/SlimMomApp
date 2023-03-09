@@ -6,12 +6,9 @@ import { deleteProductOper } from 'redux/diary/diaryOperation';
 import { selectUserName } from 'redux/authorization/authSelectors';
 
 export function DiaryProductsList() {
-  const userName = useSelector(selectUserName);
-
   const data = useSelector(SelectDayData);
   // const dispatch = useDispatch();
   console.log(data);
-  console.log(userName);
   const array = data?.day?.eatenProducts;
   const dayId = data?.day?.id;
   // const dayId = data?.day?.daySummary;
