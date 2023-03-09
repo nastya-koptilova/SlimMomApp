@@ -18,10 +18,10 @@ import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
 // const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
   return (
     <>
       <Suspense fallback={<div>Loading</div>}>
