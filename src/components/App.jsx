@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PrivateRoute } from 'components/Routes/PrivateRoute';
-import { PublicRoute } from 'components/Routes/PublicRoute';
+// import { PrivateRoute } from './components/Routes/PrivateRoute';
+// import { PublicRoute } from './components/Routes/PublicRoute';
 import { getUserInfo, refreshUser } from 'redux/authorization/authOperations';
 
 import LoginPage from 'pages/LoginPage/LoginPage';
@@ -16,6 +16,8 @@ import { DiaryAddProductForm } from './DiaryAddProductForm/DiaryAddProductForm';
 import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
 import { SidePage } from 'pages/SidePage/SidePage';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import { PrivateRoute } from './routes/PrivateRoute';
+import { PublicRoute } from './routes/PublicRoute';
 
 // const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
 
