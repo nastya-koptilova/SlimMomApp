@@ -7,18 +7,20 @@ import s from './DiaryAddProductForm.module.scss';
 import { setSelectedProduct } from 'redux/products/slice';
 import {BsPlusLg} from "react-icons/bs";
 import { Btn } from 'components/Btn/Btn';
-import { SelectProductsData } from 'redux/diary/diarySelectors';
+import { SelectDate, SelectProductsData } from 'redux/diary/diarySelectors';
+import { setDate } from 'redux/diary/diarySlice';
 
 
 export const DiaryAddProductForm = () => {
   const productsList = useSelector(SelectProductsData);
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
+  const date = useSelector(SelectDate);
+  // const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
 
   const [weight, setWeight] = useState(''); 
 
   const handleChangeDate = (value) => {
-    setDate(moment(value.$d).format("YYYY-MM-DD"));
+    dispatch(setDate(moment(value.$d).format("YYYY-MM-DD")));
     dispatch(getInfoOper(date));
     // console.log(date);   
   } 
@@ -54,6 +56,7 @@ export const DiaryAddProductForm = () => {
   }, [dispatch, title]);
 
   const resetForm = () => {
+    
     // setDate(moment(new Date()).format("YYYY-MM-DD"));
     setTitle('');
     setWeight('');

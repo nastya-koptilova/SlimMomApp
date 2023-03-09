@@ -93,8 +93,8 @@ export async function deleteProduct(productData) {
   return data;
 }
 // Get info for day
-export async function getDayInfo(dateInfo) {
-  const { data } = await axios.post('/day/info', dateInfo);
+export async function getDayInfo(date) {
+  const { data } = await axios.post('/day/info', {date});
   return data;
 }
 

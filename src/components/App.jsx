@@ -1,9 +1,9 @@
 import React from 'react';
 import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PrivateRoute } from 'components/Routes/PrivateRoute';
 import { PublicRoute } from 'components/Routes/PublicRoute';
-import { refreshUser } from 'redux/authorization/authOperations';
+import { getUserInfo, refreshUser } from 'redux/authorization/authOperations';
 
 import LoginPage from 'pages/LoginPage/LoginPage';
 import HomePage from 'pages/MainPage/MainPage';
@@ -15,14 +15,19 @@ import { DairyPage } from 'pages/DairyPage/DairyPage';
 import { DiaryAddProductForm } from './DiaryAddProductForm/DiaryAddProductForm';
 import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
 import { SidePage } from 'pages/SidePage/SidePage';
+import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
 
 // const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
 
 export const App = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  useEffect(() => {
+    if (isLoggedIn) dispatch(getUserInfo());
+  }, [dispatch, isLoggedIn]);
   return (
     <>
       <Suspense fallback={<div>Loading</div>}>

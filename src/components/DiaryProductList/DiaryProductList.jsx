@@ -8,9 +8,10 @@ import { selectUserName } from 'redux/authorization/authSelectors';
 export function DiaryProductsList() {
   const data = useSelector(SelectDayData);
   // const dispatch = useDispatch();
-  console.log(data);
-  const array = data?.day?.eatenProducts;
-  const dayId = data?.day?.id;
+  // console.log(data);
+  const array = data?.eatenProducts;
+  console.log(array);
+  const dayId = data?.id;
   // const dayId = data?.day?.daySummary;
   return (
     <div>
