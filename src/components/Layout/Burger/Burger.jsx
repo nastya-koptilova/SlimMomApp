@@ -1,33 +1,36 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { ReactComponent as BurgerIcon } from 'images/burger/burger.svg';
+import { ReactComponent as CloseIcon } from 'images/close/close.svg';
 import s from '../Burger/Burger.module.scss';
+import { LoggedInNavigation } from 'components/LoggedInNavigation/LoggedInNavigation';
+import Modal from 'components/ModalMobMenu/ModalMobMenu';
+import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import { useSelector } from 'react-redux';
 
-export default function Burger({ show, onToggle }) {
-  if (!show) {
-    return null;
-  }
+export default function Burger() {
+  //   const [show, setShow] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  //   const handleModalOpen = () => {
+  //     setIsModalOpen(true);
+  //   };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const onToggle = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
 
   return (
-    <ul className={s.burger__list}>
-      <li className={s.burger__item}>
-        <NavLink
-          onClick={onToggle}
-          className={({ isActive }) => (isActive ? s.active : s.default)}
-          to="/daily"
-        >
-          Щоденник
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          onClick={onToggle}
-          className={({ isActive }) => (isActive ? s.active : s.default)}
-          to="/calculator"
-        >
-          КАЛЬКУЛЯТОР
-        </NavLink>
-      </li>
-    </ul>
+    <>
+      <button onClick={onToggle} className={s.burger}>
+        {!isModalOpen ? <BurgerIcon /> : <CloseIcon />}
+      </button>
+      {/* {isLoggedIn && <LoggedInNavigation />} */}
+      {isModalOpen && <Modal onClose={handleModalClose} />}
+    </>
   );
 }
-//дописати логіку по toggle

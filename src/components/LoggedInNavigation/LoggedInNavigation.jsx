@@ -1,3 +1,4 @@
+// import UserInfo from 'components/UserInfo/UserInfo';
 import { NavLink } from 'react-router-dom';
 import s from '../LoggedInNavigation/LoggedInNavigation.module.scss';
 
@@ -12,7 +13,6 @@ export function LoggedInNavigation() {
           Щоденник
         </NavLink>
       </li>
-
       <li className={s.navigation__item}>
         <NavLink
           to="/calculator"

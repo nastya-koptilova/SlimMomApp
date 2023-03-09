@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logoutUser } from 'redux/authorization/authOperations';
-import { selectIsLoggedIn, selectUserName } from 'redux/authorization/authSelectors';
-import s from '../Layout/Layout.module.scss';
+import s from '../UserInfo/UserInfo.module.scss';
+import {
+  selectIsLoggedIn,
+  selectUserName,
+} from 'redux/authorization/authSelectors';
 
 const UserInfo = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -14,14 +17,18 @@ const UserInfo = () => {
 
   return (
     <nav className={s.navigation__list}>
-      <p className={s.active}>{user}</p>
-      <NavLink 
-        to="/register"
-        className={({ isActive }) => (isActive ? s.active : s.default)}
-        onClick={handleChange}
-      >
-        Вихід
-      </NavLink>
+      <div className={s.decoration}>
+        <p className={s.name}>{user}</p>
+      </div>
+      <div>
+        <NavLink
+          to="/register"
+          className={({ isActive }) => (isActive ? s.active : s.default)}
+          onClick={handleChange}
+        >
+          Вихід
+        </NavLink>
+      </div>
     </nav>
   );
 };
