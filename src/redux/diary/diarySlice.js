@@ -13,6 +13,8 @@ export const productSearchSlice = createSlice({
       status: 'idle',
       error: null,
       dayData: null,
+      // eatenProducts : null,
+
       // productId: null,
     },
 
@@ -36,9 +38,24 @@ export const productSearchSlice = createSlice({
       .addCase(addProductOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.dayData = action.payload;
+        // state.eatenProducts = action.payload.day.eatenProducts;
       })
       .addCase(addProductOper.rejected, (state, action) => {
         state.status = 'rejected';
+        state.error = action.payload;
+        
+      })
+      .addCase(deleteProductOper.pending, state => {
+        state.status = 'pending';
+      })
+      .addCase(deleteProductOper.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.dayData = action.payload;
+        // state.eatenProducts = state.eatenProducts.filter(
+        //   product => product.id !== action.payload
+        // )
+      }).addCase(deleteProductOper.rejected, (state, action) => {
+        state.status = 'pending';
         state.error = action.payload;
       })
   // reducers: {

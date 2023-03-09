@@ -47,12 +47,12 @@ export const DiaryAddProductForm = () => {
     if (title.length >= 3) {
       dispatch(productSearchOper(title));
     } else {
-      dispatch(setSelectedProduct());
+      // dispatch(setSelectedProduct());
     }
   }, [dispatch, title]);
 
   const resetForm = () => {
-    setDate(moment(new Date()).format("YYYY-MM-DD"));
+    // setDate(moment(new Date()).format("YYYY-MM-DD"));
     setTitle('');
     setWeight('');
   };
