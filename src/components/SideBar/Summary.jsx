@@ -10,8 +10,8 @@ export const Summary = () => {
     const selectedDate = useSelector(SelectDate);
 
     const dailyRate = user !== null && user !== undefined ? user.dailyRate : '000';
-    const consumed = user !== null && user !== undefined ? user.summaries[0].kcalConsumed : '000';
-    const left = user !== null && user !== undefined ? user.summaries[0].kcalLeft : '000';
+    const consumed = user !== null && user !== undefined && user.summaries !== undefined && user.summaries[0] !== undefined ? user.summaries[0].kcalConsumed : '000';
+    const left = user !== null && user !== undefined && user.summaries !== undefined && user.summaries[0] !== undefined ? user.summaries[0].kcalLeft : '000';
     const partOfNormal = user !== null && user !== undefined ? Math.round((consumed * 100) / dailyRate) : '00';
 
     const currentDate = format(Date.now(), 'yyyy-MM-dd');
@@ -36,10 +36,9 @@ export const Summary = () => {
                 </li>
                 <li className={s.SidebarItem}>
                     <p className={s.SidebarText}>% від норми</p>
-                    <p className={s.SidebarText}>{`${partOfNormal} %`}</p>
+                    <p className={s.SidebarText}>{`${partOfNormal}%`}</p>
                 </li>
             </ul>
         </div>
     );
-}    
-
+}
