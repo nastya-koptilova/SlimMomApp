@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthApi, token } from 'services/api';
+import { AuthApi, token, UserApi } from 'services/api';
 
 export const registerNewUser = createAsyncThunk(
   'auth/register',
@@ -20,7 +20,7 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     try {
-      console.log(thunkAPI.getState())
+      console.log(thunkAPI.getState());
       const { sid, refreshToken } = thunkAPI.getState().userData;
       if (!sid) return thunkAPI.rejectWithValue('No sid');
       const result = await AuthApi.refreshUser(sid, refreshToken);
@@ -52,6 +52,18 @@ export const logoutUser = createAsyncThunk(
     try {
       const result = await AuthApi.logOutUser();
       token.unSet();
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUserInfo = createAsyncThunk(
+  'auth/getinfo',
+  async (_, thunkAPI) => {
+    try {
+      const result = await UserApi.getUserInfo();
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

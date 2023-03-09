@@ -3,17 +3,19 @@ import DiaryProductsListItem from '../DiaryProductListItem/DiaryProductListItem'
 import { useDispatch, useSelector } from 'react-redux';
 import { SelectDayData } from 'redux/diary/diarySelectors';
 import { deleteProductOper } from 'redux/diary/diaryOperation';
+import { selectUserName } from 'redux/authorization/authSelectors';
 
 export function DiaryProductsList() {
   const data = useSelector(SelectDayData);
   // const dispatch = useDispatch();
-  console.log(data);
-  // console.log(data?.day?.eatenProducts);
-  const array = data?.day?.eatenProducts;
-  // const dayId = data?.day?.id;
-  const dayId = data?.day?.daySummary;
+  // console.log(data);
+  const array = data?.eatenProducts;
+  console.log(array);
+  const dayId = data?.id;
+  // const dayId = data?.day?.daySummary;
   return (
     <div>
+
       <ul>
         {array?.length > 0 ? (
           array.map(item => (

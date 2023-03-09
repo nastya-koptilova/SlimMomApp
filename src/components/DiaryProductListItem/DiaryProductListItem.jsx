@@ -1,26 +1,42 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductOper } from 'redux/diary/diaryOperation';
+import { deleteProductOper, getInfoOper } from 'redux/diary/diaryOperation';
+import { SelectDate } from 'redux/diary/diarySelectors';
+// import { getDayInfo } from 'services/api';
 
- const DiaryProductListItem = ({ dayId, title, kcal, weight, eatenProductId }) => {
- const dispatch = useDispatch();
- 
+const DiaryProductListItem = ({
+  dayId,
+  title,
+  kcal,
+  weight,
+  eatenProductId,
+}) => {
+  const dispatch = useDispatch();
+  const date = useSelector(SelectDate);
   // const deleteItem = () => {
-    // console.log(dayId,eatenProductId);
+  // console.log(dayId,eatenProductId);
   // };
+  const handleDelete = () => {
+    dispatch(
+      deleteProductOper({ dayId: dayId, eatenProductId: eatenProductId })
+    )
+      .unwrap()
+      .then(() => {dispatch(getInfoOper(date))});
+  };
 
   return (
-  
     <div>
       <li>
         <span>{title}</span>
         <span>{weight} </span>
         <span>{Math.floor(kcal)}</span>
-        <button type='button' onClick={()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}>UJCGJLB</button>
+        <button type="button" onClick={handleDelete}>
+          UJCGJLB
+        </button>
       </li>
     </div>
   );
 };
 export default DiaryProductListItem;
 
-// {()=>{dispatch(deleteProductOper({dayId, eatenProductId}))}}
+// {()=>{dispatch(deleteProductOper({dayId:dayId, eatenProductId:eatenProductId}))}}

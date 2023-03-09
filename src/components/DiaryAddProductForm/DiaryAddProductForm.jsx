@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductOper, productSearchOper } from 'redux/diary/diaryOperation';
+import {
+  addProductOper,
+  getInfoOper,
+  productSearchOper,
+} from 'redux/diary/diaryOperation';
 import moment from 'moment';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import s from './DiaryAddProductForm.module.scss';
 import { setSelectedProduct } from 'redux/products/slice';
 import { BsPlusLg } from 'react-icons/bs';
 import { Btn } from 'components/Btn/Btn';
-import { SelectProductsData } from 'redux/diary/diarySelectors';
+import { SelectDate, SelectProductsData } from 'redux/diary/diarySelectors';
+import { setDate } from 'redux/diary/diarySlice';
 
 export const DiaryAddProductForm = () => {
   const productsList = useSelector(SelectProductsData);
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const date = useSelector(SelectDate);
+  // const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
 
   const [weight, setWeight] = useState('');
 
   const handleChangeDate = value => {
-    setDate(moment(value.$d).format('YYYY-MM-DD'));
+    dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
+    dispatch(getInfoOper(date));
     // console.log(date);
   };
 
@@ -29,7 +36,7 @@ export const DiaryAddProductForm = () => {
     //  alert('nb kj[')
     //    }
 
-    const productId = productsList.map(item => item._id).join('');
+    const productId = productsList[0]._id;
     console.log(productId);
 
     const data = {
@@ -38,6 +45,7 @@ export const DiaryAddProductForm = () => {
       weight,
     };
     dispatch(addProductOper(data));
+
     //  console.log(data);
     resetForm();
   };
