@@ -11,8 +11,8 @@ export const SidePage = () => {
             <Outlet />
             <section className={s.SidebarSection}>
                 <div className={s.SidebarWrap}>
-                    <Summary dailyCalorie={0} />
-                    <Diet diet={[]} />
+                    {/* <Summary dailyCalorie={0} /> */}
+                    {/* <Diet diet={[]} /> */}
                 </div>
             </section>
         </>
