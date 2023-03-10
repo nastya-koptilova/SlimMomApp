@@ -37,22 +37,25 @@ const Modal = ({ onClose }) => {
     <>
       <div onClick={handleBackdropClick}>
         {/* <BsArrowReturnLeft onClick={() => onClose()} />
-        
             <CloseIcon onClick={() => onClose()} />
     */}
         <div className={s.modal}>
-          <NavLink
-            to="/diary"
-            className={({ isActive }) => (isActive ? s.active : s.default)}
-          >
-            Щоденник
-          </NavLink>
-          <NavLink
-            to="/calculator"
-            className={({ isActive }) => (isActive ? s.active : s.default)}
-          >
-            Калькулятор
-          </NavLink>
+          <div className={s.list}>
+            <NavLink
+              to="/diary"
+              className={({ isActive }) => (isActive ? s.active : s.default)}
+              onClick={handleBackdropClick}
+            >
+              Щоденник
+            </NavLink>
+            <NavLink
+              to="/calculator"
+              className={({ isActive }) => (isActive ? s.active : s.default)}
+              onClick={handleBackdropClick}
+            >
+              Калькулятор
+            </NavLink>
+          </div>
         </div>
       </div>
     </>,

@@ -6,6 +6,7 @@ import {
   selectIsLoggedIn,
   selectUserName,
 } from 'redux/authorization/authSelectors';
+import Line from 'images/line.svg';
 
 const UserInfo = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -20,7 +21,10 @@ const UserInfo = () => {
       <div className={s.decoration}>
         <p className={s.name}>{user}</p>
       </div>
-      <div>
+      <div className={s.line}>
+        <img src={Line} alt="line" width="2" height="32" />
+      </div>
+      <div className={s.out}>
         <NavLink
           to="/register"
           className={({ isActive }) => (isActive ? s.active : s.default)}
