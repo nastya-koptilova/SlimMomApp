@@ -31,9 +31,8 @@ const DiaryProductListItem = ({
           className={s.Button}
           id={id}
           type="button"
-          onClick={deleteProduct}
         >
-          <GoX className={s.iconDelete} />
+          <GoX id={id} onClick={deleteProduct} className={s.iconDelete} />
         </button>
       </li>
     </div>
