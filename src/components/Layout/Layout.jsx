@@ -27,13 +27,15 @@ export function Layout() {
           <ul className={s.navigation__list}>
             {!isLoggedIn ? (
               <>
-                <Navigation />
+                <Navigation className={s.position} />
               </>
             ) : (
               <>
                 {/* {isLoggedIn && width < 1280 && <Burger />} */}
                 {width < 1279 ? <Burger /> : <LoggedInNavigation />}
-                <UserInfo />
+                <div className={s.userinfo}>
+                  <UserInfo />
+                </div>
               </>
             )}
           </ul>

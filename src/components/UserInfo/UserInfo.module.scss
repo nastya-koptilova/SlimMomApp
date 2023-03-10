@@ -1,5 +1,5 @@
 .navigation__list {
-  display: none;
+  display: flex;
   // justify-content: flex-end;
   font-size: 14px;
   font-weight: bold;
@@ -9,13 +9,14 @@
   // padding-top: 14px;
   gap: 20px;
   // opacity: 0;
+  flex-grow: 1;
 }
-// .decoration {
-//   padding-top: 14px;
-// }
-// .out {
-//   padding-top: 14px;
-// }
+.decoration {
+  padding-top: 14px;
+}
+.out {
+  padding-top: 14px;
+}
 .line {
   padding-top: 3px;
 }
@@ -29,6 +30,7 @@
 .active {
   color: black;
 }
+
 @media screen and (min-width: 767px) {
   .navigation__list {
     display: flex;
@@ -42,9 +44,6 @@
     opacity: 1;
   }
 
-  .decoration {
-    padding-top: 14px;
-  }
   .line {
     padding-top: 3px;
   }
@@ -64,8 +63,11 @@
 }
 
 @media screen and (min-width: 1279px) {
+  .decoration {
+    padding-top: 14px;
+  }
   .navigation__list {
     display: flex;
-    justify-content: flex-end;
+    margin-left: auto;
   }
 }

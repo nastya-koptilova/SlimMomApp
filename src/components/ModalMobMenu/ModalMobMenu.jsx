@@ -1,16 +1,13 @@
 // import { ReactComponent as CloseIcon } from 'images/close/close.svg';
 import { NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-// import { BsArrowReturnLeft } from 'react-icons/bs';
 import { useEffect } from 'react';
 // import { useWindowSize } from 'react-use';
 import s from './ModalMobMenu.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose }) => {
-  //   const { width } = useWindowSize();
-
+const Modal = ({ onClose, isModalOpen }) => {
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       onClose();
@@ -36,10 +33,8 @@ const Modal = ({ onClose }) => {
   return createPortal(
     <>
       <div onClick={handleBackdropClick}>
-        {/* <BsArrowReturnLeft onClick={() => onClose()} />
-            <CloseIcon onClick={() => onClose()} />
-    */}
-        <div className={s.modal}>
+        {/* <div className={s.modal}> */}
+        <div className={isModalOpen ? s.modal : s.transition}>
           <div className={s.list}>
             <NavLink
               to="/diary"
