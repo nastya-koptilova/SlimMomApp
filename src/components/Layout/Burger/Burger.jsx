@@ -26,8 +26,8 @@ export default function Burger() {
 
   return (
     <>
-      <button onClick={onToggle} className={s.burger}>
-        {!isModalOpen ? <BurgerIcon /> : <CloseIcon />}
+      <button onClick={onToggle} className={s.btn}>
+        {!isModalOpen ? <BurgerIcon className={s.burger}/> : <CloseIcon className={s.close} />}
       </button>
       {/* {isLoggedIn && <LoggedInNavigation />} */}
       {isModalOpen && <Modal onClose={handleModalClose} />}

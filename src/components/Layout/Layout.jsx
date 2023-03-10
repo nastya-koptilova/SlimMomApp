@@ -8,6 +8,7 @@ import { LoggedInNavigation } from 'components/LoggedInNavigation/LoggedInNaviga
 import Burger from './Burger/Burger';
 import { useWindowSize } from 'react-use';
 import UserInfo from 'components/UserInfo/UserInfo';
+import Line from 'images/line.svg';
 
 export function Layout() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -19,7 +20,9 @@ export function Layout() {
         <div>
           <Logo />
         </div>
-
+        <div className={s.line}>
+          <img src={Line} alt="line" width="2" height="32" />
+        </div>
         <nav className={s.decoration}>
           <ul className={s.navigation__list}>
             {!isLoggedIn ? (
@@ -28,9 +31,9 @@ export function Layout() {
               </>
             ) : (
               <>
-                <UserInfo />
                 {/* {isLoggedIn && width < 1280 && <Burger />} */}
-                {width < 1279 ? <Burger /> : <LoggedInNavigation /> }
+                {width < 1279 ? <Burger /> : <LoggedInNavigation />}
+                <UserInfo />
               </>
             )}
           </ul>
