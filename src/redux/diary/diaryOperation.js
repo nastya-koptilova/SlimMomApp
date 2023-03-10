@@ -34,9 +34,11 @@ export const addProductOper = createAsyncThunk(
       //  console.log(newDay, newSummary, eatenProduct)
       //  console.log(newSummary, eatenProduct)
       //  console.log(eatenProduct)
-      return {day: day || newDay,
-         daySummary:daySummary || newSummary,
-          eatenProduct: eatenProduct};
+      const res = {day: day || newDay,
+        daySummary:daySummary || newSummary,
+         eatenProduct: eatenProduct}
+          console.log('res', res)
+      return res
       // return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
