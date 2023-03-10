@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import {
   addProductOper,
   deleteProductOper,
@@ -40,6 +40,7 @@ export const productSearchSlice = createSlice({
       })
       .addCase(addProductOper.fulfilled, (state, action) => {
         console.log('action.payload', action.payload)
+    
         state.status = 'resolved';
         state.eatenProducts = [...state.eatenProducts, action.payload.eatenProduct];
         state.dayId = action.payload.day.id;
@@ -72,7 +73,7 @@ export const productSearchSlice = createSlice({
       })
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.eatenProducts = action.payload.eatenProducts;
+        state.eatenProducts = action.payload.eatenProducts || [];
         state.dayId = action.payload.id;
       }).addCase(getInfoOper.rejected, (state, action) => {
         state.status = 'pending';
@@ -97,6 +98,3 @@ export const productSearchReducer = productSearchSlice.reducer;
 export const { setDate } = productSearchSlice.actions;
 
 
-const isObj = (smth) => {
-  
-}
