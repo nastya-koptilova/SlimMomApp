@@ -1,12 +1,16 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import {
+  selectIsLoggedIn,
+  selectToken,
+} from 'redux/authorization/authSelectors';
 
-export const PublicRoute = ({ redirectTo = '/calculator' }) => {
+export const PublicRoute = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  return isLoggedIn ? (
-    <Navigate to={redirectTo} />
+  const token = useSelector(selectToken);
+  return token && isLoggedIn ? (
+    <Navigate to="/diary" />
   ) : (
     <Suspense>
       <Outlet />

@@ -32,6 +32,7 @@ export const App = () => {
       <Suspense fallback={<div>Loading</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/" element={<SidePage />}>
                 <Route path="/calculator" element={<CalculatorPage />} />
@@ -39,7 +40,6 @@ export const App = () => {
               </Route>
             </Route>
             <Route path="/" element={<PublicRoute />}>
-              <Route index element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegistrationPage />} />
             </Route>
