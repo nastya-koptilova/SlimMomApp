@@ -1,9 +1,11 @@
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
-export function CalculatorPage() {
+function CalculatorPage() {
   return (
     <div>
       <DailyCaloriesForm />
     </div>
   );
 }
+
+export default CalculatorPage;

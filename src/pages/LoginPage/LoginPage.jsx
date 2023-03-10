@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import { loginUser } from 'redux/authorization/authOperations';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import scss from './LoginPage.module.scss';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -12,12 +13,16 @@ const LoginPage = () => {
     dispatch(loginUser(userData));
   };
 
-  return (<>
-    {!isLoggedIn && (
-      <AuthorizationForm isRegisterForm={false} onSubmit={handleLogin} />
-    )}
-    {isLoggedIn && <Navigate to="/dairy" />}
-  </>)
+  return (
+    <>
+      {!isLoggedIn && (
+        <div className={scss.loginPage}>
+          <AuthorizationForm isRegisterForm={false} onSubmit={handleLogin} />
+        </div>
+      )}
+      {isLoggedIn && <Navigate to="/dairy" />}
+    </>
+  );
 };
 
 export default LoginPage;
