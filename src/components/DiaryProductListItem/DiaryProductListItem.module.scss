@@ -1,0 +1,95 @@
+
+.Item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    padding: 0 40px 0 0;
+
+    @media (max-width: 768px) {
+        padding-right: 0;
+    }
+}
+
+.Title {
+    margin-right: 50px;
+
+    height: 100%;
+    flex-grow: 1;
+
+    border-bottom: 1px solid #E0E0E0;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 52px;
+    color: #212121;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+        margin-right: 8px;
+    }
+}
+
+.Weight {
+    margin-right: 32px;
+
+    height: 100%;
+    width: 107px;
+
+    border-bottom: 1px solid #E0E0E0;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 52px;
+    color: #212121;
+    text-align: right;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+        min-width: 50px;
+        max-width: 50px;
+        margin-right: 8px;
+    }
+}
+
+.Calories {
+    margin-right: 20px;
+
+    height: 100%;
+    width: 107px;
+
+    border-bottom: 1px solid #E0E0E0;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 52px;
+    color: #212121;
+    text-align: right;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+        min-width: 58px;
+        max-width: 58px;
+        margin-right: 8px;
+    }
+}
+
+.Button {
+    cursor: pointer;
+}
+
+.iconDelete {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+}

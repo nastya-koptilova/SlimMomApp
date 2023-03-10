@@ -13,22 +13,21 @@ export const BrowserInput = function BrowserInput(props) {
         alignItems: 'center',
         gap: '21px',
         width: '100%',
-        '& input': {
-          fontFamily: 'Verdana',
-          border: 'none',
-          outline: 'none',
-          bgcolor: 'background.paper',
-          fontSize: '34px',
-          fontWeight: 700,
-
-          '&::placeholder': {
-            color: 'black',
-          },
-        },
+        // '& input': {
+        //   fontFamily: 'Verdana',
+        //   border: 'none',
+        //   outline: 'none',
+        //   bgcolor: 'background.paper',
+        //   fontSize: '34px',
+        //   fontWeight: 700,
+        //   '&::placeholder': {
+        //     color: 'black',
+        //   },
+        // },
       }}
       ref={InputProps?.ref}
     >
-      <input  ref={inputRef} {...inputProps} {...other} />
+      <input ref={inputRef} {...inputProps} {...other} />
       {InputProps?.endAdornment}
     </Box>
   );

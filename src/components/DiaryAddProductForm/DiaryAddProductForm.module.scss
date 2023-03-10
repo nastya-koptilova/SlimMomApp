@@ -62,7 +62,6 @@
         padding: 0 20px;
     }
 }
-
 .FieldProduct {
     position: relative;
     width: 100%;
@@ -186,39 +185,6 @@
     }
 }
 
-.filteredList {
-    z-index: 10;
-    position: absolute;
-    background-color: #ffffff;
-
-    width: 100%;
-
-    @media screen and (min-width: 768px) {
-        width: 630px;
-    }
-
-    li {
-        width: 100%;
-    }
-
-    button {
-        padding: 8px;
-        border: none;
-        width: 100%;
-
-        color: #deb887;
-        background-color: transparent;
-        text-align: left;
-        cursor: pointer;
-        outline: none;
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    button:focus,
-    button:hover {
-        color: #fc842d;
-    }
-}
 
 .buttonAdd {
     @media screen and (min-width: 768px) {
@@ -239,15 +205,12 @@
     @media screen and (max-width: 767px) {
         display: none;
         margin-top: 60px;
-                margin-left: auto;
-             margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
-// .fieldRow {
-//     display: flex;
-//         flex-direction: row;
-// }
+
 .fieldRow {
     display: flex;
     flex-direction: row;
@@ -258,15 +221,28 @@
         width: 100%;
     }
 }
-// .buttonAdd {
-//     @media screen and (max-width: 768px) {
-//         margin-top: 60px;
-//         margin-left: auto;
-//         margin-right: auto;
 
-//         button {
-//             width: 176px;
-//             max-width: 176px;
-//         }
-//     }
-// }
+.Calendar {
+    display: flex;
+        gap: 21px;
+        width: 100%;
+}
+
+.inputCalendar {
+    border: none;
+    outline: none;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+    @media screen and (min-width: 768px) {
+        font-size: 34px;
+        line-height: 41px;
+        }
+    @media screen and (min-width: 1280px) {
+    font-size: 34px;
+    line-height: 41px;
+
+                }
+            }
+    
+          
