@@ -1,6 +1,6 @@
 .navigation__list {
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+  // justify-content: flex-end;
   font-size: 14px;
   font-weight: bold;
   font-weight: 700;
@@ -8,7 +8,7 @@
   letter-spacing: 0.04em;
   // padding-top: 14px;
   gap: 20px;
-  opacity: 0;
+  // opacity: 0;
 }
 // .decoration {
 //   padding-top: 14px;
