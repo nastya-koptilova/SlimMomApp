@@ -16,7 +16,6 @@ import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { PublicRoute } from './Routes/PublicRoute';
 
-
 // const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
 
 export const App = () => {

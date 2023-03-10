@@ -8,7 +8,7 @@ import {
 } from 'redux/diary/diarySelectors';
 import { deleteProductOper, getInfoOper } from 'redux/diary/diaryOperation';
 import { selectUserName } from 'redux/authorization/authSelectors';
-
+import s from 'components/DiaryProductList/DiaryProductList.module.scss';
 export function DiaryProductsList() {
   const eatenProducts = useSelector(state => state.searchData.eatenProducts);
   const dayId = useSelector(state => state.searchData.dayId);
@@ -30,7 +30,7 @@ export function DiaryProductsList() {
   };
   return (
     <div>
-      <ul>
+      <ul className={s.filteredList}>
         {array?.length > 0 ? (
           array.map(item => (
             <DiaryProductsListItem
