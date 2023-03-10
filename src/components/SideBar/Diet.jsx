@@ -11,13 +11,12 @@ export const Diet = () => {
         if (user === undefined || user === null) return false;
         return true;
     };
-    console.log(isGetDiet());
     return (
         <section>
             <p className={s.SidebarTitle}>Їжа не рекомендована</p>
             {!isGetDiet() && (<p className={s.SidebarText}>Ваша дієта буде відображатися тут</p>)}
             {isGetDiet() &&
-                (<ul className={s.SidebarList}>dgdf
+                (<ul className={s.SidebarList}>
                     {diet.map((product, index) => {
                         if (index < 4) {
                             return (
