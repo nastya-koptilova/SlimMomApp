@@ -11,16 +11,17 @@ import moment from 'moment';
 export const productSearchSlice = createSlice({
   name: 'productSearch',
   initialState: {
-      productsData: [],
-      status: 'idle',
-      error: null,
-      dayData: null,
-      date: moment(new Date()).format("YYYY-MM-DD"),
-      userInfo: null,
-     eatenProducts : [],
-     dayId: null,
-     itemId: '',
-    },
+    productsData: [],
+    status: 'idle',
+    error: null,
+    dayData: null,
+    date: moment(new Date()).format('YYYY-MM-DD'),
+    userInfo: null,
+    eatenProducts: [],
+    dayId: null,
+    itemId: '',
+    summary: null,
+  },
 
   extraReducers: builder =>
     builder
@@ -39,13 +40,14 @@ export const productSearchSlice = createSlice({
         state.status = 'pending';
       })
       .addCase(addProductOper.fulfilled, (state, action) => {
-        console.log('action.payload', action.payload)
-    
         state.status = 'resolved';
-        state.eatenProducts = [...state.eatenProducts, action.payload.eatenProduct];
+        state.eatenProducts = [
+          ...state.eatenProducts,
+          action.payload.eatenProduct,
+        ];
         state.dayId = action.payload.day.id;
         state.itemId = action.payload.eatenProduct.id;
-      
+
         // state.dayData = {...state.dayData, eatenProducts:
         //    [action.payload.eatenProduct,...state.dayData.eatenProducts]};
         // console.log(action.payload)
@@ -54,16 +56,17 @@ export const productSearchSlice = createSlice({
       .addCase(addProductOper.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
-        
       })
       .addCase(deleteProductOper.pending, state => {
         state.status = 'pending';
       })
       .addCase(deleteProductOper.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.eatenProducts = state.eatenProducts.filter(item => item.id !== action.payload.id);
-
-      }).addCase(deleteProductOper.rejected, (state, action) => {
+        state.eatenProducts = state.eatenProducts.filter(
+          item => item.id !== action.payload.id
+        );
+      })
+      .addCase(deleteProductOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
         console.log(action.payload);
@@ -74,17 +77,21 @@ export const productSearchSlice = createSlice({
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.eatenProducts = action.payload.eatenProducts || [];
+        state.summary = action.payload.daySummary || null;
         state.dayId = action.payload.id;
-      }).addCase(getInfoOper.rejected, (state, action) => {
+      })
+      .addCase(getInfoOper.rejected, (state, action) => {
         state.status = 'pending';
         state.error = action.payload;
-      }).addCase(getUserInfo.pending, (state, action) => {
+      })
+      .addCase(getUserInfo.pending, (state, action) => {
         state.status = 'pending';
       })
-       .addCase(getUserInfo.fulfilled, (state, action) => {
+      .addCase(getUserInfo.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.dayData = action.payload;
-      }).addCase(getUserInfo.rejected, (state, action) => {
+      })
+      .addCase(getUserInfo.rejected, (state, action) => {
         state.status = 'pending';
       }),
   reducers: {
@@ -96,5 +103,3 @@ export const productSearchSlice = createSlice({
 
 export const productSearchReducer = productSearchSlice.reducer;
 export const { setDate } = productSearchSlice.actions;
-
-

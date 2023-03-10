@@ -2,17 +2,16 @@ import React from 'react'
 import { format } from 'date-fns';
 import s from './Sidebar.module.css';
 import { useSelector } from 'react-redux';
-import { selectUserInfo } from '../../redux/dailyCalories/caloriesSelectors';
-import { SelectDate } from '../../redux/diary/diarySelectors';
+import { SelectDate, SelectSummary } from '../../redux/diary/diarySelectors';
 
 export const Summary = () => {
-    const user = useSelector(selectUserInfo);
+    const summary = useSelector(SelectSummary);
     const selectedDate = useSelector(SelectDate);
 
-    const dailyRate = user !== null && user !== undefined ? user.dailyRate : '000';
-    const consumed = user !== null && user !== undefined && user.summaries !== undefined && user.summaries[0] !== undefined ? user.summaries[0].kcalConsumed : '000';
-    const left = user !== null && user !== undefined && user.summaries !== undefined && user.summaries[0] !== undefined ? user.summaries[0].kcalLeft : '000';
-    const partOfNormal = user !== null && user !== undefined ? Math.round((consumed * 100) / dailyRate) : '00';
+    const dailyRate = summary !== null && summary !== undefined ? summary.dailyRate : '000';
+    const consumed = summary !== null && summary !== undefined ? summary.kcalConsumed : '000';
+    const left = summary !== null && summary !== undefined ? summary.kcalLeft : '000';
+    const partOfNormal = summary !== null && summary !== undefined ? Math.round((consumed * 100) / dailyRate) : '00';
 
     const currentDate = format(Date.now(), 'yyyy-MM-dd');
     const date = selectedDate !== null && selectedDate !== undefined ? selectedDate : currentDate;
