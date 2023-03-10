@@ -13,6 +13,7 @@ import { BsPlusLg } from 'react-icons/bs';
 import { Btn } from 'components/Btn/Btn';
 import { SelectDate, SelectProductsData } from 'redux/diary/diarySelectors';
 import { setDate } from 'redux/diary/diarySlice';
+import { selectIsRefresh } from 'redux/authorization/authSelectors';
 
 export const DiaryAddProductForm = props => {
   const productsList = useSelector(SelectProductsData);
@@ -20,10 +21,11 @@ export const DiaryAddProductForm = props => {
   const [title, setTitle] = useState('');
   const date = useSelector(SelectDate);
   const [weight, setWeight] = useState('');
+  const isRefresh = useSelector(selectIsRefresh)
 
   useEffect(() => {
-    dispatch(getInfoOper(date));
-  }, [dispatch, date]);
+    isRefresh && dispatch(getInfoOper(date));
+  }, [dispatch, date, isRefresh]);
 
   const handleChangeDate = value => {
     dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));

@@ -5,3 +5,4 @@ export const SelectDayData = state => state.searchData.dayData;
 export const SelectEatenProducts = state => state.searchData.eatenProducts;
 export const SelectDate = state => state.searchData.date;
 export const SelectUserData = state => state.searchData.userInfo;
+export const SelectSummary = state => state.searchData.summary;
