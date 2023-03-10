@@ -1,11 +1,15 @@
 .homePage {
     width: 100%;
     height: 648px;
+    @media screen and (min-width: 768px) {
+
+    }
+
 }
 
 @media screen and (min-width: 768px) {
     .homePage {
-        height: 1024px;
+        height: 944px;
 
         background-image: url('../../images/background/tablet/strawberry.png'),
             url('../../images/background/tablet/banana.png'),
@@ -14,7 +18,7 @@
 
         background-size: 308px 303px, 491px 431px, 602px 531px, 521px 563px;
         background-position: right 24px bottom 168px, right 0 bottom 0,
-            right 166px bottom -50px, right 0 bottom -4px;
+            left 0 bottom 0, right 0 bottom -4px;
 
         background-repeat: no-repeat;
     }
@@ -22,6 +26,7 @@
 
 @media screen and (min-width: 1280px) {
     .homePage {
+        margin-top: -167px;
         height: auto;
         min-height: 100vh;
        background-image: url('../../images/background/desktop/leaves.png'),
