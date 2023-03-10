@@ -1,16 +1,15 @@
 .btnContainer {
-    background-color: #eff1f3;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    @media screen and (min-width: 768px) {
-        display: none;
-    }
+  background-color: #eff1f3;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 }
 
-@media screen and (min-width: 1280px){
-.calculatorPage {
+@media screen and (min-width: 1280px) {
+  .calculatorPage {
     margin-top: -167px;
+  }
 }
-}
-
