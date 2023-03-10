@@ -24,19 +24,19 @@ export const Summary = () => {
             <ul className={s.SidebarList}>
                 <li className={s.SidebarItem}>
                     <p className={s.SidebarText}>Залишилось</p>
-                    <p className={s.SidebarText}>{left} ккал</p>
+                    <p className={s.SidebarText}>{Math.round(left)} ккал</p>
                 </li>
                 <li className={s.SidebarItem}>
                     <p className={s.SidebarText}>Спожито</p>
-                    <p className={s.SidebarText}>{consumed} ккал</p>
+                    <p className={s.SidebarText}>{Math.round(consumed)} ккал</p>
                 </li>
                 <li className={s.SidebarItem}>
                     <p className={s.SidebarText}>Денна норма</p>
-                    <p className={s.SidebarText}>{dailyRate} ккал</p>
+                    <p className={s.SidebarText}>{Math.round(dailyRate)} ккал</p>
                 </li>
                 <li className={s.SidebarItem}>
                     <p className={s.SidebarText}>% від норми</p>
-                    <p className={s.SidebarText}>{`${partOfNormal}%`}</p>
+                    <p className={s.SidebarText}>{`${Math.round(partOfNormal)}%`}</p>
                 </li>
             </ul>
         </div>
