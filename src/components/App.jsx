@@ -2,21 +2,20 @@ import React from 'react';
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo, refreshUser } from 'redux/authorization/authOperations';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import HomePage from 'pages/MainPage/MainPage';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-import { DairyPage } from 'pages/DairyPage/DairyPage';
-import { DiaryAddProductForm } from './DiaryAddProductForm/DiaryAddProductForm';
-import { CalculatorPage } from 'pages/CalculatorPage/CalculatorPage';
-import { SidePage } from 'pages/SidePage/SidePage';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { PublicRoute } from './Routes/PublicRoute';
+import { Loader } from './Loader/Loader';
 
-// const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
+const SidePage = lazy(() => import('pages/SidePage/SidePage'));
+const CalculatorPage = lazy(() => import('pages/CalculatorPage/CalculatorPage'));
+const DairyPage = lazy(() => import('pages/DairyPage/DairyPage'));
+const RegistrationPage = lazy(() => import('pages/RegistrationPage/RegistrationPage'));
+const HomePage = lazy(() => import('pages/MainPage/MainPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ export const App = () => {
   }, [dispatch, isLoggedIn]);
   return (
     <>
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />

@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import { Logo } from 'components/Logo/Logo';
 import { Outlet } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
@@ -9,6 +10,7 @@ import Burger from './Burger/Burger';
 import { useWindowSize } from 'react-use';
 import UserInfo from 'components/UserInfo/UserInfo';
 import Line from 'images/line.svg';
+import { Loader } from 'components/Loader/Loader';
 
 export function Layout() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -39,9 +41,11 @@ export function Layout() {
           </ul>
         </nav>
       </header>
+      <Suspense fallback={<Loader />}>
       <main className={s.main}>
         <Outlet />
       </main>
+      </Suspense>
     </>
   );
 }
