@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   addProductOper,
   deleteProductOper,
@@ -26,7 +26,7 @@ export const productSearchSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(productSearchOper.pending, state => {
-        state.status = 'pending';
+        state.status = 'idle';
       })
       .addCase(productSearchOper.fulfilled, (state, action) => {
         state.status = 'resolved';
@@ -68,7 +68,7 @@ export const productSearchSlice = createSlice({
         );
       })
       .addCase(deleteProductOper.rejected, (state, action) => {
-        state.status = 'pending';
+        state.status = 'rejected';
         state.error = action.payload;
         console.log(action.payload);
       })
@@ -82,7 +82,7 @@ export const productSearchSlice = createSlice({
         state.dayId = action.payload.id;
       })
       .addCase(getInfoOper.rejected, (state, action) => {
-        state.status = 'pending';
+        state.status = 'rejected';
         state.error = action.payload;
       })
       .addCase(getUserInfo.pending, (state, action) => {
@@ -93,7 +93,7 @@ export const productSearchSlice = createSlice({
         state.dayData = action.payload;
       })
       .addCase(getUserInfo.rejected, (state, action) => {
-        state.status = 'pending';
+        state.status = 'rejected';
       }),
   reducers: {
     setDate(state, action) {
