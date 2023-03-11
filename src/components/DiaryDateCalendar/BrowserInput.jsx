@@ -11,7 +11,7 @@ export const BrowserInput = function BrowserInput(props) {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        gap: '21px',
+        gap: '2830px',
         width: '100%',
         // '& input': {
         //   fontFamily: 'Verdana',

@@ -3,7 +3,8 @@ import React from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { BrowserInput } from './BrowserInput';
 import dayjs from 'dayjs';
-import s from '../DiaryAddProductForm/DiaryAddProductForm.module.scss';
+// import s from '../DiaryAddProductForm/DiaryAddProductForm.module.scss';
+import s from './DiaryDataCalendar.module.scss';
 
 const DiaryDateCalendar = ({ onChange }) => {
   const getCurrentDate = () => {
