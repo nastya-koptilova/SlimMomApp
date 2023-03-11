@@ -2,11 +2,22 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import React from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { BrowserInput } from './BrowserInput';
+import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
 // import s from '../DiaryAddProductForm/DiaryAddProductForm.module.scss';
 import s from './DiaryDataCalendar.module.scss';
+import { getUserInfo } from 'redux/authorization/authOperations';
+import { setDate } from 'redux/diary/diarySlice';
+import moment from 'moment';
 
-const DiaryDateCalendar = ({ onChange }) => {
+const DiaryDateCalendar = () => {
+  const dispatch = useDispatch();
+
+  const handleChangeDate = value => {
+    dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
+    dispatch(getUserInfo());
+  };
+
   
   const getCurrentDate = () => {
     const dateObj = new Date();
@@ -26,7 +37,7 @@ const DiaryDateCalendar = ({ onChange }) => {
         slots={{
           textField: BrowserInput,
         }}
-        onChange={onChange}
+        onChange={handleChangeDate}
       />
     </LocalizationProvider>
   );

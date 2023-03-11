@@ -1,4 +1,4 @@
-// import UserInfo from 'components/UserInfo/UserInfo';
+
 import { NavLink } from 'react-router-dom';
 import s from '../LoggedInNavigation/LoggedInNavigation.module.scss';
 

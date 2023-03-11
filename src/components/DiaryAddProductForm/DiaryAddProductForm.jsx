@@ -3,18 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductOper,
   getInfoOper,
-  getUserInfo,
   productSearchOper,
 } from 'redux/diary/diaryOperation';
-import moment from 'moment';
+
 import { useWindowSize } from 'react-use';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import s from './DiaryAddProductForm.module.scss';
 import { BsPlusLg } from 'react-icons/bs';
 import { Btn } from 'components/Btn/Btn';
 import { SelectDate, SelectProductsData } from 'redux/diary/diarySelectors';
-import { setDate } from 'redux/diary/diarySlice';
-import { selectIsRefresh } from 'redux/authorization/authSelectors';
 
 export const DiaryAddProductForm = props => {
   const productsList = useSelector(SelectProductsData);
@@ -22,7 +19,6 @@ export const DiaryAddProductForm = props => {
   const [title, setTitle] = useState('');
   const date = useSelector(SelectDate);
   const [weight, setWeight] = useState('');
-  const isRefresh = useSelector(selectIsRefresh);
   const { width } = useWindowSize();
 
   // useEffect(() => {
@@ -33,10 +29,10 @@ export const DiaryAddProductForm = props => {
     dispatch(getInfoOper(date));
   }, [dispatch, date]);
 
-  const handleChangeDate = value => {
-    dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
-    dispatch(getUserInfo());
-  };
+  // const handleChangeDate = value => {
+  //   dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
+  //   dispatch(getUserInfo());
+  // };
 
   const handleAddProduct = event => {
     event.preventDefault();
@@ -80,15 +76,7 @@ export const DiaryAddProductForm = props => {
   return (
     <>
       <form className={s.Form} onSubmit={handleAddProduct}>
-        {/* // <div className={s.fieldRow}> */}
-        {width > 768 ? (
-          <DiaryDateCalendar
-            onChange={handleChangeDate}
-            className={s.Calendar}
-          />
-        ) : (
-          ''
-        )}
+        {width > 768 ? <DiaryDateCalendar className={s.Calendar} /> : ''}
         <div className={s.fieldRow}>
           <div className={s.FieldProduct}>
             <input
@@ -122,21 +110,17 @@ export const DiaryAddProductForm = props => {
               required
             />
           </div>
-            {/* <Btn className={s.btn} type="submit" variant="plus">
-              <BsPlusLg className={s.icon} /> 
-            </Btn> */}
-           <div className={s.btn}>
-          {width > 768 ? (
-            <Btn className={s.btn} type="submit" variant="plus">
-              <BsPlusLg className={s.icon} />
-            </Btn>
-          ) : (
-            <Btn className={s.btn} type="submit" variant="login">
-              Додати продукт
-            </Btn>
-          )}
-          </div> 
-       
+          <div className={s.btn}>
+            {width > 768 ? (
+              <Btn className={s.btn} type="submit" variant="plus">
+                <BsPlusLg className={s.icon} />
+              </Btn>
+            ) : (
+              <Btn className={s.btn} type="submit" variant="login">
+                Додати продукт
+              </Btn>
+            )}
+          </div>
         </div>
       </form>
     </>

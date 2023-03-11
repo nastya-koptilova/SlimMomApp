@@ -68,3 +68,20 @@
     //     color: #fc842d;
     // }
 }
+.notification{
+    color: #9b9faa;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: calc(17 / 14);
+}
+
+.listContainer{
+    padding-left: 0px;
+    overflow-y: scroll;
+}
+
+@media screen and (min-width: 1280px)  {
+  .listContainer{
+    padding-left: 32px;
+  }
+}

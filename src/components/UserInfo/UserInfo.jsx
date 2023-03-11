@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { logoutUser } from 'redux/authorization/authOperations';
 import s from '../UserInfo/UserInfo.module.scss';
 import {
-  selectIsLoggedIn,
   selectUserName,
 } from 'redux/authorization/authSelectors';
 import Line from 'images/line.svg';

@@ -1,21 +1,17 @@
 import React from 'react';
 import DiaryProductsListItem from '../DiaryProductListItem/DiaryProductListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  SelectDate,
-  SelectDayData,
-  SelectUserData,
-} from 'redux/diary/diarySelectors';
+import { SelectDate, SelectStatus } from 'redux/diary/diarySelectors';
 import { deleteProductOper, getInfoOper } from 'redux/diary/diaryOperation';
-import { selectUserName } from 'redux/authorization/authSelectors';
 import s from 'components/DiaryProductList/DiaryProductList.module.scss';
+import { Loader } from 'components/Loader/Loader';
 export function DiaryProductsList() {
   const eatenProducts = useSelector(state => state.searchData.eatenProducts);
   const dayId = useSelector(state => state.searchData.dayId);
   const date = useSelector(SelectDate);
   const dispatch = useDispatch();
   const array = eatenProducts;
-  // нотіфкатіон коли арей 0 ! !!!!!!!!!!!!!!!!!!!!!!!
+  const isLoading = useSelector(SelectStatus);
 
   const deleteProduct = e => {
     const dayIdObj = {
@@ -29,9 +25,11 @@ export function DiaryProductsList() {
       });
   };
   return (
-    <div>
+    <div className={s.listContainer}>
       <ul className={s.filteredList}>
-        {array?.length > 0 ? (
+        {isLoading === 'pending' ? (
+          <Loader />
+        ) : array?.length > 0 ? (
           array.map(item => (
             <DiaryProductsListItem
               key={item.id}
@@ -45,7 +43,9 @@ export function DiaryProductsList() {
             />
           ))
         ) : (
-          <p>Why dont you eat</p>
+          <p className={s.notification}>
+            You have no products yet. Please add something.
+          </p>
         )}
       </ul>
     </div>
