@@ -121,7 +121,6 @@ export const DiaryAddProductForm = props => {
               </Btn>
             )}
           </div>
-
             )}
           </div>
         </div>
