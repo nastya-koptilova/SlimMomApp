@@ -11,7 +11,7 @@ export const BrowserInput = function BrowserInput(props) {
   <div className={scss.containerCal}>
       <Box
       sx={{
-        display: 'flex',
+        // display: 'flex',
         flexDirection:'column',
         alignItems: 'center',
         gap: '2830px',
