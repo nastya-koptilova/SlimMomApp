@@ -1,15 +1,18 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+import scss from '../ModalSearchForm/ModalSearchForm.module.scss';
 
 export const BrowserInput = function BrowserInput(props) {
   const { inputProps, InputProps, ownerState, inputRef, error, ...other } =
     props;
 
   return (
-    <Box
+  <div className={scss.containerCal}>
+      <Box
       sx={{
         display: 'flex',
+        flexDirection:'column',
         alignItems: 'center',
         gap: '21px',
         width: '100%',
@@ -30,6 +33,7 @@ export const BrowserInput = function BrowserInput(props) {
       <input ref={inputRef} {...inputProps} {...other} />
       {InputProps?.endAdornment}
     </Box>
+  </div>
   );
 };
 

@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import s from '../DiaryAddProductForm/DiaryAddProductForm.module.scss';
 
 const DiaryDateCalendar = ({ onChange }) => {
+  
   const getCurrentDate = () => {
     const dateObj = new Date();
     const year = dateObj.getFullYear();

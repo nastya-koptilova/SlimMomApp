@@ -77,7 +77,7 @@ export const productSearchSlice = createSlice({
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.eatenProducts = action.payload.eatenProducts || [];
-        state.summary = action.payload.daySummary || null;
+        state.summary = action.payload.daySummary || action.payload;
         state.dayId = action.payload.id;
       })
       .addCase(getInfoOper.rejected, (state, action) => {
