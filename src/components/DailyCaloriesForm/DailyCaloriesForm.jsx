@@ -16,7 +16,6 @@ import {
 } from 'redux/authorization/authSelectors';
 
 import styles from './DailyCaloriesForm.module.scss';
-import { setSummary } from 'redux/diary/diarySlice';
 
 export function DailyCaloriesForm({ handleModalOpen }) {
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ export function DailyCaloriesForm({ handleModalOpen }) {
   const handleSubmit = values => {
     if (isLogin) {
       dispatch(dailyCaloriesAuth({ ...values, userId }));
-      dispatch(setSummary());
       navigate('/diary');
     } else {
       dispatch(dailyCaloriesRequest(values));
