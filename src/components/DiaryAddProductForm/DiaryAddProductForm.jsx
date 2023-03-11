@@ -110,7 +110,7 @@ export const DiaryAddProductForm = props => {
               required
             />
           </div>
-          <div className={s.btn}>
+             <div className={s.btn}>
             {width > 768 ? (
               <Btn className={s.btn} type="submit" variant="plus">
                 <BsPlusLg className={s.icon} />
@@ -119,6 +119,9 @@ export const DiaryAddProductForm = props => {
               <Btn className={s.btn} type="submit" variant="login">
                 Додати продукт
               </Btn>
+            )}
+          </div>
+
             )}
           </div>
         </div>
