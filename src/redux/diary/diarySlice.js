@@ -22,7 +22,24 @@ export const productSearchSlice = createSlice({
     itemId: '',
     summary: null,
   },
-
+  reducers: {
+    setDate(state, action) {
+      state.date = action.payload;
+    },
+    setSummary(state, action) {
+      state.summary = action.payload;
+    },
+    cleanDiaryState(state, action) {
+      state.productsData = [];
+      state.dayData = null;
+      state.date = moment(new Date()).format('YYYY-MM-DD');
+      state.userInfo = null;
+      state.eatenProducts = [];
+      state.dayId = null;
+      state.itemId = '';
+      state.summary = null;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(productSearchOper.pending, state => {
@@ -94,13 +111,8 @@ export const productSearchSlice = createSlice({
       })
       .addCase(getUserInfo.rejected, (state, action) => {
         state.status = 'pending';
-      }),
-  reducers: {
-    setDate(state, action) {
-      state.date = action.payload;
-    },
-  },
+      })
 });
 
 export const productSearchReducer = productSearchSlice.reducer;
-export const { setDate } = productSearchSlice.actions;
+export const { setDate, cleanDiaryState, setSummary } = productSearchSlice.actions;
