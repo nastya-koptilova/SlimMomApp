@@ -1,8 +1,6 @@
-// import { ReactComponent as CloseIcon } from 'images/close/close.svg';
 import { NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-// import { useWindowSize } from 'react-use';
 import s from './ModalMobMenu.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -33,7 +31,6 @@ const Modal = ({ onClose, isModalOpen }) => {
   return createPortal(
     <>
       <div onClick={handleBackdropClick}>
-        {/* <div className={s.modal}> */}
         <div className={isModalOpen ? s.modal : s.transition}>
           <div className={s.list}>
             <NavLink
