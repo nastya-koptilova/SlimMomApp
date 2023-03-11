@@ -6,3 +6,4 @@ export const selectUserEmail = state => state.userData.userEmail;
 export const selectUserId = state => state.userData.userId;
 export const selectRefreshToken = state => state.userData.refreshToken;
 export const selectSid = state => state.userData.sid;
+export const selectIsRefresh = state => state.userData.isRefresh;

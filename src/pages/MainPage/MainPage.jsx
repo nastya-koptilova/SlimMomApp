@@ -3,24 +3,33 @@ import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesFor
 // import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import styles from './MainPage.module.css';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import { Navigate } from 'react-router-dom';
 
 // import { selectUser } from 'redux/dailyCalories/caloriesSelectors';
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
-}
+  };
   const onClose = () => {
     setIsModalOpen(false);
-}
+  };
 
   return (
-    <div className={styles.homePage}>
-      <DailyCaloriesForm handleModalOpen={handleModalOpen}/>
-      {isModalOpen &&  <Modal onClose={onClose} />}  
-    </div>
+    <>
+      {!isLoggedIn && (
+        <div className={styles.homePage}>
+          <DailyCaloriesForm handleModalOpen={handleModalOpen} />
+          {isModalOpen && <Modal onClose={onClose} />}
+        </div>
+      )}
+      {isLoggedIn && <Navigate to="/diary" />}
+    </>
   );
 }
 export default HomePage;

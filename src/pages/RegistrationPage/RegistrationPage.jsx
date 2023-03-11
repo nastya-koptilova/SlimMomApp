@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import { registerNewUser } from 'redux/authorization/authOperations';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
+import scss from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -11,12 +12,16 @@ const RegistrationPage = () => {
   const handleRegister = userData => {
     dispatch(registerNewUser(userData));
   };
-  return ( <>
-    {!isLoggedIn && (
-      <AuthorizationForm onSubmit={handleRegister} />
-    )}
-    {isLoggedIn && <Navigate to="/" />}
-  </>);
+  return (
+    <>
+      {!isLoggedIn && (
+        <div className={scss.registerPage}>
+          <AuthorizationForm onSubmit={handleRegister} />
+        </div>
+      )}
+      {isLoggedIn && <Navigate to="/" />}
+    </>
+  );
 };
 
 export default RegistrationPage;

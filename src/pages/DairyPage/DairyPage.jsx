@@ -5,7 +5,7 @@ import { DiaryProductsList } from 'components/DiaryProductList/DiaryProductList'
 import { SelectDate } from 'redux/diary/diarySelectors';
 import { getInfoOper, getUserInfo } from 'redux/diary/diaryOperation';
 
-export function DairyPage() {
+function DairyPage() {
   const date = useSelector(SelectDate);
   const dispatch = useDispatch();
   // const dispatch = useDispatch();
@@ -22,3 +22,5 @@ export function DairyPage() {
       <DiaryProductsList /></>
   );
 }
+
+export default DairyPage;

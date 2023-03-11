@@ -17,6 +17,7 @@ const initialState = {
   userId: null,
   refreshToken: null,
   sid: null,
+  isRefresh: false,
 };
 
 const authSlice = createSlice({
@@ -53,6 +54,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
+        state.isRefresh = true;
         state.token = action.payload.newAccessToken;
         state.refreshToken = action.payload.newRefreshToken;
         state.sid = action.payload.sid;
@@ -68,6 +70,7 @@ const authSlice = createSlice({
         state.token = null;
         state.refreshToken = null;
         state.sid = null;
+        state.isRefresh = false;
       })
       .addCase(logoutUser.rejected, rejectHandler)
       // ----- GetUserInfo -----
