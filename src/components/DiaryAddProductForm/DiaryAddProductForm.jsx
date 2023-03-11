@@ -7,6 +7,7 @@ import {
   productSearchOper,
 } from 'redux/diary/diaryOperation';
 import moment from 'moment';
+import { useWindowSize } from 'react-use';
 import DiaryDateCalendar from '../DiaryDateCalendar/DiaryDateCalendar';
 import s from './DiaryAddProductForm.module.scss';
 import { BsPlusLg } from 'react-icons/bs';
@@ -21,11 +22,16 @@ export const DiaryAddProductForm = props => {
   const [title, setTitle] = useState('');
   const date = useSelector(SelectDate);
   const [weight, setWeight] = useState('');
-  const isRefresh = useSelector(selectIsRefresh)
+  const isRefresh = useSelector(selectIsRefresh);
+  const { width } = useWindowSize();
+
+  // useEffect(() => {
+  //   isRefresh && dispatch(getInfoOper(date));
+  // }, [dispatch, date, isRefresh]);
 
   useEffect(() => {
-    isRefresh && dispatch(getInfoOper(date));
-  }, [dispatch, date, isRefresh]);
+    dispatch(getInfoOper(date));
+  }, [dispatch, date]);
 
   const handleChangeDate = value => {
     dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
@@ -44,6 +50,17 @@ export const DiaryAddProductForm = props => {
     dispatch(addProductOper(data));
     resetForm();
   };
+
+  // const debounceDispatch = useCallback(
+  //   debounce((title)=>{if(!title) return;
+  //    dispatch(productSearchOper(title))}, 500),
+  //    [],
+  //  )
+
+  //    const inputChange = e => {
+  //      setTitle(e.currentTarget.value);
+  //      debounceDispatch(title);
+  //    };
 
   // useEffect(() => {
   //     dispatch(productSearchOper(title));
@@ -64,11 +81,18 @@ export const DiaryAddProductForm = props => {
     <>
       <form className={s.Form} onSubmit={handleAddProduct}>
         {/* // <div className={s.fieldRow}> */}
-        <DiaryDateCalendar onChange={handleChangeDate} className={s.Calendar} />
-
+        {width > 768 ? (
+          <DiaryDateCalendar
+            onChange={handleChangeDate}
+            className={s.Calendar}
+          />
+        ) : (
+          ''
+        )}
         <div className={s.fieldRow}>
           <div className={s.FieldProduct}>
             <input
+              placeholder="  Введіть назву продукту"
               list="productsList"
               className={s.Input}
               type="text"
@@ -83,13 +107,11 @@ export const DiaryAddProductForm = props => {
                   <option key={item._id} value={item.title.ua} id={item._id} />
                 ))}
             </datalist>
-            <label className={s.LabelTitle} htmlFor="title">
-              Введіть назву продукту
-            </label>
           </div>
 
           <div className={s.FieldWeight}>
             <input
+              placeholder="  Грами"
               className={s.Input}
               id="weight"
               type="number"
@@ -99,13 +121,22 @@ export const DiaryAddProductForm = props => {
               pattern="^[0-9]*$"
               required
             />
-            <label className={s.LabelWeight} htmlFor="weight">
-              Грами
-            </label>
           </div>
-          <Btn type="submit" variant="plus">
-            <BsPlusLg className={s.icon} />
-          </Btn>
+            {/* <Btn className={s.btn} type="submit" variant="plus">
+              <BsPlusLg className={s.icon} /> 
+            </Btn> */}
+           <div className={s.btn}>
+          {width > 768 ? (
+            <Btn className={s.btn} type="submit" variant="plus">
+              <BsPlusLg className={s.icon} />
+            </Btn>
+          ) : (
+            <Btn className={s.btn} type="submit" variant="login">
+              Додати продукт
+            </Btn>
+          )}
+          </div> 
+       
         </div>
       </form>
     </>

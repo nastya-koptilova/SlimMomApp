@@ -11,6 +11,9 @@
         padding-right: 0;
     }
 }
+.container{
+    display: flex;
+}
 
 .Title {
     margin-right: 50px;
@@ -86,10 +89,16 @@
 
 .Button {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transform: rotate(45deg);
+    width: 24px;
+    height: 24px;
+    color: var(--grey-text-color);
+    
 }
 
 .iconDelete {
     width: 24px;
     height: 24px;
-    transform: rotate(45deg);
 }

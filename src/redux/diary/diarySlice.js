@@ -47,6 +47,7 @@ export const productSearchSlice = createSlice({
         ];
         state.dayId = action.payload.day.id;
         state.itemId = action.payload.eatenProduct.id;
+        state.summary = action.payload.daySummary;
 
         // state.dayData = {...state.dayData, eatenProducts:
         //    [action.payload.eatenProduct,...state.dayData.eatenProducts]};
@@ -77,7 +78,7 @@ export const productSearchSlice = createSlice({
       .addCase(getInfoOper.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.eatenProducts = action.payload.eatenProducts || [];
-        state.summary = action.payload.daySummary || null;
+        state.summary = action.payload.daySummary || action.payload;
         state.dayId = action.payload.id;
       })
       .addCase(getInfoOper.rejected, (state, action) => {
@@ -98,8 +99,12 @@ export const productSearchSlice = createSlice({
     setDate(state, action) {
       state.date = action.payload;
     },
+    deleteUserInfro(state, action) {
+      state.eatenProducts = [];
+      state.summary = null;
+    }  
   },
 });
 
 export const productSearchReducer = productSearchSlice.reducer;
-export const { setDate } = productSearchSlice.actions;
+export const { setDate, deleteUserInfro } = productSearchSlice.actions;

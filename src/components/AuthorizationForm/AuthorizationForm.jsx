@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import scss from './AuthorizationForm.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
+  const navigate = useNavigate();
   const [name, setname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,13 +20,20 @@ const AuthorizationForm = ({ isRegisterForm = true, onSubmit }) => {
     userMap[name](value);
   };
 
+
+
+
+
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isRegisterForm) {
       onSubmit({ email, password, username: name });
+      navigate('/calculator');
+
       return;
     }
     onSubmit({ email, password });
+
   };
 
   return (
