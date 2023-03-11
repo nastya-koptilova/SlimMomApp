@@ -20,7 +20,7 @@ const LoginPage = () => {
           <AuthorizationForm isRegisterForm={false} onSubmit={handleLogin} />
         </div>
       )}
-      {isLoggedIn && <Navigate to="/dairy" />}
+      {isLoggedIn && <Navigate to="/" />}
     </>
   );
 };

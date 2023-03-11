@@ -22,7 +22,7 @@ const DiaryProductListItem = ({
   const date = useSelector(SelectDate);
 
   return (
-    <div>
+
       <li className={s.Item}>
         <span className={s.Title}>{title}</span>
         <span className={s.Weight}>{weight} </span>
@@ -30,11 +30,11 @@ const DiaryProductListItem = ({
         <button
           className={s.Button}
           type="button"
+          id={id} onClick={deleteProduct}
         >
-          <GoX id={id} onClick={deleteProduct} className={s.iconDelete} />
+       +
         </button>
       </li>
-    </div>
   );
 };
 export default DiaryProductListItem;
