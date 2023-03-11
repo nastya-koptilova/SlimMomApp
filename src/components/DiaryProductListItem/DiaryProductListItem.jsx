@@ -29,11 +29,9 @@ const DiaryProductListItem = ({
         <span className={s.Calories}>{Math.floor(kcal)}</span>
         <button
           className={s.Button}
-          id={id}
           type="button"
-          onClick={deleteProduct}
         >
-          <GoX className={s.iconDelete} />
+          <GoX id={id} className={s.iconDelete}   onClick={deleteProduct} />
         </button>
       </li>
     </div>
