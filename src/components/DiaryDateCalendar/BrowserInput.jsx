@@ -14,7 +14,7 @@ export const BrowserInput = function BrowserInput(props) {
         display: 'flex',
         flexDirection:'column',
         alignItems: 'center',
-        gap: '21px',
+        gap: '2830px',
         width: '100%',
         // '& input': {
         //   fontFamily: 'Verdana',
