@@ -38,7 +38,7 @@ export const DiaryAddProductForm = props => {
 
   const handleAddProduct = event => {
     event.preventDefault();
-    const productId = productsList[0]._id;
+    const productId = productsList.find(item => item.title.ua === title)._id;
 
     const data = {
       date,
