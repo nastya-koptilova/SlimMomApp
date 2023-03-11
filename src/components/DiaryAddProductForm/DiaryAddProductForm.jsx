@@ -122,21 +122,22 @@ export const DiaryAddProductForm = props => {
               required
             />
           </div>
-            {/* <Btn className={s.btn} type="submit" variant="plus">
+          {/* <Btn className={s.btn} type="submit" variant="plus">
               <BsPlusLg className={s.icon} /> 
             </Btn> */}
-           <div className={s.btn}>
-          {width > 768 ? (
-            <Btn className={s.btn} type="submit" variant="plus">
-              <BsPlusLg className={s.icon} />
-            </Btn>
-          ) : (
-            <Btn className={s.btn} type="submit" variant="login">
-              Додати продукт
-            </Btn>
-          )}
-          </div> 
-       
+          <div className={s.btn}>
+            {width > 768 ? (
+              <Btn className={s.btn} type="submit" variant="plus">
+                <BsPlusLg className={s.icon} />
+              </Btn>
+            ) : (
+              <div className={s.btnMobil}>
+                <Btn className={s.btn} type="submit" variant="login">
+                  Додати продукт
+                </Btn>
+              </div>
+            )}
+          </div>
         </div>
       </form>
     </>
