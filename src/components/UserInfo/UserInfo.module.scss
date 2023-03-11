@@ -7,23 +7,13 @@
   line-height: 1.22;
   letter-spacing: 0.04em;
   gap: 20px;
+  flex-grow: 1;
 
   @media screen and (max-width: 767px) {
-    position: absolute;
-    top: 80px;
-    right: 0px;
-    background-color: #eff1f3;
-    height: 40px;
-    width: 100%;
-    padding-top: 15px;
-    padding-right: 20px;
-    padding-bottom: 13px;
     align-items: center;
   }
   @media screen and (min-width: 1280px) {
-    position: absolute;
     top: 131px;
-    right: 40px;
   }
 }
 
