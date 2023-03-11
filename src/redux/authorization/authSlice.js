@@ -31,9 +31,9 @@ const authSlice = createSlice({
         console.log(action.payload);
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.username || '';
-        state.userEmail = action.payload.email || '';
-        state.userId = action.payload.id || '';
+        state.userName = action.payload.user.username;
+        state.userEmail = action.payload.email;
+        state.userId = action.payload.user.id;
       })
       .addCase(registerNewUser.rejected, rejectHandler)
       // ----- LogIn -----
@@ -41,8 +41,8 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userName = action.payload.user.username || '';
-        state.userEmail = action.payload.user.email || '';
+        state.userName = action.payload.user.username;
+        state.userEmail = action.payload.user.email;
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
         state.sid = action.payload.sid;

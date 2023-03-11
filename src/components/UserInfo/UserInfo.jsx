@@ -7,7 +7,6 @@ import {
   selectUserName,
 } from 'redux/authorization/authSelectors';
 import Line from 'images/line.svg';
-import { cleanDiaryState } from 'redux/diary/diarySlice';
 
 const UserInfo = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -15,7 +14,6 @@ const UserInfo = () => {
   const user = useSelector(selectUserName);
   const handleChange = () => {
     dispatch(logoutUser());
-    dispatch(cleanDiaryState());
   };
 
   return (
