@@ -47,6 +47,7 @@ export const productSearchSlice = createSlice({
         ];
         state.dayId = action.payload.day.id;
         state.itemId = action.payload.eatenProduct.id;
+        state.summary = action.payload.daySummary;
 
         // state.dayData = {...state.dayData, eatenProducts:
         //    [action.payload.eatenProduct,...state.dayData.eatenProducts]};

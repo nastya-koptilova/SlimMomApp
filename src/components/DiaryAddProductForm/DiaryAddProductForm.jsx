@@ -25,9 +25,13 @@ export const DiaryAddProductForm = props => {
   const isRefresh = useSelector(selectIsRefresh);
   const { width } = useWindowSize();
 
+  // useEffect(() => {
+  //   isRefresh && dispatch(getInfoOper(date));
+  // }, [dispatch, date, isRefresh]);
+
   useEffect(() => {
-    isRefresh && dispatch(getInfoOper(date));
-  }, [dispatch, date, isRefresh]);
+    dispatch(getInfoOper(date));
+  }, [dispatch, date]);
 
   const handleChangeDate = value => {
     dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));

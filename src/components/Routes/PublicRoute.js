@@ -11,7 +11,7 @@ export const PublicRoute = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token = useSelector(selectToken);
   return token && isLoggedIn ? (
-    <Navigate to="/diary" />
+    <Navigate to="/calculator" />
   ) : (
     <Suspense fallback={<Loader />}>
       <Outlet />
