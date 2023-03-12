@@ -11,6 +11,8 @@ import UserInfo from 'components/UserInfo/UserInfo';
 import Line from 'images/line.svg';
 import { Loader } from 'components/Loader/Loader';
 import s from '../Layout/Layout.module.scss';
+import ThemeSwitcher from 'components/ThemeSwitcher/ThemeSwitcher';
+
 
 export function Layout() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -22,9 +24,11 @@ export function Layout() {
         <div>
           <Logo />
         </div>
+
         <div className={s.line}>
           <img src={Line} alt="line" width="2" height="32" />
         </div>
+        <ThemeSwitcher></ThemeSwitcher>
         <nav className={s.decoration}>
           <ul className={s.navigation__list}>
             {!isLoggedIn ? (

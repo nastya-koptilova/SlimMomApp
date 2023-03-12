@@ -3,10 +3,12 @@
   display: flex;
   justify-content: center;
 }
+
 .icon {
   width: 23px;
   height: 23px;
 }
+
 .Calendar {
   display: flex;
 }
@@ -43,6 +45,7 @@
     padding: 0 20px;
   }
 }
+
 .FieldProduct {
   position: relative;
   width: 100%;
@@ -98,8 +101,8 @@
     border-color: #fc842d;
   }
 
-  &:focus ~ label,
-  &:valid ~ label {
+  &:focus~label,
+  &:valid~label {
     top: 0px;
   }
 
@@ -145,7 +148,7 @@
   display: flex;
   flex-direction: row;
   width: 400px;
-//  
+  //  
   margin-top: 60px;
 
   @media screen and (max-width: 768px) {
@@ -167,16 +170,17 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
-  
+
   @media screen and (min-width: 768px) {
     font-size: 34px;
     line-height: 41px;
-   
+
   }
+
   @media screen and (min-width: 1280px) {
     font-size: 34px;
     line-height: 41px;
-  
+
   }
 }
 
