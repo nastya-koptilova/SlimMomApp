@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/SlimMom/static/css/main.7e262a46.css",
-    "main.js": "/SlimMom/static/js/main.2e354127.js",
+    "main.js": "/SlimMom/static/js/main.9d0174ba.js",
     "static/css/687.d513c93c.chunk.css": "/SlimMom/static/css/687.d513c93c.chunk.css",
     "static/js/687.5426a788.chunk.js": "/SlimMom/static/js/687.5426a788.chunk.js",
     "static/css/802.660f2ba3.chunk.css": "/SlimMom/static/css/802.660f2ba3.chunk.css",
     "static/js/802.385bc4f1.chunk.js": "/SlimMom/static/js/802.385bc4f1.chunk.js",
-    "static/css/361.70ef3837.chunk.css": "/SlimMom/static/css/361.70ef3837.chunk.css",
+    "static/css/361.2dddc4b5.chunk.css": "/SlimMom/static/css/361.2dddc4b5.chunk.css",
     "static/js/361.58cc6472.chunk.js": "/SlimMom/static/js/361.58cc6472.chunk.js",
     "static/css/995.538d5e9a.chunk.css": "/SlimMom/static/css/995.538d5e9a.chunk.css",
     "static/js/995.9ee1f44b.chunk.js": "/SlimMom/static/js/995.9ee1f44b.chunk.js",
@@ -34,12 +34,12 @@
     "static/media/burger.svg": "/SlimMom/static/media/burger.ad1b9ef925490361f5d1248d4b29075f.svg",
     "static/media/line.svg": "/SlimMom/static/media/line.03f36021f7b0cd2ba5bf96e25802043d.svg",
     "main.7e262a46.css.map": "/SlimMom/static/css/main.7e262a46.css.map",
-    "main.2e354127.js.map": "/SlimMom/static/js/main.2e354127.js.map",
+    "main.9d0174ba.js.map": "/SlimMom/static/js/main.9d0174ba.js.map",
     "687.d513c93c.chunk.css.map": "/SlimMom/static/css/687.d513c93c.chunk.css.map",
     "687.5426a788.chunk.js.map": "/SlimMom/static/js/687.5426a788.chunk.js.map",
     "802.660f2ba3.chunk.css.map": "/SlimMom/static/css/802.660f2ba3.chunk.css.map",
     "802.385bc4f1.chunk.js.map": "/SlimMom/static/js/802.385bc4f1.chunk.js.map",
-    "361.70ef3837.chunk.css.map": "/SlimMom/static/css/361.70ef3837.chunk.css.map",
+    "361.2dddc4b5.chunk.css.map": "/SlimMom/static/css/361.2dddc4b5.chunk.css.map",
     "361.58cc6472.chunk.js.map": "/SlimMom/static/js/361.58cc6472.chunk.js.map",
     "995.538d5e9a.chunk.css.map": "/SlimMom/static/css/995.538d5e9a.chunk.css.map",
     "995.9ee1f44b.chunk.js.map": "/SlimMom/static/js/995.9ee1f44b.chunk.js.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.7e262a46.css",
-    "static/js/main.2e354127.js"
+    "static/js/main.9d0174ba.js"
   ]
 }
