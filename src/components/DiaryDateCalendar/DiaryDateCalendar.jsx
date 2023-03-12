@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import moment from 'moment';
 
 import s from './DiaryDataCalendar.module.scss';
+import { BrowserInput } from './BrowserInput';
 
 const DiaryDateCalendar = () => {
   const dispatch = useDispatch();
@@ -31,10 +32,10 @@ const DiaryDateCalendar = () => {
         className={s.inputCalendar}
         format="DD.MM.YYYY"
         defaultValue={dayjs(getCurrentDate())}
-        // label="Custom input"
-        // slots={{
-        //   textField: BrowserInput,
-        // }}
+        label="Custom input"
+        slots={{
+          textField: BrowserInput,
+        }}
         style={{ fontSize: '26px' }}
         onChange={handleChangeDate}
       />
