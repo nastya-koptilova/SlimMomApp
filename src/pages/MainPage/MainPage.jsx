@@ -1,7 +1,7 @@
 import Modal from 'components/Modal/Modal';
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
 // import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
-import styles from './MainPage.module.css';
+import styles from './MainPage.module.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
@@ -25,7 +25,7 @@ function HomePage() {
       {!isLoggedIn && (
         <div className={styles.homePage}>
           <DailyCaloriesForm handleModalOpen={handleModalOpen} />
-          {isModalOpen && <Modal onClose={onClose} />}
+          {isModalOpen && <Modal onClose={onClose} isModalOpen={isModalOpen}/>}
         </div>
       )}
       {isLoggedIn && <Navigate to="/diary" />}

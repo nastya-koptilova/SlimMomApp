@@ -20,7 +20,6 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     try {
-      console.log(thunkAPI.getState());
       const { sid, refreshToken } = thunkAPI.getState().userData;
       if (!sid) return thunkAPI.rejectWithValue('No sid');
       const result = await AuthApi.refreshUser(sid, refreshToken);

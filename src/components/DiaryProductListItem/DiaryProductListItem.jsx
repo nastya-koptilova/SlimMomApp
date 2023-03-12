@@ -24,9 +24,7 @@ const DiaryProductListItem = ({
             type="button"
             id={id}
             onClick={deleteProduct}
-          >
-            +
-          </button>
+          >+</button>
         </li>
     </>
   );

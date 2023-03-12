@@ -28,7 +28,6 @@ const authSlice = createSlice({
       // ----- SignUp -----
       .addCase(registerNewUser.pending, pendingHandler)
       .addCase(registerNewUser.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.status = 'resolved';
         state.isLoggedIn = true;
         state.userName = action.payload.user.username;
