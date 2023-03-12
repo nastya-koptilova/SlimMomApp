@@ -37,7 +37,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: transparent;
   padding: 3px 5px;
   width: 190px;
-  background: #fff;
+  background: transparent;
 
   @media screen and (min-width: 767px) {
     font-size: 34px !important;

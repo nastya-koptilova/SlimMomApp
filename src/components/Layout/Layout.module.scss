@@ -7,7 +7,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--header);
 }
 
 .line {
@@ -100,8 +99,4 @@
     margin-left: auto;
     // flex-grow: 1;
   }
-}
-
-.main {
-  background-color: var(--header);
 }

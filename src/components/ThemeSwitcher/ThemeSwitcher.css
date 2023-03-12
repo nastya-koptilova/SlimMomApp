@@ -23,6 +23,8 @@
 }
 
 .slider {
+    background-color: red;
+    color: blue;
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -52,12 +54,9 @@
     background-position: center;
 }
 
-input:checked+.slider {
-    background-color: var(--accentColor);
-}
 
 input:focus+.slider {
-    box-shadow: 0 0 1px var(--accentColor);
+    box-shadow: 0 0 1px var(--switcher);
 }
 
 input:checked+.slider:before {
