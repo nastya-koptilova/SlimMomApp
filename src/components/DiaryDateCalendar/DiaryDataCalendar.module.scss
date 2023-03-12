@@ -1,14 +1,29 @@
-[type='date'] {
-  background: #fff
-    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
-    97% 50% no-repeat;
+// [type='date'] {
+//   background: #fff
+//     url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+//     97% 50% no-repeat;
+// }
+// [type='date']::-webkit-inner-spin-button {
+//   display: none;
+// }
+// [type='date']::-webkit-calendar-picker-indicator {
+//   opacity: 0;
+// }
+
+
+input[type="date"] {
+  background: transparent;
+  color: white;
 }
-[type='date']::-webkit-inner-spin-button {
-  display: none;
+
+input[type="date"]::-webkit-datetime-edit-day-field {
+  color: green;
 }
-[type='date']::-webkit-calendar-picker-indicator {
-  opacity: 0;
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 30px;
 }
+
 
 .inputCalendar {
   font-size: 18px !important;
@@ -20,32 +35,10 @@
   background-color: transparent;
   padding: 3px 5px;
   width: 190px;
-  background: #fff
-    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
-    97% 50% no-repeat;
+  background: #fff;
 
   @media screen and (min-width: 767px) {
     font-size: 34px !important;
     width: 290px;
   }
-}
-
-.MuiInputAdornment-root
-  MuiInputAdornment-positionEnd
-  css-makoee-MuiInputAdornment-root {
-  display: none;
-}
-
-.css-i4bv87-MuiSvgIcon-root {
-  fill: aqua !important;
-}
-
-.MuiInputAdornment-root
-  MuiInputAdornment-positionEnd
-  css-makoee-MuiInputAdornment-root {
-  display: none !important;
-}
-
-.MuiSvgIcon-root {
-  fill: aqua !important;
 }
