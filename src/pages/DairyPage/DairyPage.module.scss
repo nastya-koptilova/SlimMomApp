@@ -14,11 +14,12 @@
         justify-content: space-between;
     }
 }
+
 .container{
-    // padding: 40px 20px 0px 20px;
+    padding: 40px 20px 60px 20px;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
 }
 .btn{
     background-color: var(--accent-color);
@@ -32,13 +33,17 @@
 }
 
 .dateContainer{
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
+margin-bottom: 32px;
+    
 }
 .userInfoContainer{
     display: flex;
     width: 100%;
     background-color: #EFF1F3;
     padding: 2px 0 2px 0;
+    padding-right: 20px;
+}
+
+.dateContainerList {
+    margin-bottom: 60px;
 }

@@ -19,12 +19,19 @@
 //         width: 100%;
 //     }
 // }
+
+@media screen and (min-width: 1280px) {
+    .listContainer {
+        padding-left: 32px;
+    }
+}
 .filteredList {
+    margin-top: 20px;
     // height: calc(100vh - 420px);
     //     max-height: calc(100vh - 420px);
         // padding-left: 16px;
     background-color: #ffffff;
-    margin-bottom: 60px;
+    // margin-bottom: 60px;
 
     width: 100%;
 
@@ -33,15 +40,16 @@
     }
          @media (max-width: 1280px) {
              padding-left: 32px;
-             height: 260px;
+            //  height: 260px;
              max-height: 260px;
             //  margin-bottom: 55px;
          }
     
          @media (max-width: 768px) {
-             padding-left: 20px;
-             padding-right: 20px;
-             margin-bottom: 60px;
+            //  padding-left: 20px;
+            //  padding-right: 20px;
+            //  margin-bottom: 60px;
+            padding-left: 0;
              width: 100%;
          }
     
@@ -77,11 +85,7 @@
 
 .listContainer{
     padding-left: 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
-@media screen and (min-width: 1280px)  {
-  .listContainer{
-    padding-left: 32px;
-  }
-}
+

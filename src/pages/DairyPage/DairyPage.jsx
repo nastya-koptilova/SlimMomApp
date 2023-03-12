@@ -17,15 +17,15 @@ function DairyPage() {
   const dispatch = useDispatch();
   const date = useSelector(SelectDate);
   const { width } = useWindowSize();
- 
-const onModalOpen = () => {
-  setIsModalOpen(true);
-  document.body.style.overflow = 'hidden';
-}
-const onModalClose = () => {
-  document.body.style.overflow = 'unset';
-  setIsModalOpen(false)
-}
+
+  const onModalOpen = () => {
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+  const onModalClose = () => {
+    document.body.style.overflow = 'unset';
+    setIsModalOpen(false);
+  };
   // const dispatch = useDispatch();
   // const date = useSelector(selectDate);
 
@@ -45,19 +45,18 @@ const onModalClose = () => {
           <DiaryProductsList />
         </>
       ) : (
-        <div className={scss.container}>
+        <div>
           <div className={scss.userInfoContainer}>
-          <UserInfo />
-        </div>
-        <div className={scss.dateContainer}>
-        <DiaryDateCalendar />
-        <DiaryProductsList />
-        <Btn type="button" variant="plus">
-            <BsPlusLg className={scss.icon} 
-            onClick={onModalOpen}/>
-          </Btn>         
-        {isModalOpen && <ModalSearchForm onModalClose={onModalClose}/>}
-        </div>
+            <UserInfo />
+          </div>
+          <div className={scss.container}>
+            <DiaryDateCalendar className={scss.dateContainer} />
+            <DiaryProductsList className={scss.dateContainerList} />
+            <Btn type="button" variant="plus">
+              <BsPlusLg className={scss.icon} onClick={onModalOpen} />
+            </Btn>
+            {isModalOpen && <ModalSearchForm onModalClose={onModalClose} />}
+          </div>
         </div>
       )}
     </>
