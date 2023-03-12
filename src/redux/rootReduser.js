@@ -4,6 +4,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import { combineReducers } from '@reduxjs/toolkit';
 import { productSearchReducer } from './diary/diarySlice';
 import { caloriesReducer } from './dailyCalories/caloriesSlice';
+import { themeReducer } from './theme/themeSlice';
 
 const persistConfig = {
   key: 'token',
@@ -17,4 +18,5 @@ export const rootReducer = combineReducers({
   userData: persistedReducer,
   searchData: productSearchReducer,
   dailyCalories: caloriesReducer,
+  theme: themeReducer,
 });
