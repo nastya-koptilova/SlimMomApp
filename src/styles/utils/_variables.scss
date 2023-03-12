@@ -1,13 +1,40 @@
 :root {
     --main-text-color: #212121;
-    --grey-text-color:  #9B9FAA;
+    --grey-text-color: #9B9FAA;
     --btn-text-color: #FFFFFF;
-
-
-    --accent-color:  #FC842D;
+    --accent-color: #FC842D;
     --text-size: 14px;
+}
 
-    
+:root.themeLight {
+    --sidebgrColor: #F0F1F3;
+    --titleSideColor: #212121;
+    --sidebarText: #9B9FAA;
+    --main-text-color: #212121;
+    --default: #9b9faa;
+    --active: #212121;
+    --header: #fff;
 
+}
 
+:root.themeDark {
+    --bgColor: #424242;
+    --titleSideColor: #dbece9d8;
+    --sidebarText: #8ddc9f;
+    --main-text-color: #e2d4d4;
+    --default: #575a5f;
+    --active: #ebe5e5;
+    --header: rgba(38, 64, 97, 0.6);
+
+    --greyTextColor: #e0e0e0;
+    --greyBgColor: #9b9faa;
+    --mainTextColor: #ffffff;
+    --accentColor: #fc842d;
+
+    --sidebgrColor: #264061;
+
+    --exitBtnColor: #e0e0e0;
+    --summaryBgColor: #424242;
+    --summaryTitleColor: #212121;
+    --summaryTextColor: #e0e0e0;
 }

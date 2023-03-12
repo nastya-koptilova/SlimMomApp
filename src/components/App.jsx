@@ -43,7 +43,6 @@ export const App = () => {
               <Route path="/register" element={<RegistrationPage />} />
             </Route>
           </Route>
-
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
