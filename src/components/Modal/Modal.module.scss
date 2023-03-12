@@ -12,8 +12,9 @@
   align-items: center;
   background-color: rgba(33, 33, 33, 0.12);
   z-index: 1200;
+  transform: translateX(0);
+  transition: transform 450ms ease;
 }
-
 .btnContainer {
   background-color: #eff1f3;
   width: 100%;
@@ -29,6 +30,7 @@
   height: 100%;
   background-color: var(--btn-text-color);
 }
+
 .title {
   font-size: 18px;
   font-weight: 700;

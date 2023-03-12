@@ -17,7 +17,7 @@ import { Loader } from 'components/Loader/Loader';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose }) => {
+const Modal = ({ onClose, isModalOpen }) => {
   const { width } = useWindowSize();
   const user = useSelector(selectUserInfo);
   const error = useSelector(selectError);
@@ -43,10 +43,11 @@ const Modal = ({ onClose }) => {
       window.removeEventListener('keydown', onModalClose);
     };
   }, [onClose]);
-
   return createPortal(
+    
     <>
-      <div className={scss.overlay} onClick={handleBackdropClick}>
+      <div className={scss.overlay}     
+      onClick={handleBackdropClick}>
         {error && <p> Oops, some error occured... Message: {error}</p>}
         {isLoading === 'pending' ? (
           <Loader />

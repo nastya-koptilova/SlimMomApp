@@ -7,7 +7,6 @@ export const dailyCaloriesRequest =createAsyncThunk(
         try {
             userInfo.bloodType = Number(userInfo.bloodType);
             const response = await DailyApi.getDailyRateInfo(userInfo);
-            console.log(response);
             return response
         } catch (error) {
             return rejectWithValue(error.message)

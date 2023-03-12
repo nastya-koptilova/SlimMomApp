@@ -80,6 +80,7 @@
 }
 
 .authorization__button {
+  transition: all .5s ease;
   background: #fc842d;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   color: #ffffff;
@@ -88,10 +89,12 @@
   :focus {
     background-color: #ea4f0c;
     border-color: transparent;
+    box-shadow: 0px 4px 20px #ea4f0c;
   }
 }
 
 .authorization__link {
+  transition: all .5s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,5 +105,7 @@
   :focus {
     background-color: var(--btn-text-color);
     border-color: #ea4f0c;
+    color: #ea4f0c;
+    box-shadow: 0px 4px 20px #ea4f0c;
   }
 }

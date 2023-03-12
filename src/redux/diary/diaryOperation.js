@@ -72,7 +72,6 @@ export const getUserInfo = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await UserApi.getUserInfo();
-    console.log(result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

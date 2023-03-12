@@ -79,7 +79,7 @@ export const DiaryAddProductForm = props => {
         {width > 768 ? <DiaryDateCalendar className={s.Calendar} /> : ''}
         <div className={s.fieldRow}>
           <div className={s.FieldProduct}>
-            <input
+            <input 
               placeholder="  Введіть назву продукту"
               list="productsList"
               className={s.Input}
@@ -98,7 +98,7 @@ export const DiaryAddProductForm = props => {
           </div>
 
           <div className={s.FieldWeight}>
-            <input
+            <input 
               placeholder="  Грами"
               className={s.Input}
               id="weight"
