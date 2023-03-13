@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Sidebar.module.css';
+import s from './Sidebar.module.scss';
 import { Summary } from './Summary';
 import { Diet } from './Diet';
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { nanoid } from 'nanoid';
-import s from './Sidebar.module.css';
+import s from './Sidebar.module.scss';
 import { useSelector } from 'react-redux';
 import { selectUserInfo } from '../../redux/dailyCalories/caloriesSelectors';
 
