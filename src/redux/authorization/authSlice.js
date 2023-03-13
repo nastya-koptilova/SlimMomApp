@@ -79,6 +79,8 @@ const authSlice = createSlice({
         state.userName = action.payload.username;
         state.userEmail = action.payload.email;
         state.userId = action.payload.id;
+        state.userData = action.payload.userData;
+
       })
       .addCase(getUserInfo.rejected, rejectHandler);
   },
