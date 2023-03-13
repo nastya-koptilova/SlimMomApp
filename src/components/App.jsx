@@ -9,6 +9,9 @@ import { selectIsLoggedIn } from 'redux/authorization/authSelectors';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { PublicRoute } from './Routes/PublicRoute';
 import { Loader } from './Loader/Loader';
+import { selectCurrentTheme } from 'redux/theme/themeSelectors';
+import { setHtmlTagClassname, storageThemeKeyName } from '../theme/themeSwitch';
+import { ThemeNames } from '../types/themeNames';
 
 const SidePage = lazy(() => import('pages/SidePage/SidePage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage/CalculatorPage'));
@@ -26,6 +29,15 @@ export const App = () => {
   useEffect(() => {
     if (isLoggedIn) dispatch(getUserInfo());
   }, [dispatch, isLoggedIn]);
+
+  const currentTheme = useSelector(selectCurrentTheme);
+  useEffect(() => {
+    if (localStorage.getItem(storageThemeKeyName) === ThemeNames.darkTheme) {
+      setHtmlTagClassname(ThemeNames.darkTheme);
+    } else {
+      setHtmlTagClassname(ThemeNames.lightTheme);
+    }
+  }, []);
   return (
     <>
       <Suspense fallback={<Loader />}>
