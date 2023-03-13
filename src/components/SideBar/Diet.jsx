@@ -2,12 +2,10 @@ import React from 'react'
 import { nanoid } from 'nanoid';
 import s from './Sidebar.module.scss';
 import { useSelector } from 'react-redux';
-import { userData } from '../../redux/authorization/authSelectors';
+import { selectUserInfo } from '../../redux/dailyCalories/caloriesSelectors';
 
 export const Diet = () => {
-    const user = useSelector(userData);
-    console.log(user)
-
+    const user = useSelector(selectUserInfo);
     const diet = user !== null && user !== undefined ? user.notAllowedProducts : [];
     function isGetDiet() {
         if (user === undefined || user === null) return false;
