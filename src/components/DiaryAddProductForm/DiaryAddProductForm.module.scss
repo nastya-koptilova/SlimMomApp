@@ -95,6 +95,10 @@
   border-bottom: 1px solid #e0e0e0;
   color: #212121;
   outline: none;
+  margin-bottom: 60px;
+  @media screen and (min-width: 767px) {
+    margin-bottom: 0;
+  }
 
   &:hover,
   &:focus {

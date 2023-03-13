@@ -7,7 +7,8 @@
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 60px;
-  width: 100%;
+//   width: 100%;
+ 
 
   @media screen and (min-width: 768px) {
     max-width: 630px;
@@ -54,4 +55,10 @@
   padding-left: 0px;
   overflow-y: auto;
   overflow-x: hidden;
+  @media screen and (min-width: 767px) {
+    height:250px;
+  }
+  @media screen and (min-width: 1280px) {
+    height:300px;
+  }
 }
